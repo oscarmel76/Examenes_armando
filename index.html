@@ -3,1528 +3,647 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Armando's Math Final — Chapters 9 & 10</title>
+<title>Armando Math Final v2</title>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #f0f4ff;
-  --navy: #0f1f5c;
-  --blue: #1a4db5;
-  --sky: #3b82f6;
-  --cyan: #06b6d4;
-  --yellow: #fbbf24;
-  --green: #16a34a;
-  --green-light: #dcfce7;
-  --red: #dc2626;
-  --red-light: #fee2e2;
-  --orange: #ea580c;
-  --purple: #7c3aed;
-  --white: #ffffff;
-  --card: #ffffff;
-  --border: #e2e8f0;
-  --text: #1e293b;
-  --muted: #64748b;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: 'Nunito', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-}
-
-/* ── TOP BAR ── */
-.topbar {
-  background: var(--navy);
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 4px 20px rgba(15,31,92,0.35);
-}
-.topbar-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 0;
-}
-.topbar-left .emoji { font-size: 1.8rem; }
-.topbar-left h1 {
-  font-family: 'Baloo 2', cursive;
-  font-size: 1.15rem;
-  color: #fff;
-  line-height: 1.1;
-}
-.topbar-left h1 span { color: var(--yellow); }
-.topbar-left small { color: #94a3b8; font-size: 0.75rem; font-weight: 600; }
-
-/* ── TABS ── */
-.tabs {
-  display: flex;
-  gap: 4px;
-}
-.tab-btn {
-  font-family: 'Baloo 2', cursive;
-  font-size: 0.95rem;
-  font-weight: 700;
-  padding: 10px 22px;
-  border: none;
-  cursor: pointer;
-  border-radius: 8px 8px 0 0;
-  transition: all 0.2s;
-  letter-spacing: 0.5px;
-  color: #94a3b8;
-  background: transparent;
-}
-.tab-btn:hover { color: #fff; background: rgba(255,255,255,0.08); }
-.tab-btn.active {
-  background: var(--bg);
-  color: var(--navy);
-}
-.tab-btn.active.guide-tab { border-top: 3px solid var(--cyan); }
-.tab-btn.active.exam-tab { border-top: 3px solid var(--yellow); }
-
-/* ── TAB PANELS ── */
-.panel { display: none; padding: 24px 16px 60px; max-width: 860px; margin: 0 auto; }
-.panel.active { display: block; }
-
-/* ── HERO BANNER ── */
-.hero {
-  background: linear-gradient(135deg, var(--navy) 0%, #1e3a8a 60%, #1d4ed8 100%);
-  border-radius: 20px;
-  padding: 28px 28px 24px;
-  margin-bottom: 24px;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -30px; right: -30px;
-  width: 180px; height: 180px;
-  background: rgba(251,191,36,0.12);
-  border-radius: 50%;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -50px; left: 40%;
-  width: 220px; height: 220px;
-  background: rgba(6,182,212,0.09);
-  border-radius: 50%;
-}
-.hero-emoji { font-size: 2.8rem; margin-bottom: 8px; }
-.hero h2 {
-  font-family: 'Baloo 2', cursive;
-  font-size: 1.6rem;
-  color: #fff;
-  position: relative; z-index: 1;
-}
-.hero h2 span { color: var(--yellow); }
-.hero p { color: #bfdbfe; font-size: 0.9rem; margin-top: 6px; position: relative; z-index: 1; font-weight: 600; }
-.hero-chips {
-  display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; position: relative; z-index: 1;
-}
-.chip {
-  background: rgba(255,255,255,0.13);
-  color: #fff;
-  font-size: 0.78rem;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.2);
-}
-
-/* ── CHAPTER HEADER ── */
-.chapter-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 28px 0 14px;
-}
-.ch-pill {
-  font-family: 'Baloo 2', cursive;
-  font-size: 0.85rem;
-  font-weight: 700;
-  padding: 6px 16px;
-  border-radius: 30px;
-  color: #fff;
-  white-space: nowrap;
-}
-.ch9 { background: var(--blue); }
-.ch10 { background: var(--purple); }
-.ch-title {
-  font-family: 'Baloo 2', cursive;
-  font-size: 1.35rem;
-  color: var(--navy);
-}
-
-/* ── CARDS ── */
-.card {
-  background: var(--card);
-  border-radius: 16px;
-  padding: 22px 24px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 12px rgba(15,31,92,0.07);
-  border-left: 5px solid var(--sky);
-}
-.card.green { border-left-color: var(--green); }
-.card.orange { border-left-color: var(--orange); }
-.card.red { border-left-color: var(--red); }
-.card.purple { border-left-color: var(--purple); }
-.card.yellow { border-left-color: var(--yellow); }
-
-.card h3 {
-  font-family: 'Baloo 2', cursive;
-  font-size: 1.15rem;
-  color: var(--navy);
-  margin-bottom: 2px;
-}
-.pages {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 14px;
-}
-
-/* ── CONCEPT BLOCKS ── */
-.concept {
-  background: #f8faff;
-  border-radius: 10px;
-  padding: 12px 16px;
-  margin-bottom: 10px;
-  border: 1px solid #e2e8f0;
-}
-.concept h4 {
-  font-weight: 800;
-  color: var(--blue);
-  font-size: 0.88rem;
-  margin-bottom: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.concept p, .concept li {
-  font-size: 0.92rem;
-  line-height: 1.65;
-  color: #334155;
-}
-.concept ul, .concept ol { padding-left: 18px; }
-
-/* ── BAR MODEL (Math in Focus style) ── */
-.bar-model {
-  background: #fff7ed;
-  border: 2px solid #fed7aa;
-  border-radius: 12px;
-  padding: 16px;
-  margin: 12px 0;
-  text-align: center;
-}
-.bar-model .bm-label {
-  font-size: 0.75rem;
-  font-weight: 800;
-  color: var(--orange);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-}
-.bar-wrap { display: flex; gap: 4px; justify-content: center; margin: 8px 0; }
-.bar-seg {
-  height: 36px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 0.85rem;
-  color: #fff;
-  flex: 1;
-}
-.bar-seg.blue { background: var(--blue); }
-.bar-seg.cyan { background: var(--cyan); }
-.bar-seg.orange { background: var(--orange); }
-.bar-seg.question { background: #94a3b8; color: #fff; }
-.bar-note { font-size: 0.8rem; color: #78716c; margin-top: 6px; }
-
-/* ── FORMULA BOX ── */
-.formula-box {
-  background: var(--navy);
-  color: #fff;
-  border-radius: 12px;
-  padding: 16px 18px;
-  margin: 12px 0;
-  text-align: center;
-}
-.formula-box .f {
-  font-family: 'Baloo 2', cursive;
-  font-size: 1.6rem;
-  color: var(--yellow);
-  letter-spacing: 1px;
-}
-.formula-box .fl { font-size: 0.8rem; color: #93c5fd; margin-top: 4px; }
-
-/* ── SHAPES GRID ── */
-.shapes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 10px;
-  margin: 12px 0;
-}
-.shape-card {
-  border-radius: 12px;
-  padding: 14px 10px;
-  text-align: center;
-  border: 2px solid transparent;
-}
-.shape-card.sq { background: #eff6ff; border-color: #93c5fd; }
-.shape-card.rect { background: #f0fdf4; border-color: #86efac; }
-.shape-card.tri { background: #fff7ed; border-color: #fdba74; }
-.shape-icon { font-size: 2.2rem; margin-bottom: 6px; }
-.shape-name { font-weight: 800; font-size: 0.85rem; color: var(--navy); }
-.shape-formula { font-size: 0.82rem; color: #555; margin-top: 4px; line-height: 1.5; }
-
-/* ── TIP BOX ── */
-.tip {
-  background: #fffbeb;
-  border: 2px dashed var(--yellow);
-  border-radius: 10px;
-  padding: 12px 16px;
-  margin: 12px 0;
-  font-size: 0.88rem;
-  color: #78350f;
-  line-height: 1.6;
-}
-.tip strong { color: var(--orange); }
-
-/* ── PRACTICE ── */
-.practice {
-  background: #fefce8;
-  border-radius: 12px;
-  padding: 16px 18px;
-  margin-top: 14px;
-  border: 2px solid #fde68a;
-}
-.practice h4 {
-  font-family: 'Baloo 2', cursive;
-  color: var(--orange);
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
-.practice ol { padding-left: 20px; }
-.practice li { font-size: 0.9rem; margin-bottom: 8px; line-height: 1.55; }
-.ans { font-weight: 800; color: var(--green); }
-
-/* ── CLOCK ── */
-.clock-row {
-  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px;
-}
-.clock-box {
-  flex: 1; min-width: 110px;
-  background: #f5f3ff;
-  border: 2px solid #c4b5fd;
-  border-radius: 12px;
-  padding: 12px 8px;
-  text-align: center;
-}
-.clock-time { font-family: 'Baloo 2', cursive; font-size: 1.6rem; color: var(--purple); }
-.clock-label { font-size: 0.75rem; font-weight: 700; color: #6d28d9; margin-top: 2px; }
-
-/* ── CONVERSION TABLE ── */
-.conv-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.9rem; }
-.conv-table th { background: var(--navy); color: var(--yellow); padding: 9px 14px; text-align: left; font-family: 'Baloo 2', cursive; font-size: 0.95rem; }
-.conv-table td { padding: 8px 14px; border-bottom: 1px solid #e2e8f0; }
-.conv-table tr:nth-child(even) td { background: #f8fafc; }
-
-/* ── STEPS ── */
-.steps { list-style: none; margin-top: 10px; counter-reset: step; }
-.steps li {
-  position: relative;
-  padding: 10px 14px 10px 48px;
-  background: #f0fdf4;
-  border-radius: 10px;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #14532d;
-  counter-increment: step;
-}
-.steps li::before {
-  content: counter(step);
-  position: absolute;
-  left: 12px; top: 50%;
-  transform: translateY(-50%);
-  background: var(--green);
-  color: #fff;
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Baloo 2', cursive;
-  font-size: 0.95rem;
-}
-
-/* ── REVIEW BANNER ── */
-.review-banner {
-  background: linear-gradient(135deg, var(--navy), #4338ca);
-  border-radius: 14px;
-  padding: 20px 22px;
-  color: #fff;
-  margin-top: 12px;
-}
-.review-banner h4 { font-family: 'Baloo 2', cursive; color: var(--yellow); font-size: 1.05rem; margin-bottom: 10px; }
-.review-banner ul { padding-left: 20px; }
-.review-banner li { font-size: 0.88rem; margin-bottom: 6px; color: #bfdbfe; }
-
-/* ══════════════════════════════
-   EXAM TAB
-══════════════════════════════ */
-.exam-hero {
-  background: linear-gradient(135deg, #1c1917, #292524, #44403c);
-  border-radius: 20px;
-  padding: 26px;
-  margin-bottom: 24px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.exam-hero::before {
-  content: '';
-  position: absolute;
-  top: -40px; right: -40px;
-  width: 200px; height: 200px;
-  background: rgba(251,191,36,0.1);
-  border-radius: 50%;
-}
-.exam-hero h2 {
-  font-family: 'Baloo 2', cursive;
-  font-size: 1.7rem;
-  color: var(--yellow);
-  position: relative; z-index: 1;
-}
-.exam-hero p { color: #a8a29e; font-size: 0.88rem; margin-top: 6px; position: relative; z-index: 1; font-weight: 600; }
-.exam-stats {
-  display: flex; gap: 12px; justify-content: center; margin-top: 16px; flex-wrap: wrap;
-  position: relative; z-index: 1;
-}
-.stat-box {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 12px;
-  padding: 10px 18px;
-  text-align: center;
-}
-.stat-num { font-family: 'Baloo 2', cursive; font-size: 1.5rem; color: #fff; }
-.stat-lbl { font-size: 0.72rem; color: #a8a29e; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-
-/* progress */
-.progress-bar-wrap {
-  background: #e2e8f0;
-  border-radius: 10px;
-  height: 10px;
-  margin-bottom: 20px;
-  overflow: hidden;
-}
-.progress-bar-fill {
-  background: linear-gradient(90deg, var(--cyan), var(--sky));
-  height: 100%;
-  border-radius: 10px;
-  transition: width 0.4s ease;
-}
-.progress-text { font-size: 0.8rem; font-weight: 700; color: var(--muted); text-align: right; margin-bottom: 6px; }
-
-/* question card */
-.q-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 22px 24px;
-  margin-bottom: 18px;
-  box-shadow: 0 2px 12px rgba(15,31,92,0.07);
-  border-top: 4px solid var(--sky);
-  transition: border-color 0.3s;
-}
-.q-card.answered-correct { border-top-color: var(--green); }
-.q-card.answered-wrong { border-top-color: var(--red); }
-
-.q-num {
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-.q-tag {
-  display: inline-block;
-  font-size: 0.68rem;
-  font-weight: 800;
-  padding: 2px 8px;
-  border-radius: 8px;
-  margin-left: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.tag-ch9 { background: #dbeafe; color: var(--blue); }
-.tag-ch10 { background: #ede9fe; color: var(--purple); }
-
-.q-text {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 14px;
-  line-height: 1.5;
-}
-
-/* options */
-.options { display: flex; flex-direction: column; gap: 8px; }
-.opt-btn {
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.92rem;
-  font-weight: 700;
-  text-align: left;
-  padding: 11px 16px;
-  border-radius: 10px;
-  border: 2px solid var(--border);
-  background: #f8fafc;
-  color: var(--text);
-  cursor: pointer;
-  transition: all 0.18s;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.opt-btn:hover:not(:disabled) { border-color: var(--sky); background: #eff6ff; }
-.opt-btn:disabled { cursor: default; }
-.opt-btn.correct { border-color: var(--green); background: var(--green-light); color: #14532d; }
-.opt-btn.wrong { border-color: var(--red); background: var(--red-light); color: #7f1d1d; }
-.opt-letter {
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  background: var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.78rem; font-weight: 800;
-  flex-shrink: 0;
-  transition: background 0.18s;
-}
-.opt-btn.correct .opt-letter { background: var(--green); color: #fff; }
-.opt-btn.wrong .opt-letter { background: var(--red); color: #fff; }
-
-/* feedback */
-.feedback {
-  margin-top: 10px;
-  padding: 10px 14px;
-  border-radius: 10px;
-  font-size: 0.88rem;
-  font-weight: 700;
-  display: none;
-  align-items: center;
-  gap: 8px;
-}
-.feedback.show { display: flex; }
-.feedback.correct-fb { background: var(--green-light); color: #14532d; }
-.feedback.wrong-fb { background: var(--red-light); color: #7f1d1d; }
-
-/* score screen */
-.score-screen {
-  display: none;
-  text-align: center;
-  padding: 20px 0;
-}
-.score-screen.show { display: block; }
-.score-big {
-  font-family: 'Baloo 2', cursive;
-  font-size: 5rem;
-  color: var(--navy);
-  line-height: 1;
-  margin: 16px 0 8px;
-}
-.score-big span { color: var(--yellow); }
-.score-grade {
-  font-family: 'Baloo 2', cursive;
-  font-size: 2rem;
-  margin-bottom: 12px;
-}
-.score-msg { font-size: 1rem; font-weight: 700; color: var(--muted); margin-bottom: 24px; }
-.score-details {
-  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px;
-}
-.sd-box {
-  background: #fff;
-  border-radius: 14px;
-  padding: 14px 20px;
-  box-shadow: 0 2px 10px rgba(15,31,92,0.08);
-  min-width: 110px;
-}
-.sd-num { font-family: 'Baloo 2', cursive; font-size: 1.8rem; }
-.sd-num.green { color: var(--green); }
-.sd-num.red { color: var(--red); }
-.sd-lbl { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
-.retry-btn {
-  font-family: 'Baloo 2', cursive;
-  font-size: 1.1rem;
-  font-weight: 700;
-  padding: 14px 36px;
-  border: none;
-  border-radius: 14px;
-  background: var(--navy);
-  color: var(--yellow);
-  cursor: pointer;
-  transition: opacity 0.2s;
-  letter-spacing: 1px;
-}
-.retry-btn:hover { opacity: 0.85; }
-
-.submit-wrap { text-align: center; margin-top: 8px; margin-bottom: 30px; }
-.submit-btn {
-  font-family: 'Baloo 2', cursive;
-  font-size: 1.1rem;
-  font-weight: 700;
-  padding: 14px 40px;
-  border: none;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--blue), var(--cyan));
-  color: #fff;
-  cursor: pointer;
-  transition: opacity 0.2s;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 16px rgba(59,130,246,0.35);
-}
-.submit-btn:hover { opacity: 0.88; }
-
-footer {
-  text-align: center;
-  padding: 20px;
-  color: var(--muted);
-  font-weight: 700;
-  font-size: 0.82rem;
-}
-
-@media(max-width:600px){
-  .topbar { flex-wrap: wrap; gap: 0; }
-  .tabs { width: 100%; justify-content: center; padding-bottom: 4px; }
-  .tab-btn { padding: 8px 14px; font-size: 0.88rem; }
-  .hero h2 { font-size: 1.3rem; }
-  .score-big { font-size: 3.5rem; }
-}
+:root{--bg:#f0f4ff;--navy:#0f1f5c;--blue:#1a4db5;--sky:#3b82f6;--cyan:#06b6d4;--yellow:#fbbf24;--green:#16a34a;--gl:#dcfce7;--red:#dc2626;--rl:#fee2e2;--orange:#ea580c;--purple:#7c3aed;--card:#fff;--border:#e2e8f0;--text:#1e293b;--muted:#64748b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.topbar{background:var(--navy);padding:0 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(15,31,92,.35)}
+.tl{display:flex;align-items:center;gap:10px;padding:14px 0}
+.tl .em{font-size:1.8rem}
+.tl h1{font-family:'Baloo 2',cursive;font-size:1.1rem;color:#fff;line-height:1.1}
+.tl h1 span{color:var(--yellow)}
+.tl small{color:#94a3b8;font-size:.72rem;font-weight:600}
+.tabs{display:flex;gap:4px}
+.tab-btn{font-family:'Baloo 2',cursive;font-size:.9rem;font-weight:700;padding:10px 18px;border:none;cursor:pointer;border-radius:8px 8px 0 0;transition:all .2s;color:#94a3b8;background:transparent}
+.tab-btn:hover{color:#fff;background:rgba(255,255,255,.08)}
+.tab-btn.active{background:var(--bg);color:var(--navy)}
+.tab-btn.active.gt{border-top:3px solid var(--cyan)}
+.tab-btn.active.et{border-top:3px solid var(--yellow)}
+.panel{display:none;padding:24px 16px 60px;max-width:880px;margin:0 auto}
+.panel.active{display:block}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#1e3a8a 60%,#1d4ed8 100%);border-radius:20px;padding:28px;margin-bottom:24px;position:relative;overflow:hidden}
+.hero-emoji{font-size:2.6rem;margin-bottom:6px;position:relative;z-index:1}
+.hero h2{font-family:'Baloo 2',cursive;font-size:1.55rem;color:#fff;position:relative;z-index:1}
+.hero h2 span{color:var(--yellow)}
+.hero p{color:#bfdbfe;font-size:.88rem;margin-top:6px;position:relative;z-index:1;font-weight:600}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;position:relative;z-index:1}
+.chip{background:rgba(255,255,255,.13);color:#fff;font-size:.75rem;font-weight:700;padding:4px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.2)}
+.ch-hdr{display:flex;align-items:center;gap:12px;margin:28px 0 14px}
+.ch-pill{font-family:'Baloo 2',cursive;font-size:.82rem;font-weight:700;padding:6px 16px;border-radius:30px;color:#fff}
+.ch9{background:var(--blue)}.ch10{background:var(--purple)}
+.ch-title{font-family:'Baloo 2',cursive;font-size:1.3rem;color:var(--navy)}
+.card{background:var(--card);border-radius:16px;padding:22px 24px;margin-bottom:16px;box-shadow:0 2px 12px rgba(15,31,92,.07);border-left:5px solid var(--sky)}
+.card.gr{border-left-color:var(--green)}.card.or{border-left-color:var(--orange)}.card.rd{border-left-color:var(--red)}.card.pu{border-left-color:var(--purple)}.card.ye{border-left-color:var(--yellow)}
+.card h3{font-family:'Baloo 2',cursive;font-size:1.12rem;color:var(--navy);margin-bottom:2px}
+.pages{font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+.con{background:#f8faff;border-radius:10px;padding:12px 16px;margin-bottom:10px;border:1px solid #e2e8f0}
+.con h4{font-weight:800;color:var(--blue);font-size:.85rem;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.con p,.con li{font-size:.9rem;line-height:1.65;color:#334155}
+.con ul,.con ol{padding-left:18px}
+.fbox{background:var(--navy);color:#fff;border-radius:12px;padding:14px 18px;margin:12px 0;text-align:center}
+.fbox .f{font-family:'Baloo 2',cursive;font-size:1.5rem;color:var(--yellow);letter-spacing:1px}
+.fbox .fl{font-size:.78rem;color:#93c5fd;margin-top:4px}
+.tip{background:#fffbeb;border:2px dashed var(--yellow);border-radius:10px;padding:12px 16px;margin:12px 0;font-size:.86rem;color:#78350f;line-height:1.6}
+.tip strong{color:var(--orange)}
+.prac{background:#fefce8;border-radius:12px;padding:14px 18px;margin-top:14px;border:2px solid #fde68a}
+.prac h4{font-family:'Baloo 2',cursive;color:var(--orange);font-size:.98rem;margin-bottom:10px}
+.prac ol{padding-left:20px}
+.prac li{font-size:.88rem;margin-bottom:8px;line-height:1.55}
+.ans{font-weight:800;color:var(--green)}
+.cmp-wrap{background:#fdf4ff;border:2px solid #e9d5ff;border-radius:14px;padding:16px;margin:12px 0}
+.cmp-title{font-family:'Baloo 2',cursive;font-size:.95rem;color:var(--purple);margin-bottom:8px}
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.cmp-step{background:#fff;border-radius:10px;padding:12px;border:1px solid #e9d5ff;font-size:.83rem;color:var(--navy)}
+.cmp-step strong{color:var(--purple);font-family:'Baloo 2',cursive;display:block;margin-bottom:3px}
+.clock-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.clock-box{flex:1;min-width:105px;background:#f5f3ff;border:2px solid #c4b5fd;border-radius:12px;padding:12px 8px;text-align:center}
+.clock-time{font-family:'Baloo 2',cursive;font-size:1.55rem;color:var(--purple)}
+.clock-label{font-size:.7rem;font-weight:700;color:#6d28d9;margin-top:2px}
+.conv{width:100%;border-collapse:collapse;margin-top:12px;font-size:.88rem}
+.conv th{background:var(--navy);color:var(--yellow);padding:8px 14px;text-align:left;font-family:'Baloo 2',cursive}
+.conv td{padding:7px 14px;border-bottom:1px solid #e2e8f0}
+.conv tr:nth-child(even) td{background:#f8fafc}
+.steps{list-style:none;margin-top:10px;counter-reset:step}
+.steps li{position:relative;padding:10px 14px 10px 46px;background:#f0fdf4;border-radius:10px;margin-bottom:8px;font-size:.88rem;font-weight:600;color:#14532d;counter-increment:step}
+.steps li::before{content:counter(step);position:absolute;left:12px;top:50%;transform:translateY(-50%);background:var(--green);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',cursive;font-size:.9rem}
+.rev-ban{background:linear-gradient(135deg,var(--navy),#4338ca);border-radius:14px;padding:18px 22px;color:#fff;margin-top:12px}
+.rev-ban h4{font-family:'Baloo 2',cursive;color:var(--yellow);font-size:1rem;margin-bottom:10px}
+.rev-ban ul{padding-left:20px}
+.rev-ban li{font-size:.86rem;margin-bottom:6px;color:#bfdbfe}
+/* EXAM */
+.exam-hero{background:linear-gradient(135deg,#1c1917,#292524,#44403c);border-radius:20px;padding:24px;margin-bottom:24px;text-align:center;position:relative;overflow:hidden}
+.exam-hero h2{font-family:'Baloo 2',cursive;font-size:1.6rem;color:var(--yellow);position:relative;z-index:1}
+.exam-hero p{color:#a8a29e;font-size:.86rem;margin-top:6px;position:relative;z-index:1;font-weight:600}
+.estat{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap;position:relative;z-index:1}
+.esbox{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 14px;text-align:center}
+.esnum{font-family:'Baloo 2',cursive;font-size:1.4rem;color:#fff}
+.eslbl{font-size:.66rem;color:#a8a29e;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.prog-wrap{background:#e2e8f0;border-radius:10px;height:9px;margin-bottom:20px;overflow:hidden}
+.prog-fill{background:linear-gradient(90deg,var(--cyan),var(--sky));height:100%;border-radius:10px;transition:width .4s}
+.prog-txt{font-size:.78rem;font-weight:700;color:var(--muted);text-align:right;margin-bottom:6px}
+.q-card{background:#fff;border-radius:16px;padding:20px 22px;margin-bottom:16px;box-shadow:0 2px 12px rgba(15,31,92,.07);border-top:4px solid var(--sky);transition:border-color .3s}
+.q-card.ok{border-top-color:var(--green)}.q-card.ng{border-top-color:var(--red)}
+.q-num{font-size:.7rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.q-tag{display:inline-block;font-size:.65rem;font-weight:800;padding:2px 8px;border-radius:8px;margin-left:8px;text-transform:uppercase}
+.tch9{background:#dbeafe;color:var(--blue)}.tch10{background:#ede9fe;color:var(--purple)}
+.tperim{background:#fee2e2;color:#991b1b}.tcomp{background:#fef9c3;color:#92400e}
+.q-text{font-size:.97rem;font-weight:700;color:var(--navy);margin-bottom:12px;line-height:1.5}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:700;text-align:left;padding:10px 14px;border-radius:10px;border:2px solid var(--border);background:#f8fafc;color:var(--text);cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:10px}
+.opt:hover:not(:disabled){border-color:var(--sky);background:#eff6ff}
+.opt:disabled{cursor:default}
+.opt.correct{border-color:var(--green);background:var(--gl);color:#14532d}
+.opt.wrong{border-color:var(--red);background:var(--rl);color:#7f1d1d}
+.opt-l{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;flex-shrink:0}
+.opt.correct .opt-l{background:var(--green);color:#fff}.opt.wrong .opt-l{background:var(--red);color:#fff}
+.fb{margin-top:10px;padding:10px 14px;border-radius:10px;font-size:.85rem;font-weight:700;display:none;gap:8px;line-height:1.5}
+.fb.show{display:flex}.fb.cfb{background:var(--gl);color:#14532d}.fb.wfb{background:var(--rl);color:#7f1d1d}
+.score-screen{display:none;text-align:center;padding:20px 0}
+.score-screen.show{display:block}
+.score-big{font-family:'Baloo 2',cursive;font-size:4.5rem;color:var(--navy);line-height:1;margin:14px 0 6px}
+.score-big span{color:var(--yellow)}
+.score-grade{font-family:'Baloo 2',cursive;font-size:1.8rem;margin-bottom:10px}
+.score-msg{font-size:.95rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.score-det{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+.sdb{background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 2px 10px rgba(15,31,92,.08);min-width:85px}
+.sdn{font-family:'Baloo 2',cursive;font-size:1.6rem}
+.sdl{font-size:.66rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.retry-btn{font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:700;padding:13px 34px;border:none;border-radius:14px;background:var(--navy);color:var(--yellow);cursor:pointer;letter-spacing:1px}
+.retry-btn:hover{opacity:.85}
+.sub-wrap{text-align:center;margin:8px 0 28px}
+.sub-btn{font-family:'Baloo 2',cursive;font-size:1.05rem;font-weight:700;padding:13px 38px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;cursor:pointer;box-shadow:0 4px 16px rgba(59,130,246,.35);letter-spacing:1px}
+.sub-btn:hover{opacity:.88}
+footer{text-align:center;padding:18px;color:var(--muted);font-weight:700;font-size:.8rem}
+@media(max-width:600px){.topbar{flex-wrap:wrap}.tabs{width:100%;justify-content:center;padding-bottom:4px}.tab-btn{padding:8px 12px;font-size:.82rem}.hero h2{font-size:1.25rem}.cmp-grid{grid-template-columns:1fr}.score-big{font-size:3rem}}
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
-  <div class="topbar-left">
-    <span class="emoji">🦸‍♂️</span>
-    <div>
-      <h1><span>Armando's</span> Math Final</h1>
-      <small>Math in Focus · Singapore Math · Grade 3A · Chapters 9 & 10</small>
-    </div>
+  <div class="tl"><span class="em">&#x1F9B8;&#x200D;&#x2642;&#xFE0F;</span>
+    <div><h1><span>Armando's</span> Math Final v2</h1><small>Math in Focus &middot; Singapore Math &middot; Grade 3A &middot; Chapters 9 &amp; 10</small></div>
   </div>
   <div class="tabs">
-    <button class="tab-btn guide-tab active" onclick="switchTab('guide', this)">📚 Study Guide</button>
-    <button class="tab-btn exam-tab" onclick="switchTab('exam', this)">📝 Exam</button>
+    <button class="tab-btn gt active" onclick="switchTab('guide',this)">&#x1F4DA; Study Guide</button>
+    <button class="tab-btn et" onclick="switchTab('exam',this)">&#x1F4DD; Exam</button>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     GUIDE PANEL
-══════════════════════════════════ -->
+<!-- GUIDE PANEL -->
 <div id="panel-guide" class="panel active">
-
-  <div class="hero">
-    <div class="hero-emoji">📐⭐</div>
-    <h2>Armando's <span>Study Guide</span></h2>
-    <p>Math in Focus (Singapore Math) · Study this before the exam! 💪</p>
-    <div class="hero-chips">
-      <span class="chip">📦 Chapter 9: Area & Perimeter</span>
-      <span class="chip">⏰ Chapter 10: Time</span>
-      <span class="chip">🧮 Singapore Math Method</span>
-    </div>
+<div class="hero">
+  <div class="hero-emoji">&#x1F4D0;&#x2B50;</div>
+  <h2>Armando's <span>Study Guide</span></h2>
+  <p>Math in Focus (Singapore Math) &middot; Study this before the exam! &#x1F4AA;</p>
+  <div class="chips">
+    <span class="chip">&#x1F4E6; Ch9: Area &amp; Perimeter</span>
+    <span class="chip">&#x1F537; Compound Shapes</span>
+    <span class="chip">&#x23F0; Ch10: Time</span>
   </div>
+</div>
 
-  <!-- ===== CHAPTER 9 ===== -->
-  <div class="chapter-header">
-    <div class="ch-pill ch9">Chapter 9</div>
-    <div class="ch-title">Area, Square Units & Perimeter</div>
+<div class="ch-hdr"><div class="ch-pill ch9">Chapter 9</div><div class="ch-title">Area, Square Units &amp; Perimeter</div></div>
+
+<!-- AREA -->
+<div class="card">
+  <h3>&#x1F4E6; What is Area? (pp. 127&ndash;130)</h3>
+  <div class="pages">Pages 127&ndash;130</div>
+  <div class="con"><h4>Definition</h4><p><strong>Area</strong> is the space inside a flat shape. Measured in <strong>square units</strong>.</p></div>
+  <div class="con"><h4>How to Count Squares</h4><ul><li>Count unit squares inside the shape.</li><li>Each small square = 1 square unit.</li><li>Two half-squares = 1 whole.</li></ul></div>
+  <div class="fbox"><div class="f">Area = Length x Width</div><div class="fl">A = L x W</div></div>
+  <svg viewBox="0 0 300 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;display:block;margin:10px auto">
+    <rect x="30" y="20" width="240" height="90" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <line x1="70" y1="20" x2="70" y2="110" stroke="#86efac" stroke-width="1"/>
+    <line x1="110" y1="20" x2="110" y2="110" stroke="#86efac" stroke-width="1"/>
+    <line x1="150" y1="20" x2="150" y2="110" stroke="#86efac" stroke-width="1"/>
+    <line x1="190" y1="20" x2="190" y2="110" stroke="#86efac" stroke-width="1"/>
+    <line x1="230" y1="20" x2="230" y2="110" stroke="#86efac" stroke-width="1"/>
+    <line x1="30" y1="50" x2="270" y2="50" stroke="#86efac" stroke-width="1"/>
+    <line x1="30" y1="80" x2="270" y2="80" stroke="#86efac" stroke-width="1"/>
+    <text x="150" y="14" text-anchor="middle" font-family="Nunito" font-size="13" fill="#15803d" font-weight="800">6 cm</text>
+    <text x="285" y="68" text-anchor="middle" font-family="Nunito" font-size="13" fill="#15803d" font-weight="800">3 cm</text>
+    <text x="150" y="120" text-anchor="middle" font-family="Nunito" font-size="12" fill="#15803d" font-weight="700">A = 6 x 3 = 18 cm&#xB2;</text>
+  </svg>
+  <div class="prac"><h4>&#x270F;&#xFE0F; Try It!</h4><ol>
+    <li>Rectangle 6x4 units &rarr; Area=?<br><span class="ans">&rarr; 24 sq units</span></li>
+    <li>5 rows of 8 squares &rarr; Area=?<br><span class="ans">&rarr; 40 sq units</span></li>
+    <li>Square side=7 cm &rarr; Area=?<br><span class="ans">&rarr; 49 cm&#xB2;</span></li>
+  </ol></div>
+</div>
+
+<!-- SQUARE UNITS -->
+<div class="card gr">
+  <h3>&#x1F4CF; Square Units: cm&#xB2;, in&#xB2;, m&#xB2;, ft&#xB2; (pp. 139&ndash;154)</h3>
+  <div class="pages">Pages 139&ndash;154</div>
+  <div class="con"><h4>Which unit?</h4><ul>
+    <li><strong>cm&#xB2; / in&#xB2;</strong> &rarr; small: book, card, photo</li>
+    <li><strong>m&#xB2; / ft&#xB2;</strong> &rarr; large: room, garden, field</li>
+  </ul></div>
+  <div class="tip"><strong>&#x1F4A1; Tip:</strong> Area always uses &#xB2; because you measure in TWO directions.</div>
+  <div class="prac"><h4>&#x270F;&#xFE0F; Try It!</h4><ol>
+    <li>Square side=9 cm &rarr; A=?<br><span class="ans">&rarr; 81 cm&#xB2;</span></li>
+    <li>Room 6m x 5m &rarr; A=?<br><span class="ans">&rarr; 30 m&#xB2;</span></li>
+    <li>Photo 8in x 6in &rarr; A=?<br><span class="ans">&rarr; 48 in&#xB2;</span></li>
+  </ol></div>
+</div>
+
+<!-- PERIMETER -->
+<div class="card rd">
+  <h3>&#x1F4D0; Perimeter AND Area (pp. 167&ndash;172)</h3>
+  <div class="pages">Pages 167&ndash;172</div>
+  <div class="con"><h4>&#x26A1; The Big Difference</h4><ul>
+    <li><strong>Perimeter</strong> = distance AROUND the shape &rarr; ADD all sides &rarr; simple units</li>
+    <li><strong>Area</strong> = space INSIDE &rarr; MULTIPLY &rarr; square units (&#xB2;)</li>
+  </ul></div>
+  <!-- Visual SVG -->
+  <div style="background:#fff5f5;border:2px solid #fca5a5;border-radius:14px;padding:14px;margin:12px 0">
+    <div style="font-size:.72rem;font-weight:800;color:#dc2626;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">&#x1F5BC;&#xFE0F; Perimeter vs Area</div>
+    <svg viewBox="0 0 480 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;display:block;margin:0 auto">
+      <rect x="20" y="28" width="190" height="90" rx="4" fill="#dbeafe" stroke="#1a4db5" stroke-width="3" stroke-dasharray="8,4"/>
+      <text x="115" y="22" text-anchor="middle" font-family="Nunito" font-size="12" fill="#1a4db5" font-weight="800">10 cm</text>
+      <text x="222" y="78" text-anchor="middle" font-family="Nunito" font-size="12" fill="#1a4db5" font-weight="800" transform="rotate(90,222,78)">5 cm</text>
+      <text x="115" y="78" text-anchor="middle" font-family="Nunito" font-size="12" fill="#1e3a8a" font-weight="700">PERIMETER</text>
+      <text x="115" y="138" text-anchor="middle" font-family="Nunito" font-size="12" fill="#1e40af" font-weight="800">P=10+5+10+5=30 cm</text>
+      <rect x="270" y="28" width="190" height="90" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+      <line x1="308" y1="28" x2="308" y2="118" stroke="#86efac" stroke-width="1"/>
+      <line x1="346" y1="28" x2="346" y2="118" stroke="#86efac" stroke-width="1"/>
+      <line x1="384" y1="28" x2="384" y2="118" stroke="#86efac" stroke-width="1"/>
+      <line x1="422" y1="28" x2="422" y2="118" stroke="#86efac" stroke-width="1"/>
+      <line x1="270" y1="58" x2="460" y2="58" stroke="#86efac" stroke-width="1"/>
+      <line x1="270" y1="88" x2="460" y2="88" stroke="#86efac" stroke-width="1"/>
+      <text x="365" y="78" text-anchor="middle" font-family="Nunito" font-size="12" fill="#15803d" font-weight="700">AREA</text>
+      <text x="365" y="138" text-anchor="middle" font-family="Nunito" font-size="12" fill="#15803d" font-weight="800">A=10x5=50 cm&#xB2;</text>
+    </svg>
   </div>
-
-  <!-- AREA -->
-  <div class="card">
-    <h3>📦 What is Area? (pp. 127–130)</h3>
-    <div class="pages">Pages 127 – 130</div>
-    <div class="concept">
-      <h4>Definition</h4>
-      <p><strong>Area</strong> is the amount of space inside a flat shape. We measure it in <strong>square units</strong>.</p>
-    </div>
-    <div class="concept">
-      <h4>How to find area by counting squares</h4>
-      <ul>
-        <li>Count how many unit squares fit inside the shape.</li>
-        <li>Each small square = 1 square unit.</li>
-        <li>Two half-squares = 1 whole square unit.</li>
-      </ul>
-    </div>
-    <div class="bar-model">
-      <div class="bm-label">📊 Bar Model — Area by counting</div>
-      <div class="bar-wrap">
-        <div class="bar-seg blue">Row 1: 4</div>
-        <div class="bar-seg cyan">Row 2: 4</div>
-        <div class="bar-seg orange">Row 3: 4</div>
-      </div>
-      <div class="bar-note">3 rows × 4 squares each = <strong>12 square units</strong></div>
-    </div>
-    <div class="formula-box">
-      <div class="f">Area = Length × Width</div>
-      <div class="fl">A = L × W</div>
-    </div>
-    <div class="practice">
-      <h4>✏️ Try It!</h4>
-      <ol>
-        <li>A rectangle is 4 × 3 units. Area = ?<br><span class="ans">→ 4 × 3 = 12 square units</span></li>
-        <li>A shape has 5 rows of 6 squares. Area = ?<br><span class="ans">→ 5 × 6 = 30 square units</span></li>
-        <li>Grid shape: 2 rows × 5 columns. Area = ?<br><span class="ans">→ 2 × 5 = 10 square units</span></li>
-      </ol>
-    </div>
+  <!-- Rectangle -->
+  <div style="background:#eff6ff;border-radius:12px;padding:14px;margin:10px 0;border:2px solid #bfdbfe">
+    <div style="font-family:'Baloo 2',cursive;color:#1e40af;font-size:.92rem;margin-bottom:8px">&#x1F7E6; Rectangle</div>
+    <svg viewBox="0 0 320 105" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;display:block;margin:0 auto 8px">
+      <rect x="40" y="18" width="220" height="68" rx="5" fill="#bfdbfe" stroke="#1a4db5" stroke-width="2.5"/>
+      <text x="150" y="12" text-anchor="middle" font-family="Nunito" font-size="13" fill="#1a4db5" font-weight="800">8 cm</text>
+      <text x="274" y="55" text-anchor="middle" font-family="Nunito" font-size="13" fill="#1a4db5" font-weight="800">4 cm</text>
+      <text x="150" y="56" text-anchor="middle" font-family="Nunito" font-size="12" fill="#1e3a8a" font-weight="700">P=2(8)+2(4)=24 cm</text>
+      <text x="150" y="73" text-anchor="middle" font-family="Nunito" font-size="12" fill="#1e3a8a" font-weight="700">A=8x4=32 cm&#xB2;</text>
+    </svg>
   </div>
-
-  <!-- SQUARE UNITS cm in -->
-  <div class="card green">
-    <h3>📏 Square Units: cm² and in² (pp. 139–142)</h3>
-    <div class="pages">Pages 139 – 142 · Small Units</div>
-    <div class="concept">
-      <h4>Small units — for small objects</h4>
-      <ul>
-        <li><strong>cm²</strong> = square centimeters → book, notebook, phone screen</li>
-        <li><strong>in²</strong> = square inches → photo, small card, sheet of paper</li>
-      </ul>
-    </div>
-    <div class="shapes-grid">
-      <div class="shape-card sq">
-        <div class="shape-icon">🟦</div>
-        <div class="shape-name">Square</div>
-        <div class="shape-formula">A = s × s<br>A = s²</div>
-      </div>
-      <div class="shape-card rect">
-        <div class="shape-icon">🟩</div>
-        <div class="shape-name">Rectangle</div>
-        <div class="shape-formula">A = L × W</div>
-      </div>
-    </div>
-    <div class="tip">
-      <strong>💡 Singapore Math Tip:</strong> The ² in cm² means you are measuring in TWO directions (length AND width). Area is always in square units!
-    </div>
-    <div class="practice">
-      <h4>✏️ Try It!</h4>
-      <ol>
-        <li>Square: side = 6 cm → Area = ?<br><span class="ans">→ 6 × 6 = 36 cm²</span></li>
-        <li>Rectangle: 8 in × 3 in → Area = ?<br><span class="ans">→ 8 × 3 = 24 in²</span></li>
-        <li>Rectangle: 10 cm × 4 cm → Area = ?<br><span class="ans">→ 10 × 4 = 40 cm²</span></li>
-      </ol>
-    </div>
+  <!-- Square -->
+  <div style="background:#f0fdf4;border-radius:12px;padding:14px;margin:10px 0;border:2px solid #86efac">
+    <div style="font-family:'Baloo 2',cursive;color:#15803d;font-size:.92rem;margin-bottom:8px">&#x1F7E9; Square</div>
+    <svg viewBox="0 0 230 125" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:210px;display:block;margin:0 auto 8px">
+      <rect x="50" y="14" width="100" height="100" rx="5" fill="#bbf7d0" stroke="#16a34a" stroke-width="2.5"/>
+      <text x="100" y="9" text-anchor="middle" font-family="Nunito" font-size="13" fill="#15803d" font-weight="800">7 m</text>
+      <text x="165" y="67" text-anchor="middle" font-family="Nunito" font-size="13" fill="#15803d" font-weight="800">7 m</text>
+      <text x="100" y="63" text-anchor="middle" font-family="Nunito" font-size="12" fill="#14532d" font-weight="700">P=4x7=28 m</text>
+      <text x="100" y="80" text-anchor="middle" font-family="Nunito" font-size="12" fill="#14532d" font-weight="700">A=7x7=49 m&#xB2;</text>
+    </svg>
   </div>
-
-  <!-- SQUARE UNITS m ft -->
-  <div class="card orange">
-    <h3>🏠 Square Units: m² and ft² (pp. 151–154)</h3>
-    <div class="pages">Pages 151 – 154 · Large Units</div>
-    <div class="concept">
-      <h4>Large units — for large spaces</h4>
-      <ul>
-        <li><strong>m²</strong> = square meters → room, garden, soccer field</li>
-        <li><strong>ft²</strong> = square feet → floor of a classroom, yard</li>
-      </ul>
-    </div>
-    <div class="concept">
-      <h4>Which unit do I choose? 🤔</h4>
-      <ul>
-        <li>Photo, book, card → <strong>cm² or in²</strong></li>
-        <li>Floor, garden, park → <strong>m² or ft²</strong></li>
-      </ul>
-    </div>
-    <div class="formula-box">
-      <div class="f">A = L × W</div>
-      <div class="fl">Same formula — the unit is the only thing that changes!</div>
-    </div>
-    <div class="practice">
-      <h4>✏️ Try It!</h4>
-      <ol>
-        <li>Room: 5 m × 4 m → Area = ?<br><span class="ans">→ 5 × 4 = 20 m²</span></li>
-        <li>Garden: 12 ft × 8 ft → Area = ?<br><span class="ans">→ 12 × 8 = 96 ft²</span></li>
-        <li>Classroom: 7 m × 7 m → Area = ?<br><span class="ans">→ 7 × 7 = 49 m²</span></li>
-      </ol>
-    </div>
+  <!-- Triangle -->
+  <div style="background:#fff7ed;border-radius:12px;padding:14px;margin:10px 0;border:2px solid #fdba74">
+    <div style="font-family:'Baloo 2',cursive;color:#c2410c;font-size:.92rem;margin-bottom:8px">&#x1F53A; Triangle</div>
+    <svg viewBox="0 0 280 125" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:260px;display:block;margin:0 auto 8px">
+      <polygon points="140,14 30,112 250,112" fill="#fed7aa" stroke="#ea580c" stroke-width="2.5"/>
+      <text x="74" y="74" text-anchor="middle" font-family="Nunito" font-size="13" fill="#c2410c" font-weight="800" transform="rotate(-52,74,74)">6 in</text>
+      <text x="206" y="74" text-anchor="middle" font-family="Nunito" font-size="13" fill="#c2410c" font-weight="800" transform="rotate(52,206,74)">6 in</text>
+      <text x="140" y="124" text-anchor="middle" font-family="Nunito" font-size="13" fill="#c2410c" font-weight="800">9 in</text>
+      <text x="140" y="82" text-anchor="middle" font-family="Nunito" font-size="12" fill="#7c2d12" font-weight="700">P=6+6+9=21 in</text>
+    </svg>
   </div>
+  <div class="prac"><h4>&#x270F;&#xFE0F; Try It!</h4><ol>
+    <li>Rectangle L=12cm, W=5cm &rarr; P=? A=?<br><span class="ans">&rarr; P=34cm | A=60cm&#xB2;</span></li>
+    <li>Square side=10ft &rarr; P=? A=?<br><span class="ans">&rarr; P=40ft | A=100ft&#xB2;</span></li>
+    <li>Triangle sides: 7,8,9m &rarr; P=?<br><span class="ans">&rarr; P=24m</span></li>
+  </ol></div>
+</div>
 
-  <!-- PERIMETER AND AREA -->
-  <div class="card red">
-    <h3>📐 Perimeter AND Area (pp. 167–172)</h3>
-    <div class="pages">Pages 167 – 172 · Key Difference!</div>
-
-    <div class="concept">
-      <h4>⚡ The BIG Difference</h4>
-      <ul>
-        <li><strong>Perimeter</strong> = distance AROUND the outside of a shape → ADD all sides → uses simple units (cm, m, in, ft)</li>
-        <li><strong>Area</strong> = space INSIDE a shape → MULTIPLY length × width → uses square units (cm², m², in², ft²)</li>
-      </ul>
+<!-- COMPOUND SHAPES -->
+<div class="card pu">
+  <h3>&#x1F537; Compound Shapes (pp. 167&ndash;172)</h3>
+  <div class="pages">Key Math in Focus Skill!</div>
+  <div class="con"><h4>What is a Compound Shape?</h4><p>Two or more rectangles joined together (L-shape, T-shape, staircase).</p></div>
+  <div class="con"><h4>&#x1FA9C; Steps</h4><ol class="steps">
+    <li>Draw a line to split into rectangles.</li>
+    <li>Find the area of each part.</li>
+    <li>Add all parts together = Total Area!</li>
+  </ol></div>
+  <!-- L-SHAPE 1 -->
+  <div class="cmp-wrap">
+    <div class="cmp-title">&#x1F537; L-Shape Example 1</div>
+    <svg viewBox="0 0 340 195" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;display:block;margin:0 auto 10px">
+      <rect x="40" y="20" width="160" height="55" rx="4" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+      <rect x="40" y="75" width="80" height="85" rx="4" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2"/>
+      <line x1="40" y1="75" x2="200" y2="75" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="120" y="14" text-anchor="middle" font-family="Nunito" font-size="12" fill="#7c3aed" font-weight="800">8 cm</text>
+      <text x="212" y="52" text-anchor="middle" font-family="Nunito" font-size="12" fill="#7c3aed" font-weight="800">4 cm</text>
+      <text x="80" y="175" text-anchor="middle" font-family="Nunito" font-size="12" fill="#7c3aed" font-weight="800">5 cm</text>
+      <text x="22" y="120" text-anchor="middle" font-family="Nunito" font-size="12" fill="#7c3aed" font-weight="800">5 cm</text>
+      <text x="120" y="52" text-anchor="middle" font-family="Nunito" font-size="11" fill="#4c1d95" font-weight="700">Part A</text>
+      <text x="80" y="120" text-anchor="middle" font-family="Nunito" font-size="11" fill="#4c1d95" font-weight="700">Part B</text>
+      <text x="250" y="70" font-family="Nunito" font-size="12" fill="#6d28d9" font-weight="800">A=8x4=32</text>
+      <text x="250" y="110" font-family="Nunito" font-size="12" fill="#6d28d9" font-weight="800">B=5x5=25</text>
+      <text x="250" y="150" font-family="Nunito" font-size="14" fill="#7c3aed" font-weight="900">57 cm&#xB2;</text>
+    </svg>
+    <div class="cmp-grid">
+      <div class="cmp-step"><strong>Part A (top)</strong>8 cm x 4 cm = 32 cm&#xB2;</div>
+      <div class="cmp-step"><strong>Part B (bottom)</strong>5 cm x 5 cm = 25 cm&#xB2;</div>
     </div>
-
-    <!-- VISUAL INTRO SVG -->
-    <div style="background:#fff5f5;border:2px solid #fca5a5;border-radius:14px;padding:16px;margin:12px 0;">
-      <div style="font-size:0.75rem;font-weight:800;color:#dc2626;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">🖼️ Visual — Perimeter vs Area</div>
-      <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;display:block;margin:0 auto;">
-        <!-- LEFT: Perimeter -->
-        <rect x="20" y="30" width="180" height="100" rx="4" fill="#dbeafe" stroke="#1a4db5" stroke-width="3" stroke-dasharray="8,4"/>
-        <text x="110" y="90" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#1a4db5" font-weight="800">PERIMETER</text>
-        <text x="110" y="108" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#1d4ed8">The dashed border = the path</text>
-        <!-- arrows on perimeter -->
-        <text x="110" y="22" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#1a4db5" font-weight="700">← 9 cm →</text>
-        <text x="210" y="85" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#1a4db5" font-weight="700" transform="rotate(90,210,85)">← 5 cm →</text>
-        <text x="110" y="148" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#1e40af" font-weight="800">P = 9+5+9+5 = 28 cm</text>
-
-        <!-- RIGHT: Area -->
-        <rect x="280" y="30" width="180" height="100" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
-        <!-- grid lines -->
-        <line x1="316" y1="30" x2="316" y2="130" stroke="#86efac" stroke-width="1"/>
-        <line x1="352" y1="30" x2="352" y2="130" stroke="#86efac" stroke-width="1"/>
-        <line x1="388" y1="30" x2="388" y2="130" stroke="#86efac" stroke-width="1"/>
-        <line x1="424" y1="30" x2="424" y2="130" stroke="#86efac" stroke-width="1"/>
-        <line x1="280" y1="63" x2="460" y2="63" stroke="#86efac" stroke-width="1"/>
-        <line x1="280" y1="96" x2="460" y2="96" stroke="#86efac" stroke-width="1"/>
-        <text x="370" y="85" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#15803d" font-weight="800">AREA</text>
-        <text x="370" y="103" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#166534">Squares inside = the space</text>
-        <text x="370" y="148" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#15803d" font-weight="800">A = 9 × 5 = 45 cm²</text>
-      </svg>
-    </div>
-
-    <!-- SHAPE 1: RECTANGLE with SVG -->
-    <div style="background:#eff6ff;border-radius:14px;padding:18px;margin:14px 0;border:2px solid #bfdbfe;">
-      <div style="font-family:'Baloo 2',cursive;font-size:1rem;color:#1e40af;font-weight:700;margin-bottom:10px;">🟦 Rectangle — Example</div>
-      <svg viewBox="0 0 340 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto 10px;">
-        <!-- Rectangle body -->
-        <rect x="50" y="25" width="240" height="80" rx="6" fill="#bfdbfe" stroke="#1a4db5" stroke-width="2.5"/>
-        <!-- Inside area fill pattern -->
-        <rect x="50" y="25" width="240" height="80" rx="6" fill="url(#gridBlue)" opacity="0.4"/>
-        <!-- Top label -->
-        <line x1="50" y1="12" x2="290" y2="12" stroke="#1a4db5" stroke-width="1.5" marker-start="url(#arrowL)" marker-end="url(#arrowR)"/>
-        <text x="170" y="8" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#1a4db5" font-weight="800">8 cm</text>
-        <!-- Right label -->
-        <line x1="305" y1="25" x2="305" y2="105" stroke="#1a4db5" stroke-width="1.5"/>
-        <text x="320" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#1a4db5" font-weight="800">5 cm</text>
-        <!-- Center labels -->
-        <text x="170" y="62" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#1e3a8a" font-weight="700">P = 2(8) + 2(5) = 26 cm</text>
-        <text x="170" y="80" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#1e3a8a" font-weight="700">A = 8 × 5 = 40 cm²</text>
-        <defs>
-          <pattern id="gridBlue" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#93c5fd" stroke-width="0.8"/>
-          </pattern>
-        </defs>
-      </svg>
-      <div style="background:#1a4db5;color:#fff;border-radius:10px;padding:10px 14px;font-size:0.88rem;font-weight:700;line-height:1.7;">
-        📌 <strong style="color:#fbbf24;">Perimeter:</strong> P = 2L + 2W = 2(8) + 2(5) = 16 + 10 = <strong style="color:#fbbf24;">26 cm</strong><br>
-        📌 <strong style="color:#6ee7b7;">Area:</strong> A = L × W = 8 × 5 = <strong style="color:#6ee7b7;">40 cm²</strong>
-      </div>
-    </div>
-
-    <!-- SHAPE 2: SQUARE with SVG -->
-    <div style="background:#f0fdf4;border-radius:14px;padding:18px;margin:14px 0;border:2px solid #86efac;">
-      <div style="font-family:'Baloo 2',cursive;font-size:1rem;color:#15803d;font-weight:700;margin-bottom:10px;">🟩 Square — Example</div>
-      <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:260px;display:block;margin:0 auto 10px;">
-        <rect x="55" y="20" width="110" height="110" rx="6" fill="#bbf7d0" stroke="#16a34a" stroke-width="2.5"/>
-        <!-- grid inside -->
-        <line x1="82" y1="20" x2="82" y2="130" stroke="#86efac" stroke-width="1"/>
-        <line x1="109" y1="20" x2="109" y2="130" stroke="#86efac" stroke-width="1"/>
-        <line x1="136" y1="20" x2="136" y2="130" stroke="#86efac" stroke-width="1"/>
-        <line x1="55" y1="47" x2="165" y2="47" stroke="#86efac" stroke-width="1"/>
-        <line x1="55" y1="74" x2="165" y2="74" stroke="#86efac" stroke-width="1"/>
-        <line x1="55" y1="101" x2="165" y2="101" stroke="#86efac" stroke-width="1"/>
-        <!-- labels -->
-        <text x="110" y="12" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#15803d" font-weight="800">6 in</text>
-        <text x="185" y="78" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#15803d" font-weight="800">6 in</text>
-        <text x="110" y="75" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#14532d" font-weight="700">6 × 6</text>
-        <text x="110" y="92" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#14532d" font-weight="700">= 36 in²</text>
-        <!-- corner tick marks -->
-        <text x="110" y="150" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#15803d" font-weight="700">All sides equal!</text>
-      </svg>
-      <div style="background:#15803d;color:#fff;border-radius:10px;padding:10px 14px;font-size:0.88rem;font-weight:700;line-height:1.7;">
-        📌 <strong style="color:#fbbf24;">Perimeter:</strong> P = 4 × s = 4 × 6 = <strong style="color:#fbbf24;">24 in</strong><br>
-        📌 <strong style="color:#6ee7b7;">Area:</strong> A = s × s = 6 × 6 = <strong style="color:#6ee7b7;">36 in²</strong>
-      </div>
-    </div>
-
-    <!-- SHAPE 3: TRIANGLE with SVG -->
-    <div style="background:#fff7ed;border-radius:14px;padding:18px;margin:14px 0;border:2px solid #fdba74;">
-      <div style="font-family:'Baloo 2',cursive;font-size:1rem;color:#c2410c;font-weight:700;margin-bottom:10px;">🔺 Triangle — Perimeter</div>
-      <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;display:block;margin:0 auto 10px;">
-        <!-- Triangle -->
-        <polygon points="150,20 40,130 260,130" fill="#fed7aa" stroke="#ea580c" stroke-width="2.5"/>
-        <!-- Side labels -->
-        <text x="80" y="85" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#c2410c" font-weight="800" transform="rotate(-52,80,85)">5 cm</text>
-        <text x="220" y="85" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#c2410c" font-weight="800" transform="rotate(52,220,85)">5 cm</text>
-        <text x="150" y="148" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#c2410c" font-weight="800">8 cm</text>
-        <!-- Center -->
-        <text x="150" y="95" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#7c2d12" font-weight="700">P = 5+5+8</text>
-        <text x="150" y="111" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#7c2d12" font-weight="700">= 18 cm</text>
-      </svg>
-      <div style="background:#ea580c;color:#fff;border-radius:10px;padding:10px 14px;font-size:0.88rem;font-weight:700;line-height:1.7;">
-        📌 <strong style="color:#fef9c3;">Perimeter of a triangle:</strong> P = a + b + c<br>
-        P = 5 + 5 + 8 = <strong style="color:#fef9c3;">18 cm</strong><br>
-        ⚠️ Add ALL three sides together!
-      </div>
-    </div>
-
-    <!-- COMPOUND SHAPE -->
-    <div style="background:#fdf4ff;border-radius:14px;padding:18px;margin:14px 0;border:2px solid #e9d5ff;">
-      <div style="font-family:'Baloo 2',cursive;font-size:1rem;color:#7c3aed;font-weight:700;margin-bottom:6px;">🔷 Bonus: L-Shaped Figure (Compound Shape)</div>
-      <div style="font-size:0.82rem;color:#6d28d9;font-weight:700;margin-bottom:10px;">Split into two rectangles to find the area!</div>
-      <svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;display:block;margin:0 auto 10px;">
-        <!-- L-shape: big rect top, small rect bottom-right missing -->
-        <rect x="40" y="20" width="160" height="60" rx="4" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
-        <rect x="40" y="80" width="80" height="60" rx="4" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2"/>
-        <!-- Labels -->
-        <text x="120" y="13" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#7c3aed" font-weight="800">10 cm</text>
-        <text x="215" y="55" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#7c3aed" font-weight="800">4 cm</text>
-        <text x="80" y="145" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#7c3aed" font-weight="800">5 cm</text>
-        <text x="10" y="118" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#7c3aed" font-weight="800">4 cm</text>
-        <!-- Labels inside -->
-        <text x="120" y="54" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#4c1d95" font-weight="700">Part A: 10×4=40</text>
-        <text x="80" y="114" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#4c1d95" font-weight="700">Part B: 5×4=20</text>
-        <!-- Arrow showing split -->
-        <text x="250" y="80" text-anchor="start" font-family="Nunito,sans-serif" font-size="12" fill="#6d28d9" font-weight="800">Total Area:</text>
-        <text x="250" y="97" text-anchor="start" font-family="Nunito,sans-serif" font-size="12" fill="#6d28d9" font-weight="800">40 + 20 =</text>
-        <text x="250" y="114" text-anchor="start" font-family="Nunito,sans-serif" font-size="14" fill="#7c3aed" font-weight="900">60 cm²</text>
-      </svg>
-    </div>
-
-    <div class="tip">
-      <strong>💡 Remember the difference:</strong><br>
-      🔵 <strong>Perimeter</strong> → walk around the fence → add all sides → <em>cm, m, in, ft</em><br>
-      🟢 <strong>Area</strong> → carpet on the floor → L × W → <em>cm², m², in², ft²</em>
-    </div>
-
-    <!-- EXERCISES -->
-    <div style="background:#fef2f2;border-radius:14px;padding:18px;margin-top:14px;border:2px solid #fca5a5;">
-      <div style="font-family:'Baloo 2',cursive;color:#dc2626;font-size:1.05rem;margin-bottom:14px;">✏️ Practice Exercises — Find P and A!</div>
-
-      <!-- Exercise 1 -->
-      <div style="background:#fff;border-radius:10px;padding:14px;margin-bottom:12px;border:1px solid #e2e8f0;">
-        <div style="font-weight:800;color:#1e293b;margin-bottom:10px;">1. Find the Perimeter and Area of this rectangle:</div>
-        <svg viewBox="0 0 280 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;display:block;margin:0 auto 10px;">
-          <rect x="40" y="15" width="200" height="60" rx="5" fill="#dbeafe" stroke="#1a4db5" stroke-width="2"/>
-          <text x="140" y="10" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#1a4db5" font-weight="800">12 cm</text>
-          <text x="252" y="48" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#1a4db5" font-weight="800">4 cm</text>
-          <text x="140" y="50" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#1e3a8a" font-weight="600">Length = 12 cm</text>
-          <text x="140" y="66" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#1e3a8a" font-weight="600">Width = 4 cm</text>
-        </svg>
-        <div style="font-size:0.88rem;color:#64748b;font-weight:600;">P = 2L + 2W = ______ &nbsp;&nbsp; A = L × W = ______</div>
-        <div class="ans" style="margin-top:8px;font-size:0.88rem;">→ P = 2(12) + 2(4) = 24 + 8 = <strong>32 cm</strong> &nbsp;|&nbsp; A = 12 × 4 = <strong>48 cm²</strong></div>
-      </div>
-
-      <!-- Exercise 2 -->
-      <div style="background:#fff;border-radius:10px;padding:14px;margin-bottom:12px;border:1px solid #e2e8f0;">
-        <div style="font-weight:800;color:#1e293b;margin-bottom:10px;">2. Find the Perimeter and Area of this square:</div>
-        <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:200px;display:block;margin:0 auto 10px;">
-          <rect x="50" y="10" width="90" height="90" rx="5" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
-          <text x="95" y="6" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#15803d" font-weight="800">9 m</text>
-          <text x="152" y="60" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#15803d" font-weight="800">9 m</text>
-          <text x="95" y="61" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" fill="#14532d" font-weight="800">s = 9 m</text>
-        </svg>
-        <div style="font-size:0.88rem;color:#64748b;font-weight:600;">P = 4 × s = ______ &nbsp;&nbsp; A = s × s = ______</div>
-        <div class="ans" style="margin-top:8px;font-size:0.88rem;">→ P = 4 × 9 = <strong>36 m</strong> &nbsp;|&nbsp; A = 9 × 9 = <strong>81 m²</strong></div>
-      </div>
-
-      <!-- Exercise 3 -->
-      <div style="background:#fff;border-radius:10px;padding:14px;margin-bottom:12px;border:1px solid #e2e8f0;">
-        <div style="font-weight:800;color:#1e293b;margin-bottom:10px;">3. Find the Perimeter of this triangle:</div>
-        <svg viewBox="0 0 260 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:260px;display:block;margin:0 auto 10px;">
-          <polygon points="130,15 30,110 230,110" fill="#fed7aa" stroke="#ea580c" stroke-width="2"/>
-          <text x="68" y="72" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#c2410c" font-weight="800" transform="rotate(-52,68,72)">7 in</text>
-          <text x="192" y="72" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#c2410c" font-weight="800" transform="rotate(52,192,72)">7 in</text>
-          <text x="130" y="125" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#c2410c" font-weight="800">10 in</text>
-        </svg>
-        <div style="font-size:0.88rem;color:#64748b;font-weight:600;">P = a + b + c = ______</div>
-        <div class="ans" style="margin-top:8px;font-size:0.88rem;">→ P = 7 + 7 + 10 = <strong>24 in</strong></div>
-      </div>
-
-      <!-- Exercise 4 — Word Problem -->
-      <div style="background:#fefce8;border-radius:10px;padding:14px;border:1px solid #fde68a;">
-        <div style="font-weight:800;color:#92400e;margin-bottom:8px;">4. 🌟 Word Problem (Math in Focus style)</div>
-        <div style="font-size:0.92rem;color:#1e293b;line-height:1.6;margin-bottom:10px;">
-          Armando wants to put a fence around his garden. The garden is <strong>15 ft long</strong> and <strong>6 ft wide</strong>.<br>
-          He also wants to plant grass inside.<br><br>
-          a) How many feet of fence does he need? (Perimeter)<br>
-          b) How much grass does he need? (Area)
-        </div>
-        <svg viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;display:block;margin:0 auto 10px;">
-          <rect x="30" y="15" width="240" height="60" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="2" stroke-dasharray="6,3"/>
-          <text x="150" y="10" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#15803d" font-weight="800">15 ft</text>
-          <text x="283" y="48" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#15803d" font-weight="800">6 ft</text>
-          <text x="150" y="42" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#14532d">🌱 Garden 🌱</text>
-          <text x="150" y="60" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#166534">fence = perimeter!</text>
-        </svg>
-        <div class="ans" style="font-size:0.88rem;line-height:1.8;">
-          a) Fence = P = 2(15) + 2(6) = 30 + 12 = <strong>42 ft</strong><br>
-          b) Grass = A = 15 × 6 = <strong>90 ft²</strong>
-        </div>
-      </div>
-    </div>
+    <div style="background:#7c3aed;color:#fff;border-radius:10px;padding:10px 14px;margin-top:10px;font-size:.88rem;font-weight:700">Total = 32 + 25 = <span style="color:#fbbf24;font-size:1rem">57 cm&#xB2;</span> &#x2705;</div>
   </div>
-
-  <!-- Chapter 9 Review -->
-  <div class="card yellow">
-    <h3>🎯 Chapter 9 Review — Formula Cheat Sheet</h3>
-    <div class="pages">Pages 195 – 200</div>
-    <div class="review-banner">
-      <h4>📋 Everything You Need to Know</h4>
-      <ul>
-        <li>Area of rectangle: <strong>A = L × W</strong></li>
-        <li>Area of square: <strong>A = s × s = s²</strong></li>
-        <li>Perimeter of rectangle: <strong>P = 2L + 2W</strong></li>
-        <li>Perimeter of square: <strong>P = 4 × s</strong></li>
-        <li>Perimeter of triangle: <strong>P = a + b + c</strong></li>
-        <li>Small objects → cm² or in² | Large spaces → m² or ft²</li>
-        <li>Area → square units (²) | Perimeter → simple units (no ²)</li>
-      </ul>
+  <!-- L-SHAPE 2 -->
+  <div class="cmp-wrap">
+    <div class="cmp-title">&#x1F537; L-Shape Example 2 (wider)</div>
+    <svg viewBox="0 0 340 195" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;display:block;margin:0 auto 10px">
+      <rect x="20" y="20" width="200" height="50" rx="4" fill="#dbeafe" stroke="#1a4db5" stroke-width="2"/>
+      <rect x="120" y="70" width="100" height="90" rx="4" fill="#bfdbfe" stroke="#1a4db5" stroke-width="2"/>
+      <line x1="20" y1="70" x2="220" y2="70" stroke="#1a4db5" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="120" y="14" text-anchor="middle" font-family="Nunito" font-size="12" fill="#1a4db5" font-weight="800">10 cm</text>
+      <text x="232" y="48" text-anchor="middle" font-family="Nunito" font-size="12" fill="#1a4db5" font-weight="800">3 cm</text>
+      <text x="170" y="174" text-anchor="middle" font-family="Nunito" font-size="12" fill="#1a4db5" font-weight="800">5 cm</text>
+      <text x="102" y="117" text-anchor="middle" font-family="Nunito" font-size="12" fill="#1a4db5" font-weight="800">6 cm</text>
+      <text x="70" y="49" text-anchor="middle" font-family="Nunito" font-size="11" fill="#1e3a8a" font-weight="700">Part A</text>
+      <text x="170" y="117" text-anchor="middle" font-family="Nunito" font-size="11" fill="#1e3a8a" font-weight="700">Part B</text>
+      <text x="258" y="85" font-family="Nunito" font-size="12" fill="#1e40af" font-weight="800">A=10x3=30</text>
+      <text x="258" y="118" font-family="Nunito" font-size="12" fill="#1e40af" font-weight="800">B=5x6=30</text>
+      <text x="258" y="152" font-family="Nunito" font-size="14" fill="#1a4db5" font-weight="900">60 cm&#xB2;</text>
+    </svg>
+    <div class="cmp-grid">
+      <div class="cmp-step"><strong>Part A (top)</strong>10 cm x 3 cm = 30 cm&#xB2;</div>
+      <div class="cmp-step"><strong>Part B (right)</strong>5 cm x 6 cm = 30 cm&#xB2;</div>
     </div>
+    <div style="background:#1a4db5;color:#fff;border-radius:10px;padding:10px 14px;margin-top:10px;font-size:.88rem;font-weight:700">Total = 30 + 30 = <span style="color:#fbbf24;font-size:1rem">60 cm&#xB2;</span> &#x2705;</div>
   </div>
-
-  <!-- ===== CHAPTER 10 ===== -->
-  <div class="chapter-header">
-    <div class="ch-pill ch10">Chapter 10</div>
-    <div class="ch-title">Time — Telling, Converting & Elapsed</div>
+  <!-- T-SHAPE -->
+  <div class="cmp-wrap">
+    <div class="cmp-title">&#x1F537; T-Shape Example</div>
+    <svg viewBox="0 0 340 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;display:block;margin:0 auto 10px">
+      <rect x="20" y="20" width="220" height="48" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+      <rect x="90" y="68" width="80" height="100" rx="4" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
+      <line x1="20" y1="68" x2="240" y2="68" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="130" y="14" text-anchor="middle" font-family="Nunito" font-size="12" fill="#15803d" font-weight="800">11 cm</text>
+      <text x="252" y="46" text-anchor="middle" font-family="Nunito" font-size="12" fill="#15803d" font-weight="800">3 cm</text>
+      <text x="130" y="183" text-anchor="middle" font-family="Nunito" font-size="12" fill="#15803d" font-weight="800">4 cm</text>
+      <text x="70" y="120" text-anchor="middle" font-family="Nunito" font-size="12" fill="#15803d" font-weight="800">5 cm</text>
+      <text x="130" y="48" text-anchor="middle" font-family="Nunito" font-size="11" fill="#14532d" font-weight="700">Part A (top bar)</text>
+      <text x="130" y="120" text-anchor="middle" font-family="Nunito" font-size="11" fill="#14532d" font-weight="700">Part B</text>
+      <text x="278" y="95" font-family="Nunito" font-size="12" fill="#16a34a" font-weight="800">A=11x3=33</text>
+      <text x="278" y="128" font-family="Nunito" font-size="12" fill="#16a34a" font-weight="800">B=4x5=20</text>
+      <text x="278" y="160" font-family="Nunito" font-size="14" fill="#15803d" font-weight="900">53 cm&#xB2;</text>
+    </svg>
+    <div class="cmp-grid">
+      <div class="cmp-step"><strong>Part A (top bar)</strong>11 cm x 3 cm = 33 cm&#xB2;</div>
+      <div class="cmp-step"><strong>Part B (stem)</strong>4 cm x 5 cm = 20 cm&#xB2;</div>
+    </div>
+    <div style="background:#15803d;color:#fff;border-radius:10px;padding:10px 14px;margin-top:10px;font-size:.88rem;font-weight:700">Total = 33 + 20 = <span style="color:#fbbf24;font-size:1rem">53 cm&#xB2;</span> &#x2705;</div>
   </div>
-
-  <!-- TELLING TIME -->
-  <div class="card purple">
-    <h3>🕐 Telling Time (pp. 223–224)</h3>
-    <div class="pages">Pages 223 – 224</div>
-    <div class="concept">
-      <h4>Parts of the clock 🕰️</h4>
-      <ul>
-        <li><strong>Hour hand</strong> → shorter hand → points to the hour</li>
-        <li><strong>Minute hand</strong> → longer hand → counts by 5s</li>
-        <li>Each number on the clock = 5 minutes</li>
-      </ul>
-    </div>
-    <div class="clock-row">
-      <div class="clock-box"><div class="clock-time">3:00</div><div class="clock-label">Three o'clock</div></div>
-      <div class="clock-box"><div class="clock-time">3:15</div><div class="clock-label">Quarter past three</div></div>
-      <div class="clock-box"><div class="clock-time">3:30</div><div class="clock-label">Half past three</div></div>
-      <div class="clock-box"><div class="clock-time">3:45</div><div class="clock-label">Quarter to four</div></div>
-    </div>
-    <div class="tip">
-      <strong>💡 AM vs PM:</strong> AM = midnight to noon (morning). PM = noon to midnight (afternoon & night).
-    </div>
-    <div class="practice">
-      <h4>✏️ Try It!</h4>
-      <ol>
-        <li>Long hand on 6, short hand on 9 → What time is it?<br><span class="ans">→ 9:30</span></li>
-        <li>How do you say 4:15 in words?<br><span class="ans">→ Quarter past four</span></li>
-        <li>How do you say 7:45 in words?<br><span class="ans">→ Quarter to eight</span></li>
-      </ol>
-    </div>
+  <!-- STAIRCASE -->
+  <div class="cmp-wrap">
+    <div class="cmp-title">&#x1F537; Staircase Shape (3 parts!)</div>
+    <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;display:block;margin:0 auto 10px">
+      <rect x="20" y="20" width="70" height="48" rx="3" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+      <rect x="20" y="68" width="130" height="48" rx="3" fill="#fecaca" stroke="#dc2626" stroke-width="2"/>
+      <rect x="20" y="116" width="190" height="48" rx="3" fill="#fca5a5" stroke="#dc2626" stroke-width="2"/>
+      <text x="55" y="48" text-anchor="middle" font-family="Nunito" font-size="11" fill="#7f1d1d" font-weight="700">4x4=16</text>
+      <text x="85" y="96" text-anchor="middle" font-family="Nunito" font-size="11" fill="#7f1d1d" font-weight="700">8x4=32</text>
+      <text x="115" y="144" text-anchor="middle" font-family="Nunito" font-size="11" fill="#7f1d1d" font-weight="700">12x4=48</text>
+      <text x="240" y="55" font-family="Nunito" font-size="11" fill="#dc2626" font-weight="800">A=4x4=16</text>
+      <text x="240" y="95" font-family="Nunito" font-size="11" fill="#dc2626" font-weight="800">B=8x4=32</text>
+      <text x="240" y="144" font-family="Nunito" font-size="11" fill="#dc2626" font-weight="800">C=12x4=48</text>
+      <text x="240" y="178" font-family="Nunito" font-size="13" fill="#991b1b" font-weight="900">= 96 cm&#xB2;</text>
+    </svg>
+    <div style="background:#dc2626;color:#fff;border-radius:10px;padding:10px 14px;margin-top:10px;font-size:.88rem;font-weight:700">Total = 16 + 32 + 48 = <span style="color:#fef9c3;font-size:1rem">96 cm&#xB2;</span> &#x2705; (3 parts, same method!)</div>
   </div>
+  <div class="prac"><h4>&#x270F;&#xFE0F; Practice</h4><ol>
+    <li>L-shape: A=6x2=12cm&#xB2;, B=3x4=12cm&#xB2;. Total=?<br><span class="ans">&rarr; 24 cm&#xB2;</span></li>
+    <li>T-shape: A=10x2=20m&#xB2;, B=3x5=15m&#xB2;. Total=?<br><span class="ans">&rarr; 35 m&#xB2;</span></li>
+    <li>L-shape: A=8x4=32ft&#xB2;, B=3x6=18ft&#xB2;. Total=?<br><span class="ans">&rarr; 50 ft&#xB2;</span></li>
+    <li>A compound shape has total 80cm&#xB2;. Part A=45cm&#xB2;. Part B=?<br><span class="ans">&rarr; 80-45=35 cm&#xB2;</span></li>
+  </ol></div>
+</div>
 
-  <!-- CONVERTING -->
-  <div class="card green">
-    <h3>⏱️ Converting Hours and Minutes (pp. 229–230)</h3>
-    <div class="pages">Pages 229 – 230</div>
-    <div class="formula-box">
-      <div class="f">1 hour = 60 minutes</div>
-      <div class="fl">1 minute = 60 seconds</div>
-    </div>
-    <table class="conv-table">
-      <tr><th>Hours</th><th>Minutes</th></tr>
-      <tr><td>1 hour</td><td>60 min</td></tr>
-      <tr><td>2 hours</td><td>120 min</td></tr>
-      <tr><td>3 hours</td><td>180 min</td></tr>
-      <tr><td>½ hour</td><td>30 min</td></tr>
-      <tr><td>¼ hour</td><td>15 min</td></tr>
-      <tr><td>1 hr 30 min</td><td>90 min</td></tr>
-    </table>
-    <div class="concept" style="margin-top:12px">
-      <h4>How to convert</h4>
-      <ul>
-        <li><strong>Hours → minutes:</strong> multiply by 60 (× 60)</li>
-        <li><strong>Minutes → hours:</strong> divide by 60 (÷ 60)</li>
-        <li>Left-over minutes → write them separately (e.g. 90 min = 1 hr 30 min)</li>
-      </ul>
-    </div>
-    <div class="practice">
-      <h4>✏️ Try It!</h4>
-      <ol>
-        <li>2 hours 15 min = ? minutes<br><span class="ans">→ (2 × 60) + 15 = 135 min</span></li>
-        <li>150 minutes = ? hours ? minutes<br><span class="ans">→ 150 ÷ 60 = 2 hours 30 min</span></li>
-        <li>3 hours 45 min = ? minutes<br><span class="ans">→ (3 × 60) + 45 = 225 min</span></li>
-      </ol>
-    </div>
+<!-- CH9 REVIEW -->
+<div class="card ye">
+  <h3>&#x1F3AF; Chapter 9 Review (pp. 195&ndash;200)</h3>
+  <div class="rev-ban"><h4>&#x1F4CB; Formula Cheat Sheet</h4><ul>
+    <li>Area rectangle: <strong>A = L x W</strong></li>
+    <li>Area square: <strong>A = s x s = s&#xB2;</strong></li>
+    <li>Compound shape: <strong>Split &rarr; each area &rarr; add together</strong></li>
+    <li>Perimeter rectangle: <strong>P = 2L + 2W</strong></li>
+    <li>Perimeter square: <strong>P = 4 x s</strong></li>
+    <li>Perimeter triangle: <strong>P = a + b + c</strong></li>
+    <li>Small &rarr; cm&#xB2;/in&#xB2; | Large &rarr; m&#xB2;/ft&#xB2;</li>
+    <li>Area uses &#xB2; | Perimeter uses simple units</li>
+  </ul></div>
+</div>
+
+<!-- CHAPTER 10 -->
+<div class="ch-hdr"><div class="ch-pill ch10">Chapter 10</div><div class="ch-title">Time &mdash; Telling, Converting &amp; Elapsed</div></div>
+
+<div class="card pu">
+  <h3>&#x1F550; Telling Time (pp. 223&ndash;224)</h3>
+  <div class="pages">Pages 223&ndash;224</div>
+  <div class="con"><h4>Parts of the clock</h4><ul>
+    <li><strong>Hour hand</strong> &rarr; shorter &rarr; points to the hour</li>
+    <li><strong>Minute hand</strong> &rarr; longer &rarr; counts by 5s</li>
+    <li>Each number = 5 minutes</li>
+  </ul></div>
+  <div class="clock-row">
+    <div class="clock-box"><div class="clock-time">3:00</div><div class="clock-label">Three o'clock</div></div>
+    <div class="clock-box"><div class="clock-time">3:15</div><div class="clock-label">Quarter past three</div></div>
+    <div class="clock-box"><div class="clock-time">3:30</div><div class="clock-label">Half past three</div></div>
+    <div class="clock-box"><div class="clock-time">3:45</div><div class="clock-label">Quarter to four</div></div>
   </div>
+  <div class="tip"><strong>&#x1F4A1; AM vs PM:</strong> AM = midnight to noon. PM = noon to midnight.</div>
+  <div class="prac"><h4>&#x270F;&#xFE0F; Try It!</h4><ol>
+    <li>Long hand on 6, short on 9 &rarr; time?<br><span class="ans">&rarr; 9:30</span></li>
+    <li>4:15 in words?<br><span class="ans">&rarr; Quarter past four</span></li>
+    <li>7:45 in words?<br><span class="ans">&rarr; Quarter to eight</span></li>
+  </ol></div>
+</div>
 
-  <!-- ELAPSED TIME -->
-  <div class="card orange">
-    <h3>⏰ Elapsed Time (pp. 247–250)</h3>
-    <div class="pages">Pages 247 – 250</div>
-    <div class="concept">
-      <h4>What is Elapsed Time?</h4>
-      <p><strong>Elapsed time</strong> is how much time passes between a <strong>start time</strong> and an <strong>end time</strong>.</p>
-    </div>
-    <div class="concept">
-      <h4>🦘 Jump Strategy — Step by Step</h4>
-      <ol class="steps">
-        <li>Find the start time and end time.</li>
-        <li>Jump by whole hours first — count how many hours pass.</li>
-        <li>Then count the remaining minutes.</li>
-        <li>Add everything: hours + minutes = elapsed time ✅</li>
-      </ol>
-    </div>
-    <div class="bar-model">
-      <div class="bm-label">📊 Bar Model — Elapsed Time</div>
-      <div class="bar-wrap">
-        <div class="bar-seg blue">Start: 2:15 PM</div>
-        <div class="bar-seg cyan">+2 hours → 4:15</div>
-        <div class="bar-seg orange">+30 min → 4:45</div>
-      </div>
-      <div class="bar-note">Elapsed time = <strong>2 hours 30 minutes</strong></div>
-    </div>
-    <div class="practice">
-      <h4>✏️ Try It!</h4>
-      <ol>
-        <li>Start: 1:00 PM · End: 3:30 PM → Elapsed time = ?<br><span class="ans">→ 2 hours 30 minutes</span></li>
-        <li>Start: 9:15 AM · End: 11:45 AM → Elapsed time = ?<br><span class="ans">→ 2 hours 30 minutes</span></li>
-        <li>Start: 8:20 AM · End: 11:50 AM → Elapsed time = ?<br><span class="ans">→ 3 hours 30 minutes</span></li>
-      </ol>
-    </div>
-  </div>
+<div class="card gr">
+  <h3>&#x23F1;&#xFE0F; Converting Hours &amp; Minutes (pp. 229&ndash;230)</h3>
+  <div class="fbox"><div class="f">1 hour = 60 minutes</div><div class="fl">1 minute = 60 seconds</div></div>
+  <table class="conv"><tr><th>Hours</th><th>Minutes</th></tr>
+    <tr><td>1 hr</td><td>60</td></tr><tr><td>2 hrs</td><td>120</td></tr>
+    <tr><td>3 hrs</td><td>180</td></tr><tr><td>&frac12; hr</td><td>30</td></tr>
+    <tr><td>&frac14; hr</td><td>15</td></tr><tr><td>1 hr 30 min</td><td>90</td></tr>
+  </table>
+  <div class="prac" style="margin-top:12px"><h4>&#x270F;&#xFE0F; Try It!</h4><ol>
+    <li>2hrs 15min = ? min<br><span class="ans">&rarr; 135 min</span></li>
+    <li>150min = ? hr ? min<br><span class="ans">&rarr; 2hrs 30min</span></li>
+    <li>3hrs 45min = ? min<br><span class="ans">&rarr; 225 min</span></li>
+  </ol></div>
+</div>
 
-  <!-- Chapter 10 Review -->
-  <div class="card yellow">
-    <h3>🎯 Chapter 10 Review — Cheat Sheet</h3>
-    <div class="pages">Pages 255 – 258</div>
-    <div class="review-banner">
-      <h4>📋 Everything You Need to Know</h4>
-      <ul>
-        <li>Clock: short hand = hours · long hand = minutes</li>
-        <li>Each number on the clock = 5 minutes</li>
-        <li>:15 = quarter past · :30 = half past · :45 = quarter to</li>
-        <li><strong>1 hour = 60 minutes · 1 minute = 60 seconds</strong></li>
-        <li>Hours → minutes: <strong>× 60</strong> | Minutes → hours: <strong>÷ 60</strong></li>
-        <li>Elapsed time → use the Jump Strategy (hours first, then minutes)</li>
-        <li>AM = morning | PM = afternoon / night</li>
-      </ul>
-    </div>
-  </div>
+<div class="card or">
+  <h3>&#x23F0; Elapsed Time (pp. 247&ndash;250)</h3>
+  <div class="con"><h4>Jump Strategy &#x1F998;</h4><ol class="steps">
+    <li>Find start and end time.</li>
+    <li>Jump by whole hours first.</li>
+    <li>Count remaining minutes.</li>
+    <li>Add hours + minutes = elapsed time &#x2705;</li>
+  </ol></div>
+  <div class="tip"><strong>&#x1F4A1; Example:</strong> Start 2:15 PM &rarr; End 4:45 PM<br>2:15&rarr;4:15=2hrs &middot; 4:15&rarr;4:45=30min &rarr; <strong>2hrs 30min</strong></div>
+  <div class="prac"><h4>&#x270F;&#xFE0F; Try It!</h4><ol>
+    <li>Start 1:00PM &middot; End 3:30PM<br><span class="ans">&rarr; 2hrs 30min</span></li>
+    <li>Start 9:15AM &middot; End 11:45AM<br><span class="ans">&rarr; 2hrs 30min</span></li>
+    <li>Start 8:20AM &middot; End 11:50AM<br><span class="ans">&rarr; 3hrs 30min</span></li>
+  </ol></div>
+</div>
 
-</div><!-- /panel-guide -->
+<div class="card ye">
+  <h3>&#x1F3AF; Chapter 10 Review (pp. 255&ndash;258)</h3>
+  <div class="rev-ban"><h4>&#x1F4CB; Cheat Sheet</h4><ul>
+    <li>Short hand = hours &middot; Long hand = minutes</li>
+    <li>Each number = 5 minutes</li>
+    <li>:15 = quarter past &middot; :30 = half past &middot; :45 = quarter to</li>
+    <li><strong>1 hr = 60 min &middot; 1 min = 60 sec</strong></li>
+    <li>Hours&rarr;min: x60 | Min&rarr;hours: &divide;60</li>
+    <li>Elapsed time &rarr; Jump Strategy</li>
+    <li>AM = morning | PM = afternoon/night</li>
+  </ul></div>
+</div>
 
-<!-- ══════════════════════════════════
-     EXAM PANEL
-══════════════════════════════════ -->
+</div><!-- /guide -->
+
+<!-- EXAM PANEL -->
 <div id="panel-exam" class="panel">
-
-  <div class="exam-hero">
-    <div style="font-size:2.5rem; margin-bottom:8px;">📝⭐</div>
-    <h2>Armando's Math Final Exam</h2>
-    <p>Chapters 9 & 10 · Math in Focus · Singapore Math · Grade 3A</p>
-    <div class="exam-stats">
-      <div class="stat-box"><div class="stat-num">28</div><div class="stat-lbl">Questions</div></div>
-      <div class="stat-box"><div class="stat-num">Ch. 9</div><div class="stat-lbl">Area & Perimeter</div></div>
-      <div class="stat-box"><div class="stat-num">Ch. 10</div><div class="stat-lbl">Time</div></div>
-    </div>
+<div class="exam-hero">
+  <div style="font-size:2.4rem;margin-bottom:6px;position:relative;z-index:1">&#x1F4DD;&#x2B50;</div>
+  <h2>Armando's Math Final Exam</h2>
+  <p>Chapters 9 &amp; 10 &middot; Math in Focus &middot; Singapore Math &middot; Grade 3A</p>
+  <div class="estat">
+    <div class="esbox"><div class="esnum">30</div><div class="eslbl">Questions</div></div>
+    <div class="esbox"><div class="esnum">Ch.9</div><div class="eslbl">Area &amp; Perim.</div></div>
+    <div class="esbox"><div class="esnum">&#x1F537;</div><div class="eslbl">Compound</div></div>
+    <div class="esbox"><div class="esnum">Ch.10</div><div class="eslbl">Time</div></div>
   </div>
+</div>
+<div id="exam-body">
+  <div class="prog-txt" id="ptxt">Question 0 of 30 answered</div>
+  <div class="prog-wrap"><div class="prog-fill" id="pbar" style="width:0%"></div></div>
+  <div id="qcon"></div>
+  <div class="sub-wrap"><button class="sub-btn" onclick="gradeExam()">&#x1F3AF; Grade My Exam!</button></div>
+</div>
+<div class="score-screen" id="sscreen">
+  <div style="font-size:2.8rem">&#x1F3C6;</div>
+  <div class="score-big" id="sfrac"></div>
+  <div class="score-grade" id="sgrade"></div>
+  <div class="score-msg" id="smsg"></div>
+  <div class="score-det" id="sdet"></div>
+  <button class="retry-btn" onclick="resetExam()">&#x1F504; Try Again!</button>
+</div>
+</div>
 
-  <div id="exam-body">
-    <div class="progress-text" id="prog-text">Question 0 of 20 answered</div>
-    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="prog-bar" style="width:0%"></div></div>
-    <div id="questions-container"></div>
-    <div class="submit-wrap"><button class="submit-btn" onclick="gradeExam()">🎯 Grade My Exam!</button></div>
-  </div>
-
-  <div class="score-screen" id="score-screen">
-    <div style="font-size:3rem;">🏆</div>
-    <div class="score-big" id="score-fraction"></div>
-    <div class="score-grade" id="score-grade"></div>
-    <div class="score-msg" id="score-msg"></div>
-    <div class="score-details" id="score-details"></div>
-    <button class="retry-btn" onclick="resetExam()">🔄 Try Again!</button>
-  </div>
-
-</div><!-- /panel-exam -->
-
-<footer>📚 Armando's Math Final · Math in Focus · Chapters 9 & 10 · 🦸‍♂️ You've got this! ⭐</footer>
+<footer>&#x1F4DA; Armando's Math Final v2 &middot; Math in Focus &middot; Ch.9 &amp; 10 &middot; &#x1F9B8;&#x200D;&#x2642;&#xFE0F; You've got this! &#x2B50;</footer>
 
 <script>
-// ── TAB SWITCHER ──
-function switchTab(tab, btn) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('panel-' + tab).classList.add('active');
-  btn.classList.add('active');
-}
+function switchTab(t,b){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));document.getElementById('panel-'+t).classList.add('active');b.classList.add('active')}
 
-// ── QUESTIONS ──
-const questions = [
-  // CHAPTER 9 — Area
-  {
-    ch: 9,
-    text: "What is the area of a rectangle with length 6 cm and width 4 cm?",
-    opts: ["20 cm", "24 cm²", "10 cm²", "48 cm"],
-    ans: 1,
-    explain: "Area = L × W = 6 × 4 = 24 cm²"
-  },
-  {
-    ch: 9,
-    text: "A square has a side of 5 in. What is its area?",
-    opts: ["20 in", "10 in²", "25 in²", "15 in"],
-    ans: 2,
-    explain: "Area = s × s = 5 × 5 = 25 in²"
-  },
-  {
-    ch: 9,
-    text: "A grid shape has 4 rows and 7 squares in each row. What is the area?",
-    opts: ["11 square units", "22 square units", "28 square units", "32 square units"],
-    ans: 2,
-    explain: "Area = 4 rows × 7 squares = 28 square units"
-  },
-  {
-    ch: 9,
-    text: "Which unit would you use to measure the area of a book cover?",
-    opts: ["m²", "ft²", "cm²", "km²"],
-    ans: 2,
-    explain: "A book cover is small, so we use cm² (square centimeters)."
-  },
-  {
-    ch: 9,
-    text: "A classroom floor is 8 m long and 6 m wide. What is its area?",
-    opts: ["14 m", "28 m²", "48 m²", "48 m"],
-    ans: 2,
-    explain: "Area = L × W = 8 × 6 = 48 m²"
-  },
-  {
-    ch: 9,
-    text: "What is the perimeter of a square with side = 9 cm?",
-    opts: ["81 cm", "36 cm", "18 cm", "45 cm"],
-    ans: 1,
-    explain: "P = 4 × s = 4 × 9 = 36 cm"
-  },
-  {
-    ch: 9,
-    text: "A rectangle has length 10 ft and width 3 ft. What is its perimeter?",
-    opts: ["30 ft", "13 ft", "26 ft", "60 ft"],
-    ans: 2,
-    explain: "P = 2L + 2W = 2(10) + 2(3) = 20 + 6 = 26 ft"
-  },
-  {
-    ch: 9,
-    text: "A triangle has sides of 5 cm, 8 cm, and 6 cm. What is its perimeter?",
-    opts: ["13 cm", "19 cm", "24 cm", "240 cm²"],
-    ans: 1,
-    explain: "P = 5 + 8 + 6 = 19 cm"
-  },
-  {
-    ch: 9,
-    text: "Which answer correctly shows BOTH the perimeter AND area of a rectangle 7 in × 3 in?",
-    opts: ["P = 20 in, A = 21 in²", "P = 21 in², A = 20 in", "P = 10 in, A = 21 in", "P = 20 in², A = 21 in²"],
-    ans: 0,
-    explain: "P = 2(7) + 2(3) = 20 in. A = 7 × 3 = 21 in². Perimeter uses simple units; area uses square units (²)."
-  },
-  {
-    ch: 9,
-    text: "Which unit is correct for measuring the area of a large soccer field?",
-    opts: ["cm²", "in²", "m²", "ft"],
-    ans: 2,
-    explain: "A large field uses m² (square meters) because it is a very big space."
-  },
-  // CHAPTER 9 — Perimeter with figures
-  {
-    ch: 9,
-    svg: `<svg viewBox="0 0 280 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:260px;display:block;margin:8px auto;">
-      <rect x="40" y="20" width="200" height="70" rx="5" fill="#dbeafe" stroke="#1a4db5" stroke-width="2.5"/>
-      <text x="140" y="14" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" fill="#1a4db5" font-weight="800">11 cm</text>
-      <text x="252" y="60" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" fill="#1a4db5" font-weight="800">4 cm</text>
-      <text x="140" y="95" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" fill="#1a4db5" font-weight="800">11 cm</text>
-      <text x="28" y="60" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" fill="#1a4db5" font-weight="800">4 cm</text>
-    </svg>`,
-    text: "What is the perimeter of this rectangle?",
-    opts: ["15 cm", "30 cm", "44 cm", "88 cm"],
-    ans: 1,
-    explain: "P = 2L + 2W = 2(11) + 2(4) = 22 + 8 = 30 cm. Walk all the way around!"
-  },
-  {
-    ch: 9,
-    svg: `<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:180px;display:block;margin:8px auto;">
-      <rect x="50" y="15" width="100" height="100" rx="5" fill="#bbf7d0" stroke="#16a34a" stroke-width="2.5"/>
-      <text x="100" y="10" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" fill="#15803d" font-weight="800">8 m</text>
-      <text x="162" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" fill="#15803d" font-weight="800">8 m</text>
-      <text x="100" y="128" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" fill="#15803d" font-weight="800">8 m</text>
-      <text x="38" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" fill="#15803d" font-weight="800">8 m</text>
-    </svg>`,
-    text: "What is the perimeter of this square?",
-    opts: ["64 m²", "16 m", "32 m", "24 m"],
-    ans: 2,
-    explain: "P = 4 × s = 4 × 8 = 32 m. All four sides are equal in a square!"
-  },
-  {
-    ch: 9,
-    svg: `<svg viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:260px;display:block;margin:8px auto;">
-      <polygon points="140,15 30,120 250,120" fill="#fed7aa" stroke="#ea580c" stroke-width="2.5"/>
-      <text x="72" y="78" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#c2410c" font-weight="800" transform="rotate(-52,72,78)">6 in</text>
-      <text x="208" y="78" text-anchor="middle" font-family="Nunito,sans-serif" font-size="13" fill="#c2410c" font-weight="800" transform="rotate(52,208,78)">6 in</text>
-      <text x="140" y="136" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" fill="#c2410c" font-weight="800">10 in</text>
-    </svg>`,
-    text: "What is the perimeter of this triangle?",
-    opts: ["16 in", "22 in", "60 in²", "12 in"],
-    ans: 1,
-    explain: "P = a + b + c = 6 + 6 + 10 = 22 in. Add all three sides!"
-  },
-  {
-    ch: 9,
-    svg: `<svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;display:block;margin:8px auto;">
-      <rect x="30" y="20" width="240" height="75" rx="5" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.5"/>
-      <text x="150" y="14" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" fill="#7c3aed" font-weight="800">15 ft</text>
-      <text x="282" y="62" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" fill="#7c3aed" font-weight="800">5 ft</text>
-      <text x="150" y="110" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#6d28d9">Armando's garden 🌱</text>
-    </svg>`,
-    text: "Armando wants to put a fence around his garden. How many feet of fence does he need?",
-    opts: ["20 ft", "75 ft²", "40 ft", "150 ft"],
-    ans: 2,
-    explain: "Fence = Perimeter! P = 2(15) + 2(5) = 30 + 10 = 40 ft."
-  },
-  {
-    ch: 9,
-    text: "A rectangle has a perimeter of 24 cm. Its width is 4 cm. What is its length?",
-    opts: ["6 cm", "8 cm", "20 cm", "12 cm"],
-    ans: 1,
-    explain: "P = 2L + 2W → 24 = 2L + 2(4) → 24 = 2L + 8 → 2L = 16 → L = 8 cm."
-  },
-  {
-    ch: 9,
-    svg: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;display:block;margin:8px auto;">
-      <rect x="40" y="20" width="140" height="50" rx="4" fill="#dbeafe" stroke="#1a4db5" stroke-width="2"/>
-      <rect x="40" y="70" width="70" height="60" rx="4" fill="#bfdbfe" stroke="#1a4db5" stroke-width="2"/>
-      <text x="110" y="14" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#1a4db5" font-weight="800">7 cm</text>
-      <text x="192" y="50" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#1a4db5" font-weight="800">3 cm</text>
-      <text x="75" y="155" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#1a4db5" font-weight="800">4 cm</text>
-      <text x="22" y="102" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" fill="#1a4db5" font-weight="800">4 cm</text>
-      <text x="230" y="90" font-family="Nunito,sans-serif" font-size="11" fill="#64748b">L-shape!</text>
-    </svg>`,
-    text: "What is the area of Part A (top rectangle) in this L-shaped figure? (7 cm × 3 cm)",
-    opts: ["10 cm", "20 cm²", "21 cm²", "42 cm²"],
-    ans: 2,
-    explain: "Area of Part A = L × W = 7 × 3 = 21 cm². Remember: area uses square units (cm²)!"
-  },
-  {
-    ch: 9,
-    text: "A square has a perimeter of 36 in. What is the length of ONE side?",
-    opts: ["6 in", "12 in", "9 in", "18 in"],
-    ans: 2,
-    explain: "P = 4 × s → 36 = 4 × s → s = 36 ÷ 4 = 9 in."
-  },
-  {
-    ch: 9,
-    text: "Which shape has a perimeter of 30 cm?",
-    opts: [
-      "Rectangle: L=10 cm, W=5 cm",
-      "Square: side=6 cm",
-      "Rectangle: L=8 cm, W=7 cm",
-      "Triangle: sides 8, 9, 10 cm"
-    ],
-    ans: 0,
-    explain: "Rectangle L=10, W=5: P = 2(10)+2(5) = 20+10 = 30 cm ✅. Square side 6: P=24. Triangle 8+9+10=27. Option A is correct!"
-  },
-  // CHAPTER 10 — Telling Time
-  {
-    ch: 10,
-    text: "The short hand points to 3 and the long hand points to 12. What time is it?",
-    opts: ["12:03", "3:00", "3:12", "12:15"],
-    ans: 1,
-    explain: "Short hand = hours (3). Long hand on 12 = 0 minutes. Time is 3:00."
-  },
-  {
-    ch: 10,
-    text: "How do you say 6:15 in words?",
-    opts: ["Half past six", "Quarter to six", "Quarter past six", "Six fifteen past"],
-    ans: 2,
-    explain: "6:15 means 15 minutes past 6 o'clock = Quarter past six."
-  },
-  {
-    ch: 10,
-    text: "How do you say 9:30 in words?",
-    opts: ["Quarter past nine", "Quarter to nine", "Half past nine", "Nine thirty to ten"],
-    ans: 2,
-    explain: "9:30 = 30 minutes past 9 = Half past nine."
-  },
-  {
-    ch: 10,
-    text: "How do you say 11:45 in words?",
-    opts: ["Quarter past eleven", "Quarter to twelve", "Half past eleven", "Eleven forty-five past"],
-    ans: 1,
-    explain: "11:45 = 15 minutes before 12 = Quarter to twelve."
-  },
-  // CHAPTER 10 — Converting
-  {
-    ch: 10,
-    text: "How many minutes are in 2 hours?",
-    opts: ["100 minutes", "120 minutes", "90 minutes", "200 minutes"],
-    ans: 1,
-    explain: "1 hour = 60 minutes. 2 hours = 2 × 60 = 120 minutes."
-  },
-  {
-    ch: 10,
-    text: "Convert 2 hours 30 minutes to minutes.",
-    opts: ["230 minutes", "150 minutes", "130 minutes", "250 minutes"],
-    ans: 1,
-    explain: "2 × 60 = 120 minutes + 30 minutes = 150 minutes."
-  },
-  {
-    ch: 10,
-    text: "180 minutes equals how many hours?",
-    opts: ["2 hours", "4 hours", "3 hours", "1 hour 80 minutes"],
-    ans: 2,
-    explain: "180 ÷ 60 = 3 hours."
-  },
-  // CHAPTER 10 — Elapsed Time
-  {
-    ch: 10,
-    text: "Armando started reading at 2:00 PM and finished at 4:30 PM. How long did he read?",
-    opts: ["1 hour 30 minutes", "2 hours", "2 hours 30 minutes", "3 hours"],
-    ans: 2,
-    explain: "From 2:00 to 4:00 = 2 hours. From 4:00 to 4:30 = 30 minutes. Total = 2 hours 30 minutes."
-  },
-  {
-    ch: 10,
-    text: "School starts at 7:30 AM and ends at 2:00 PM. How long is the school day?",
-    opts: ["5 hours 30 minutes", "6 hours", "6 hours 30 minutes", "7 hours"],
-    ans: 2,
-    explain: "From 7:30 to 2:00 = 6 hours 30 minutes. (7:30 → 1:30 = 6 hrs, + 30 min to 2:00)"
-  },
-  {
-    ch: 10,
-    text: "A movie starts at 3:15 PM and ends at 5:45 PM. How long is the movie?",
-    opts: ["1 hour 30 minutes", "2 hours", "2 hours 30 minutes", "3 hours 30 minutes"],
-    ans: 2,
-    explain: "From 3:15 to 5:15 = 2 hours. From 5:15 to 5:45 = 30 minutes. Total = 2 hours 30 minutes."
-  }
+const SVG_RECT=`<svg viewBox="0 0 280 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:260px;display:block;margin:8px auto">
+  <rect x="40" y="18" width="200" height="65" rx="4" fill="#dbeafe" stroke="#1a4db5" stroke-width="2.5"/>
+  <text x="140" y="12" text-anchor="middle" font-family="Nunito" font-size="13" fill="#1a4db5" font-weight="800">11 cm</text>
+  <text x="252" y="54" text-anchor="middle" font-family="Nunito" font-size="13" fill="#1a4db5" font-weight="800">5 cm</text>
+</svg>`;
+const SVG_SQ=`<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:180px;display:block;margin:8px auto">
+  <rect x="50" y="14" width="90" height="90" rx="4" fill="#bbf7d0" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="95" y="9" text-anchor="middle" font-family="Nunito" font-size="13" fill="#15803d" font-weight="800">9 m</text>
+  <text x="153" y="62" text-anchor="middle" font-family="Nunito" font-size="13" fill="#15803d" font-weight="800">9 m</text>
+</svg>`;
+const SVG_TRI=`<svg viewBox="0 0 270 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:250px;display:block;margin:8px auto">
+  <polygon points="135,14 30,115 240,115" fill="#fed7aa" stroke="#ea580c" stroke-width="2.5"/>
+  <text x="72" y="75" text-anchor="middle" font-family="Nunito" font-size="13" fill="#c2410c" font-weight="800" transform="rotate(-50,72,75)">7 in</text>
+  <text x="198" y="75" text-anchor="middle" font-family="Nunito" font-size="13" fill="#c2410c" font-weight="800" transform="rotate(50,198,75)">8 in</text>
+  <text x="135" y="128" text-anchor="middle" font-family="Nunito" font-size="13" fill="#c2410c" font-weight="800">10 in</text>
+</svg>`;
+const SVG_L1=`<svg viewBox="0 0 310 185" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:290px;display:block;margin:8px auto">
+  <rect x="30" y="20" width="140" height="55" rx="3" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <rect x="30" y="75" width="70" height="80" rx="3" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2"/>
+  <line x1="30" y1="75" x2="170" y2="75" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="100" y="14" text-anchor="middle" font-family="Nunito" font-size="12" fill="#7c3aed" font-weight="800">7 cm</text>
+  <text x="182" y="52" text-anchor="middle" font-family="Nunito" font-size="12" fill="#7c3aed" font-weight="800">4 cm</text>
+  <text x="65" y="168" text-anchor="middle" font-family="Nunito" font-size="12" fill="#7c3aed" font-weight="800">5 cm</text>
+  <text x="14" y="117" text-anchor="middle" font-family="Nunito" font-size="12" fill="#7c3aed" font-weight="800">5 cm</text>
+  <text x="100" y="52" text-anchor="middle" font-family="Nunito" font-size="11" fill="#4c1d95" font-weight="700">A</text>
+  <text x="65" y="117" text-anchor="middle" font-family="Nunito" font-size="11" fill="#4c1d95" font-weight="700">B</text>
+</svg>`;
+const SVG_L2=`<svg viewBox="0 0 310 185" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:290px;display:block;margin:8px auto">
+  <rect x="20" y="20" width="180" height="50" rx="3" fill="#dbeafe" stroke="#1a4db5" stroke-width="2"/>
+  <rect x="120" y="70" width="80" height="90" rx="3" fill="#bfdbfe" stroke="#1a4db5" stroke-width="2"/>
+  <line x1="20" y1="70" x2="200" y2="70" stroke="#1a4db5" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="110" y="14" text-anchor="middle" font-family="Nunito" font-size="12" fill="#1a4db5" font-weight="800">9 cm</text>
+  <text x="212" y="48" text-anchor="middle" font-family="Nunito" font-size="12" fill="#1a4db5" font-weight="800">3 cm</text>
+  <text x="160" y="174" text-anchor="middle" font-family="Nunito" font-size="12" fill="#1a4db5" font-weight="800">4 cm</text>
+  <text x="102" y="117" text-anchor="middle" font-family="Nunito" font-size="12" fill="#1a4db5" font-weight="800">5 cm</text>
+  <text x="70" y="49" text-anchor="middle" font-family="Nunito" font-size="11" fill="#1e3a8a" font-weight="700">A</text>
+  <text x="160" y="117" text-anchor="middle" font-family="Nunito" font-size="11" fill="#1e3a8a" font-weight="700">B</text>
+</svg>`;
+const SVG_T=`<svg viewBox="0 0 310 195" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:290px;display:block;margin:8px auto">
+  <rect x="20" y="20" width="220" height="48" rx="3" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <rect x="90" y="68" width="80" height="100" rx="3" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
+  <line x1="20" y1="68" x2="240" y2="68" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="130" y="14" text-anchor="middle" font-family="Nunito" font-size="12" fill="#15803d" font-weight="800">11 cm</text>
+  <text x="252" y="46" text-anchor="middle" font-family="Nunito" font-size="12" fill="#15803d" font-weight="800">3 cm</text>
+  <text x="130" y="183" text-anchor="middle" font-family="Nunito" font-size="12" fill="#15803d" font-weight="800">4 cm</text>
+  <text x="72" y="120" text-anchor="middle" font-family="Nunito" font-size="12" fill="#15803d" font-weight="800">5 cm</text>
+  <text x="130" y="48" text-anchor="middle" font-family="Nunito" font-size="11" fill="#14532d" font-weight="700">A</text>
+  <text x="130" y="120" text-anchor="middle" font-family="Nunito" font-size="11" fill="#14532d" font-weight="700">B</text>
+</svg>`;
+const SVG_ROOM=`<svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;display:block;margin:8px auto">
+  <rect x="30" y="18" width="240" height="72" rx="4" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="7,4"/>
+  <text x="150" y="12" text-anchor="middle" font-family="Nunito" font-size="13" fill="#7c3aed" font-weight="800">14 ft</text>
+  <text x="282" y="57" text-anchor="middle" font-family="Nunito" font-size="13" fill="#7c3aed" font-weight="800">6 ft</text>
+  <text x="150" y="106" text-anchor="middle" font-family="Nunito" font-size="12" fill="#6d28d9">Armando's room &#x1F3E0;</text>
+</svg>`;
+
+const Q=[
+  // AREA 1-8
+  {ch:9,tag:"Area",text:"What is the area of a rectangle with length 9 cm and width 4 cm?",opts:["13 cm","36 cm\u00B2","36 cm","26 cm\u00B2"],ans:1,ex:"A = L \u00D7 W = 9 \u00D7 4 = 36 cm\u00B2"},
+  {ch:9,tag:"Area",text:"A square has a side of 7 in. What is its area?",opts:["28 in","14 in\u00B2","49 in\u00B2","42 in"],ans:2,ex:"A = s \u00D7 s = 7 \u00D7 7 = 49 in\u00B2"},
+  {ch:9,tag:"Area",text:"A grid has 6 rows and 8 squares per row. What is the area?",opts:["14 sq units","48 sq units","42 sq units","36 sq units"],ans:1,ex:"Area = 6 \u00D7 8 = 48 square units"},
+  {ch:9,tag:"Area",text:"Which unit measures the area of a notebook cover?",opts:["m\u00B2","ft\u00B2","cm\u00B2","km\u00B2"],ans:2,ex:"Notebook is small \u2192 cm\u00B2"},
+  {ch:9,tag:"Area",text:"A classroom floor is 9 m long and 7 m wide. What is its area?",opts:["16 m","32 m\u00B2","63 m","63 m\u00B2"],ans:3,ex:"A = 9 \u00D7 7 = 63 m\u00B2"},
+  {ch:9,tag:"Area",text:"A square playground has side = 12 ft. What is its area?",opts:["48 ft","144 ft\u00B2","48 ft\u00B2","124 ft"],ans:1,ex:"A = 12 \u00D7 12 = 144 ft\u00B2"},
+  {ch:9,tag:"Area",text:"A photo is 10 in long and 8 in wide. What is its area?",opts:["18 in\u00B2","80 in","80 in\u00B2","18 in"],ans:2,ex:"A = 10 \u00D7 8 = 80 in\u00B2"},
+  {ch:9,tag:"Area",text:"Which is the correct AREA for a rectangle 5 m \u00D7 6 m?",opts:["11 m\u00B2","30 m","22 m","30 m\u00B2"],ans:3,ex:"A = 5 \u00D7 6 = 30 m\u00B2 \u2014 always square units!"},
+  // PERIMETER 9-15
+  {ch:9,tag:"Perimeter",svg:SVG_RECT,text:"What is the perimeter of this rectangle?",opts:["16 cm","55 cm","32 cm","30 cm"],ans:2,ex:"P = 2(11) + 2(5) = 22 + 10 = 32 cm"},
+  {ch:9,tag:"Perimeter",svg:SVG_SQ,text:"What is the perimeter of this square?",opts:["81 m\u00B2","18 m","36 m","27 m"],ans:2,ex:"P = 4 \u00D7 s = 4 \u00D7 9 = 36 m"},
+  {ch:9,tag:"Perimeter",svg:SVG_TRI,text:"What is the perimeter of this triangle?",opts:["15 in","25 in","56 in\u00B2","20 in"],ans:1,ex:"P = 7 + 8 + 10 = 25 in"},
+  {ch:9,tag:"Perimeter",text:"A square has perimeter = 40 cm. What is ONE side?",opts:["8 cm","20 cm","10 cm","5 cm"],ans:2,ex:"P = 4 \u00D7 s \u2192 40 = 4s \u2192 s = 10 cm"},
+  {ch:9,tag:"Perimeter",text:"A rectangle has P = 28 m and width = 5 m. What is its length?",opts:["23 m","9 m","14 m","18 m"],ans:1,ex:"28 = 2L + 2(5) \u2192 2L = 18 \u2192 L = 9 m"},
+  {ch:9,tag:"Perimeter",svg:SVG_ROOM,text:"How many feet of baseboard trim to go all around this room?",opts:["20 ft","84 ft\u00B2","40 ft","84 ft"],ans:2,ex:"P = 2(14) + 2(6) = 28 + 12 = 40 ft"},
+  {ch:9,tag:"Perimeter",text:"A triangle has sides 9 cm, 9 cm, and 6 cm. Perimeter = ?",opts:["24 cm","486 cm\u00B2","15 cm","18 cm"],ans:0,ex:"P = 9 + 9 + 6 = 24 cm"},
+  // COMPOUND 16-22
+  {ch:9,tag:"Compound",svg:SVG_L1,text:"Total area of this L-shape? Part A = 7\u00D74 cm. Part B = 5\u00D75 cm.",opts:["35 cm\u00B2","28 cm\u00B2","53 cm\u00B2","60 cm\u00B2"],ans:2,ex:"A=7\u00D74=28. B=5\u00D75=25. Total=28+25=53 cm\u00B2"},
+  {ch:9,tag:"Compound",svg:SVG_L2,text:"Total area? Part A = 9\u00D73 cm. Part B = 4\u00D75 cm.",opts:["47 cm\u00B2","27 cm\u00B2","17 cm\u00B2","42 cm\u00B2"],ans:0,ex:"A=9\u00D73=27. B=4\u00D75=20. Total=27+20=47 cm\u00B2"},
+  {ch:9,tag:"Compound",text:"L-shape: Part A=6\u00D73=18 cm\u00B2. Part B=4\u00D75=20 cm\u00B2. Total?",opts:["22 cm\u00B2","38 cm\u00B2","90 cm\u00B2","32 cm\u00B2"],ans:1,ex:"Total = 18 + 20 = 38 cm\u00B2"},
+  {ch:9,tag:"Compound",svg:SVG_T,text:"T-shape: top bar=11\u00D73 m, stem=4\u00D75 m. Total area?",opts:["33 m\u00B2","20 m\u00B2","53 m\u00B2","48 m\u00B2"],ans:2,ex:"A=11\u00D73=33. B=4\u00D75=20. Total=33+20=53 m\u00B2"},
+  {ch:9,tag:"Compound",text:"A compound shape has total area 72 cm\u00B2. Part A = 40 cm\u00B2. Part B = ?",opts:["112 cm\u00B2","32 cm\u00B2","18 cm\u00B2","42 cm\u00B2"],ans:1,ex:"B = Total \u2212 A = 72 \u2212 40 = 32 cm\u00B2"},
+  {ch:9,tag:"Compound",text:"L-shape: Part A is 8 ft \u00D7 3 ft. Part B is a 4 ft square. Total area?",opts:["40 ft\u00B2","24 ft\u00B2","32 ft\u00B2","56 ft\u00B2"],ans:0,ex:"A=8\u00D73=24. B=4\u00D74=16. Total=24+16=40 ft\u00B2"},
+  {ch:9,tag:"Compound",text:"How do you find the area of a compound shape?",opts:["Multiply all sides together","Split into rectangles, find each area, add them","Add all sides around the outside","Measure only the biggest part"],ans:1,ex:"Correct method: Split \u2192 find each part \u2192 add. That's Singapore Math!"},
+  // CH10 23-30
+  {ch:10,tag:"Telling Time",text:"Short hand on 5, long hand on 12. What time is it?",opts:["12:05","5:12","5:00","12:00"],ans:2,ex:"Short = hours (5). Long on 12 = 0 min. Time = 5:00"},
+  {ch:10,tag:"Telling Time",text:"How do you say 8:15 in words?",opts:["Half past eight","Quarter to eight","Quarter past eight","Eight and quarter"],ans:2,ex:"8:15 = 15 min past 8 = Quarter past eight"},
+  {ch:10,tag:"Telling Time",text:"How do you say 2:45 in words?",opts:["Quarter past two","Quarter to three","Half past two","Two forty-five"],ans:1,ex:"2:45 = 15 min before 3 = Quarter to three"},
+  {ch:10,tag:"Converting",text:"How many minutes are in 3 hours?",opts:["150 min","200 min","180 min","30 min"],ans:2,ex:"3 \u00D7 60 = 180 minutes"},
+  {ch:10,tag:"Converting",text:"Convert 2 hours 45 minutes to minutes.",opts:["125 min","165 min","245 min","145 min"],ans:1,ex:"2\u00D760=120 + 45 = 165 minutes"},
+  {ch:10,tag:"Converting",text:"210 minutes = how many hours and minutes?",opts:["2 hrs 10 min","3 hrs 30 min","3 hrs 10 min","2 hrs 30 min"],ans:1,ex:"210\u00F760=3 hrs remainder 30 min"},
+  {ch:10,tag:"Elapsed Time",text:"Armando started homework at 4:15 PM and finished at 6:00 PM. How long?",opts:["1 hr 45 min","2 hrs","1 hr 15 min","2 hrs 15 min"],ans:0,ex:"4:15\u21925:15=1hr. 5:15\u21926:00=45min. Total=1hr 45min"},
+  {ch:10,tag:"Elapsed Time",text:"Soccer game: 10:30 AM to 12:15 PM. How long?",opts:["1 hr 30 min","2 hrs 15 min","1 hr 45 min","2 hrs"],ans:2,ex:"10:30\u219211:30=1hr. 11:30\u219212:15=45min. Total=1hr 45min"},
 ];
 
-const letters = ['A','B','C','D'];
-let answered = 0;
+const L=["A","B","C","D"];
+let answered=0;
 
-function buildExam() {
-  const container = document.getElementById('questions-container');
-  container.innerHTML = '';
-  answered = 0;
-  updateProgress();
-
-  questions.forEach((q, i) => {
-    const card = document.createElement('div');
-    card.className = 'q-card';
-    card.id = 'qcard-' + i;
-
-    const tagClass = q.ch === 9 ? 'tag-ch9' : 'tag-ch10';
-    const tagText = 'Ch. ' + q.ch;
-
-    let optsHtml = q.opts.map((o, oi) => `
-      <button class="opt-btn" id="opt-${i}-${oi}" onclick="selectAnswer(${i}, ${oi})">
-        <span class="opt-letter">${letters[oi]}</span> ${o}
-      </button>
-    `).join('');
-
-    card.innerHTML = `
-      <div class="q-num">Question ${i+1} of ${questions.length} <span class="q-tag ${tagClass}">${tagText}</span></div>
-      <div class="q-text">${q.text}</div>
-      ${q.svg ? q.svg : ''}
-      <div class="options" id="opts-${i}">${optsHtml}</div>
-      <div class="feedback" id="fb-${i}"></div>
-    `;
-    container.appendChild(card);
+function buildExam(){
+  const c=document.getElementById("qcon");
+  c.innerHTML="";answered=0;updateProg();
+  Q.forEach((q,i)=>{
+    const div=document.createElement("div");
+    div.className="q-card";div.id="qc"+i;
+    const tc=q.ch===9?(q.tag==="Compound"?"tcomp":q.tag==="Perimeter"?"tperim":"tch9"):"tch10";
+    const opts=q.opts.map((o,j)=>`<button class="opt" id="o${i}_${j}" onclick="pick(${i},${j})"><span class="opt-l">${L[j]}</span>${o}</button>`).join("");
+    div.innerHTML=`<div class="q-num">Question ${i+1} of ${Q.length} <span class="q-tag ${tc}">${q.tag}</span></div><div class="q-text">${q.text}</div>${q.svg||""}<div class="opts" id="opts${i}">${opts}</div><div class="fb" id="fb${i}"></div>`;
+    c.appendChild(div);
   });
 }
 
-function selectAnswer(qi, oi) {
-  const q = questions[qi];
-  const optsDiv = document.getElementById('opts-' + qi);
-  const fb = document.getElementById('fb-' + qi);
-  const card = document.getElementById('qcard-' + qi);
-
-  // disable all options
-  optsDiv.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
-
-  const chosen = document.getElementById('opt-' + qi + '-' + oi);
-  const correct = document.getElementById('opt-' + qi + '-' + q.ans);
-
-  if (oi === q.ans) {
-    chosen.classList.add('correct');
-    card.classList.add('answered-correct');
-    fb.className = 'feedback show correct-fb';
-    fb.innerHTML = '✅ Correct! ' + q.explain;
-  } else {
-    chosen.classList.add('wrong');
-    correct.classList.add('correct');
-    card.classList.add('answered-wrong');
-    fb.className = 'feedback show wrong-fb';
-    fb.innerHTML = '❌ Not quite. ' + q.explain;
-  }
-
-  // mark answered
-  if (!card.dataset.answered) {
-    card.dataset.answered = 'true';
-    answered++;
-    updateProgress();
-  }
+function pick(qi,oi){
+  const q=Q[qi],card=document.getElementById("qc"+qi);
+  if(card.dataset.done)return;
+  document.getElementById("opts"+qi).querySelectorAll(".opt").forEach(b=>b.disabled=true);
+  const chosen=document.getElementById("o"+qi+"_"+oi);
+  const correct=document.getElementById("o"+qi+"_"+q.ans);
+  const fb=document.getElementById("fb"+qi);
+  if(oi===q.ans){chosen.classList.add("correct");card.classList.add("ok");fb.className="fb show cfb";fb.textContent="\u2705 Correct! "+q.ex;}
+  else{chosen.classList.add("wrong");correct.classList.add("correct");card.classList.add("ng");fb.className="fb show wfb";fb.textContent="\u274C Not quite. "+q.ex;}
+  card.dataset.done="1";answered++;updateProg();
 }
 
-function updateProgress() {
-  const pct = Math.round((answered / questions.length) * 100);
-  document.getElementById('prog-bar').style.width = pct + '%';
-  document.getElementById('prog-text').textContent = `Question ${answered} of ${questions.length} answered`;
+function updateProg(){
+  const p=Math.round(answered/Q.length*100);
+  document.getElementById("pbar").style.width=p+"%";
+  document.getElementById("ptxt").textContent="Question "+answered+" of "+Q.length+" answered";
 }
 
-function gradeExam() {
-  let correct = 0;
-  let ch9correct = 0, ch9total = 0;
-  let ch10correct = 0, ch10total = 0;
-
-  questions.forEach((q, i) => {
-    const card = document.getElementById('qcard-' + i);
-    const isCorrect = card.classList.contains('answered-correct');
-    if (isCorrect) correct++;
-    if (q.ch === 9) { ch9total++; if (isCorrect) ch9correct++; }
-    else { ch10total++; if (isCorrect) ch10correct++; }
+function gradeExam(){
+  let tot=0,c9=0,t9=0,c10=0,t10=0,cp=0,tp=0,cc=0,tc=0;
+  Q.forEach((q,i)=>{
+    const ok=document.getElementById("qc"+i).classList.contains("ok");
+    if(ok)tot++;
+    if(q.ch===9){t9++;if(ok)c9++;}else{t10++;if(ok)c10++;}
+    if(q.tag==="Perimeter"){tp++;if(ok)cp++;}
+    if(q.tag==="Compound"){tc++;if(ok)cc++;}
   });
-
-  const pct = Math.round((correct / questions.length) * 100);
-  let grade, msg, emoji;
-  if (pct >= 90) { grade = 'A 🏆'; msg = 'Outstanding, Armando! You crushed it! 🌟🎉'; emoji = '🏆'; }
-  else if (pct >= 80) { grade = 'B ⭐'; msg = 'Great job, Armando! Almost perfect! 💪'; emoji = '⭐'; }
-  else if (pct >= 70) { grade = 'C 👍'; msg = 'Good effort! Review the Study Guide and try again!'; emoji = '📚'; }
-  else { grade = 'Keep Studying 💪'; msg = 'Don\'t give up! Go back to the Study Guide and try again!'; emoji = '💡'; }
-
-  document.getElementById('score-fraction').innerHTML = `${correct}<span>/${questions.length}</span>`;
-  document.getElementById('score-grade').textContent = grade;
-  document.getElementById('score-msg').textContent = msg;
-  document.getElementById('score-details').innerHTML = `
-    <div class="sd-box"><div class="sd-num" style="color:var(--blue)">${pct}%</div><div class="sd-lbl">Score</div></div>
-    <div class="sd-box"><div class="sd-num green">${correct}</div><div class="sd-lbl">Correct</div></div>
-    <div class="sd-box"><div class="sd-num red">${questions.length - correct}</div><div class="sd-lbl">Wrong</div></div>
-    <div class="sd-box"><div class="sd-num" style="color:var(--blue)">${ch9correct}/${ch9total}</div><div class="sd-lbl">Chapter 9</div></div>
-    <div class="sd-box"><div class="sd-num" style="color:var(--purple)">${ch10correct}/${ch10total}</div><div class="sd-lbl">Chapter 10</div></div>
-  `;
-
-  document.getElementById('exam-body').style.display = 'none';
-  document.getElementById('score-screen').classList.add('show');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const pct=Math.round(tot/Q.length*100);
+  let g,m;
+  if(pct>=90){g="A \u1F3C6";m="Outstanding! You are a Math superstar, Armando! \u2B50\uD83C\uDF89";}
+  else if(pct>=80){g="B \u2B50";m="Great job! Almost perfect. Keep it up! \uD83D\uDCAA";}
+  else if(pct>=70){g="C \uD83D\uDC4D";m="Good effort! Review the Study Guide and try again!";}
+  else{g="Keep Going \uD83D\uDCA1";m="Don't give up! Go back to the Study Guide — you can do it!";}
+  document.getElementById("sfrac").innerHTML=tot+"<span>/"+Q.length+"</span>";
+  document.getElementById("sgrade").textContent=g;
+  document.getElementById("smsg").textContent=m;
+  document.getElementById("sdet").innerHTML=
+    `<div class="sdb"><div class="sdn" style="color:var(--blue)">${pct}%</div><div class="sdl">Score</div></div>`+
+    `<div class="sdb"><div class="sdn" style="color:var(--green)">${tot}</div><div class="sdl">Correct</div></div>`+
+    `<div class="sdb"><div class="sdn" style="color:var(--red)">${Q.length-tot}</div><div class="sdl">Wrong</div></div>`+
+    `<div class="sdb"><div class="sdn" style="color:var(--blue)">${c9}/${t9}</div><div class="sdl">Ch. 9</div></div>`+
+    `<div class="sdb"><div class="sdn" style="color:var(--purple)">${c10}/${t10}</div><div class="sdl">Ch. 10</div></div>`+
+    `<div class="sdb"><div class="sdn" style="color:#991b1b">${cp}/${tp}</div><div class="sdl">Perimeter</div></div>`+
+    `<div class="sdb"><div class="sdn" style="color:#6d28d9">${cc}/${tc}</div><div class="sdl">Compound</div></div>`;
+  document.getElementById("exam-body").style.display="none";
+  document.getElementById("sscreen").classList.add("show");
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-function resetExam() {
-  document.getElementById('score-screen').classList.remove('show');
-  document.getElementById('exam-body').style.display = 'block';
-  buildExam();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+function resetExam(){
+  document.getElementById("sscreen").classList.remove("show");
+  document.getElementById("exam-body").style.display="block";
+  buildExam();window.scrollTo({top:0,behavior:"smooth"});
 }
-
-// Init
 buildExam();
 </script>
 </body>
