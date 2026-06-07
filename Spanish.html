@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Spanish — Armando 🌟</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #2563eb;
+    --azul-claro: #dbeafe;
+    --verde: #16a34a;
+    --verde-claro: #dcfce7;
+    --naranja: #ea580c;
+    --naranja-claro: #ffedd5;
+    --morado: #7c3aed;
+    --morado-claro: #ede9fe;
+    --rosa: #db2777;
+    --rosa-claro: #fce7f3;
+    --amarillo: #ca8a04;
+    --amarillo-claro: #fef9c3;
+    --fondo: #f0f9ff;
+    --texto: #1e293b;
+    --blanco: #ffffff;
+    --radio: 16px;
+    --sombra: 0 4px 20px rgba(0,0,0,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    min-height: 100vh;
+  }
+
+  /* ===== HEADER ===== */
+  .hero {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    padding: 36px 24px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.4rem;
+    color: white;
+    margin-bottom: 6px;
+    position: relative;
+  }
+  .hero p {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.05rem;
+    font-weight: 600;
+    position: relative;
+  }
+  .hero .emoji-row {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  /* ===== TABS ===== */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 16px 0;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all .2s;
+    background: white;
+    color: #64748b;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+    letter-spacing: .3px;
+  }
+  .tab-btn.active {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white;
+    box-shadow: 0 4px 16px rgba(37,99,235,0.35);
+    transform: translateY(-2px);
+  }
+  .tab-btn:hover:not(.active) { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.13); }
+
+  /* ===== SECTIONS ===== */
+  .section { display: none; padding: 24px 16px 48px; max-width: 860px; margin: 0 auto; }
+  .section.active { display: block; }
+
+  /* ===== CARDS ===== */
+  .card {
+    background: white;
+    border-radius: var(--radio);
+    padding: 24px;
+    margin-bottom: 22px;
+    box-shadow: var(--sombra);
+    border-left: 6px solid var(--azul);
+  }
+  .card.verde  { border-left-color: var(--verde); }
+  .card.naranja{ border-left-color: var(--naranja); }
+  .card.morado { border-left-color: var(--morado); }
+  .card.rosa   { border-left-color: var(--rosa); }
+  .card.amarillo{ border-left-color: var(--amarillo); }
+
+  .card-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.35rem;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-title span.ico { font-size: 1.5rem; }
+
+  /* ===== CONCEPT BOX ===== */
+  .concept-box {
+    background: var(--azul-claro);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    font-weight: 700;
+    font-size: 1rem;
+    border-left: 4px solid var(--azul);
+  }
+  .concept-box.verde  { background: var(--verde-claro);   border-color: var(--verde); }
+  .concept-box.naranja{ background: var(--naranja-claro); border-color: var(--naranja); }
+  .concept-box.morado { background: var(--morado-claro);  border-color: var(--morado); }
+  .concept-box.rosa   { background: var(--rosa-claro);    border-color: var(--rosa); }
+  .concept-box.amarillo{ background: var(--amarillo-claro); border-color: var(--amarillo); }
+
+  /* ===== TABLE ===== */
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .95rem; }
+  th { background: linear-gradient(135deg,#2563eb,#7c3aed); color: white; padding: 10px 14px; text-align:left; }
+  td { padding: 9px 14px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8faff; }
+  tr:hover td { background: #eff6ff; }
+  th:first-child { border-radius: 8px 0 0 0; }
+  th:last-child  { border-radius: 0 8px 0 0; }
+
+  /* ===== HIGHLIGHT ===== */
+  .hl-azul   { background: #bfdbfe; border-radius: 4px; padding: 1px 5px; font-weight: 700; color: #1d4ed8; }
+  .hl-verde  { background: #bbf7d0; border-radius: 4px; padding: 1px 5px; font-weight: 700; color: #15803d; }
+  .hl-naranja{ background: #fed7aa; border-radius: 4px; padding: 1px 5px; font-weight: 700; color: #c2410c; }
+  .hl-morado { background: #ddd6fe; border-radius: 4px; padding: 1px 5px; font-weight: 700; color: #6d28d9; }
+
+  /* ===== EJEMPLO ===== */
+  .ejemplo {
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: .95rem;
+    border: 1px solid #e2e8f0;
+  }
+  .ejemplo strong { color: var(--azul); }
+
+  /* ===== REGLA ===== */
+  .regla {
+    background: linear-gradient(135deg,#fef9c3,#fde68a);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-weight: 700;
+    font-size: .95rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* ===== ETAPA 2 — EJERCICIOS ===== */
+  .exercise-card {
+    background: white;
+    border-radius: var(--radio);
+    padding: 22px;
+    margin-bottom: 20px;
+    box-shadow: var(--sombra);
+  }
+  .exercise-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ex-azul    { background: var(--azul-claro);    color: #1d4ed8; }
+  .ex-verde   { background: var(--verde-claro);   color: #15803d; }
+  .ex-naranja { background: var(--naranja-claro); color: #c2410c; }
+  .ex-morado  { background: var(--morado-claro);  color: #6d28d9; }
+  .ex-rosa    { background: var(--rosa-claro);    color: #9d174d; }
+  .ex-amarillo{ background: var(--amarillo-claro);color: #92400e; }
+
+  .instruccion {
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 12px;
+    font-size: .95rem;
+  }
+
+  .fill-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+    font-size: .95rem;
+  }
+  .fill-line input[type="text"] {
+    border: none;
+    border-bottom: 2px solid #94a3b8;
+    outline: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    width: 140px;
+    padding: 2px 4px;
+    background: transparent;
+    transition: border-color .2s;
+  }
+  .fill-line input[type="text"]:focus { border-bottom-color: var(--azul); }
+
+  .check-btn {
+    margin-top: 14px;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all .2s;
+    box-shadow: 0 3px 10px rgba(37,99,235,0.3);
+  }
+  .check-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 16px rgba(37,99,235,0.4); }
+
+  .feedback { margin-top: 12px; font-weight: 700; font-size: .95rem; display: none; }
+  .feedback.show { display: block; }
+  .feedback.ok  { color: var(--verde); }
+  .feedback.err { color: var(--naranja); }
+
+  .match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+  .match-item {
+    background: #f8faff;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: .92rem;
+    border: 2px solid #e2e8f0;
+  }
+  .match-item select {
+    margin-top: 6px;
+    width: 100%;
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-family: 'Nunito', sans-serif;
+    font-size: .9rem;
+    background: white;
+  }
+
+  .opcion-grupo { display: flex; flex-direction: column; gap: 8px; margin: 8px 0; }
+  .opcion-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8faff;
+    border-radius: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+    border: 2px solid #e2e8f0;
+    transition: all .15s;
+    font-size: .95rem;
+  }
+  .opcion-label:hover { border-color: var(--azul); background: var(--azul-claro); }
+  .opcion-label input { accent-color: var(--azul); width: 18px; height: 18px; }
+
+  /* ===== ETAPA 3 — EXAMEN ===== */
+  #examen { background: #f8faff; }
+
+  .exam-header {
+    background: linear-gradient(135deg,#7c3aed,#2563eb);
+    border-radius: var(--radio);
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 24px;
+    color: white;
+  }
+  .exam-header h2 { font-family:'Fredoka One',cursive; font-size:1.8rem; }
+  .exam-header p  { opacity:.85; font-weight:600; }
+
+  .pregunta-card {
+    background: white;
+    border-radius: var(--radio);
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--sombra);
+  }
+  .pregunta-num {
+    font-family: 'Fredoka One', cursive;
+    font-size: .85rem;
+    padding: 3px 12px;
+    border-radius: 20px;
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+    color: white;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .pregunta-texto { font-weight: 700; margin-bottom: 12px; font-size: 1rem; }
+
+  .opcion-exam {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 2px solid #e2e8f0;
+    margin-bottom: 7px;
+    cursor: pointer;
+    transition: all .15s;
+    font-size: .95rem;
+    background: #f8faff;
+  }
+  .opcion-exam:hover { border-color: var(--azul); background: var(--azul-claro); }
+  .opcion-exam input { accent-color: var(--azul); width:18px; height:18px; }
+  .opcion-exam.correcta { border-color: var(--verde); background: var(--verde-claro); }
+  .opcion-exam.incorrecta { border-color: #ef4444; background: #fee2e2; }
+
+  .exam-fill {
+    border: none;
+    border-bottom: 2.5px solid #94a3b8;
+    outline: none;
+    font-family:'Nunito',sans-serif;
+    font-size:1rem;
+    width: 220px;
+    padding: 4px 4px;
+    background: transparent;
+    margin: 0 6px;
+    transition: border-color .2s;
+  }
+  .exam-fill:focus { border-bottom-color: var(--azul); }
+
+  .calificar-btn {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    margin: 28px auto 0;
+    padding: 16px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg,#16a34a,#059669);
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(22,163,74,0.4);
+    transition: all .2s;
+    letter-spacing: .5px;
+  }
+  .calificar-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(22,163,74,0.5); }
+
+  .resultado-box {
+    display: none;
+    text-align: center;
+    background: white;
+    border-radius: var(--radio);
+    padding: 36px 24px;
+    margin-top: 28px;
+    box-shadow: var(--sombra);
+  }
+  .resultado-box.show { display: block; }
+  .nota-grande {
+    font-family: 'Fredoka One', cursive;
+    font-size: 5rem;
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
+  .nota-label { font-size: 1.2rem; font-weight: 700; color: #475569; margin: 8px 0 16px; }
+  .estrellas { font-size: 2.5rem; margin-bottom: 12px; }
+  .mensaje-final { font-size: 1.1rem; font-weight: 700; }
+
+  /* ===== UTILS ===== */
+  .badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: .82rem;
+    font-weight: 800;
+    margin: 2px;
+  }
+  .badge-azul   { background: var(--azul-claro);   color: #1d4ed8; }
+  .badge-verde  { background: var(--verde-claro);  color: #15803d; }
+  .badge-naranja{ background: var(--naranja-claro);color: #c2410c; }
+  .badge-morado { background: var(--morado-claro); color: #6d28d9; }
+
+  .divider { height: 2px; background: linear-gradient(90deg,transparent,#e2e8f0,transparent); margin: 18px 0; }
+
+  ul.lista { list-style: none; padding: 0; }
+  ul.lista li { padding: 6px 0 6px 22px; position: relative; font-size:.95rem; }
+  ul.lista li::before { content:'✦'; position:absolute; left:0; color:var(--azul); font-size:.8rem; top:8px; }
+
+  .tip-box {
+    background: linear-gradient(135deg,#fef9c3,#fde68a);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: .92rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .tip-box strong { color: #92400e; }
+
+  @media(max-width:600px){
+    .hero h1 { font-size: 1.8rem; }
+    .match-grid { grid-template-columns: 1fr; }
+    .tabs { gap: 6px; }
+    .tab-btn { font-size: .88rem; padding: 10px 16px; }
+  }
+
+  .progress-bar-wrap { background:#e2e8f0; border-radius:20px; height:8px; margin:6px 0 14px; overflow:hidden; }
+  .progress-bar { height:100%; border-radius:20px; background: linear-gradient(90deg,#2563eb,#7c3aed); transition: width .5s; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="emoji-row">📚 ✏️ 🌟</div>
+  <h1>¡Hola, Armando! 👋</h1>
+  <p>Tu guía completa de Spanish — Comunicación y Lenguaje 3 · El Salvador</p>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('conceptos')">📖 Etapa 1: Conceptos</button>
+  <button class="tab-btn" onclick="showTab('ejercicios')">✏️ Etapa 2: Ejercicios</button>
+  <button class="tab-btn" onclick="showTab('examen')">📝 Etapa 3: Examen</button>
+</div>
+
+<!-- ============================================================ -->
+<!-- ETAPA 1: CONCEPTOS -->
+<!-- ============================================================ -->
+<div class="section active" id="conceptos">
+
+  <!-- GRAMÁTICA -->
+  <br>
+  <div style="font-family:'Fredoka One',cursive;font-size:1.5rem;color:#2563eb;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+    🔤 Gramática
+  </div>
+
+  <!-- 1. EL VERBO -->
+  <div class="card azul">
+    <div class="card-title"><span class="ico">🏃</span> 1. El Verbo</div>
+    <div class="concept-box">
+      El <strong>verbo</strong> es la palabra que indica una <em>acción</em>, un <em>estado</em> o un <em>proceso</em> que realiza el sujeto de la oración.
+    </div>
+    <p style="margin-bottom:10px;font-size:.95rem;">Los verbos son las palabras más importantes de una oración porque <strong>dicen qué pasa</strong>. Sin verbo, ¡no hay oración completa!</p>
+
+    <div class="regla">💡 <span><strong>Truco:</strong> Para encontrar el verbo pregunta: <em>¿Qué hace?, ¿Qué es?, ¿Qué le pasa?</em> a quien realiza la acción.</span></div>
+
+    <p style="margin:12px 0 8px;font-weight:700;">¿Cómo cambia el verbo? — El verbo cambia según:</p>
+    <table>
+      <tr><th>El tiempo</th><th>Ejemplo con "comer"</th></tr>
+      <tr><td>🕐 Pasado (antes)</td><td>Yo <span class="hl-azul">comí</span> una manzana.</td></tr>
+      <tr><td>🕐 Presente (ahora)</td><td>Yo <span class="hl-azul">como</span> una manzana.</td></tr>
+      <tr><td>🕐 Futuro (después)</td><td>Yo <span class="hl-azul">comeré</span> una manzana.</td></tr>
+    </table>
+
+    <div class="divider"></div>
+    <p style="font-weight:700;margin-bottom:8px;">Más ejemplos con verbos en oraciones:</p>
+    <div class="ejemplo">🐶 El perro <strong>corre</strong> por el patio. → ¿Qué hace el perro? → <span class="hl-azul">corre</span></div>
+    <div class="ejemplo">👩 María <strong>estudia</strong> para el examen. → ¿Qué hace María? → <span class="hl-azul">estudia</span></div>
+    <div class="ejemplo">🌧️ Ayer <strong>llovió</strong> mucho. → ¿Qué pasó? → <span class="hl-azul">llovió</span></div>
+    <div class="ejemplo">🌟 Armando <strong>aprendió</strong> las lecciones. → ¿Qué hizo Armando? → <span class="hl-azul">aprendió</span></div>
+
+    <div class="tip-box">⭐ <span><strong>¡Recuerda!</strong> Los infinitivos (forma base del verbo) terminan en <strong>-ar</strong>, <strong>-er</strong>, <strong>-ir</strong>: caminar, correr, vivir.</span></div>
+  </div>
+
+  <!-- 2. EL ADVERBIO -->
+  <div class="card verde">
+    <div class="card-title"><span class="ico">📍</span> 2. El Adverbio</div>
+    <div class="concept-box verde">
+      El <strong>adverbio</strong> es la palabra que acompaña al verbo y dice <em>cómo, cuándo, dónde</em> o con qué <em>cantidad</em> ocurre una acción.
+    </div>
+    <p style="margin-bottom:12px;font-size:.95rem;">Los adverbios <strong>modifican al verbo</strong> dándole más información. También pueden modificar a un adjetivo u otro adverbio.</p>
+
+    <table>
+      <tr><th>Tipo de Adverbio</th><th>Pregunta que responde</th><th>Ejemplos</th></tr>
+      <tr><td>📍 <strong>Lugar</strong></td><td>¿Dónde?</td><td>aquí, allá, cerca, lejos, arriba, abajo, dentro, fuera</td></tr>
+      <tr><td>⏰ <strong>Tiempo</strong></td><td>¿Cuándo?</td><td>hoy, ayer, mañana, siempre, nunca, antes, después, ya</td></tr>
+      <tr><td>🏃 <strong>Modo</strong></td><td>¿Cómo?</td><td>bien, mal, rápido, despacio, fácilmente, claramente</td></tr>
+      <tr><td>🔢 <strong>Cantidad</strong></td><td>¿Cuánto?</td><td>mucho, poco, bastante, nada, más, menos, demasiado</td></tr>
+      <tr><td>✅ <strong>Afirmación</strong></td><td>¿Sí?</td><td>sí, también, claro, efectivamente</td></tr>
+      <tr><td>❌ <strong>Negación</strong></td><td>¿No?</td><td>no, nunca, jamás, tampoco</td></tr>
+    </table>
+
+    <div class="divider"></div>
+    <p style="font-weight:700;margin-bottom:8px;">Ejemplos en oraciones:</p>
+    <div class="ejemplo">🐱 El gato duerme <strong><span class="hl-verde">aquí</span></strong>. → ¿Dónde duerme? → aquí (adverbio de lugar)</div>
+    <div class="ejemplo">⚽ Juan corre <strong><span class="hl-verde">rápido</span></strong>. → ¿Cómo corre? → rápido (adverbio de modo)</div>
+    <div class="ejemplo">📅 <strong><span class="hl-verde">Hoy</span></strong> tenemos examen. → ¿Cuándo? → hoy (adverbio de tiempo)</div>
+    <div class="ejemplo">🍕 Comí <strong><span class="hl-verde">mucho</span></strong>. → ¿Cuánto comí? → mucho (adverbio de cantidad)</div>
+    <div class="ejemplo">📖 Armando estudia <strong><span class="hl-verde">bien</span></strong>. → ¿Cómo estudia? → bien (adverbio de modo)</div>
+
+    <div class="tip-box">⭐ <span><strong>¡Truco fácil!</strong> Muchos adverbios de modo terminan en <strong>-mente</strong>: rápidamente, claramente, fácilmente.</span></div>
+  </div>
+
+  <!-- 3. TEXTOS INFORMATIVOS -->
+  <div class="card naranja">
+    <div class="card-title"><span class="ico">📰</span> 3. Textos Informativos — La Noticia</div>
+    <div class="concept-box naranja">
+      Un <strong>texto informativo</strong> cuenta hechos <em>reales</em> de forma clara y ordenada. La <strong>noticia</strong> es el texto informativo más común.
+    </div>
+
+    <p style="font-weight:700;margin:10px 0 8px;">Partes de una noticia:</p>
+    <table>
+      <tr><th>Parte</th><th>¿Qué es?</th><th>Ejemplo</th></tr>
+      <tr><td>📌 <strong>Titular</strong></td><td>El título grande y llamativo</td><td>"Estudiantes ganan concurso nacional"</td></tr>
+      <tr><td>📝 <strong>Entrada (lead)</strong></td><td>Resumen del hecho más importante</td><td>Primeras 2-3 oraciones clave</td></tr>
+      <tr><td>📖 <strong>Cuerpo</strong></td><td>Los detalles completos de la noticia</td><td>Toda la información adicional</td></tr>
+      <tr><td>📷 <strong>Imagen/pie de foto</strong></td><td>Foto con descripción</td><td>Foto del evento + texto explicativo</td></tr>
+      <tr><td>🏢 <strong>Fuente</strong></td><td>Quién escribe la noticia</td><td>Nombre del periodista / medio</td></tr>
+    </table>
+
+    <div class="divider"></div>
+    <p style="font-weight:700;margin-bottom:8px;">Las 6 preguntas de toda buena noticia:</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+      <div class="ejemplo" style="margin:0">❓ <strong>¿Qué?</strong> → El hecho ocurrido</div>
+      <div class="ejemplo" style="margin:0">👤 <strong>¿Quién?</strong> → Los protagonistas</div>
+      <div class="ejemplo" style="margin:0">📅 <strong>¿Cuándo?</strong> → El momento</div>
+      <div class="ejemplo" style="margin:0">📍 <strong>¿Dónde?</strong> → El lugar</div>
+      <div class="ejemplo" style="margin:0">🔧 <strong>¿Cómo?</strong> → La manera</div>
+      <div class="ejemplo" style="margin:0">🤔 <strong>¿Por qué?</strong> → La causa</div>
+    </div>
+    <div class="tip-box">⭐ <span><strong>Características de una noticia:</strong> es objetiva (sin opiniones), actual (reciente), de interés para muchas personas y veraz (verdadera).</span></div>
+  </div>
+
+  <!-- 4. PRECISIÓN LÉXICA -->
+  <div class="card morado">
+    <div class="card-title"><span class="ico">🎯</span> 4. La Precisión Léxica</div>
+    <div class="concept-box morado">
+      La <strong>precisión léxica</strong> consiste en usar la palabra <em>exacta y más apropiada</em> para expresar claramente lo que queremos decir.
+    </div>
+    <p style="margin-bottom:12px;font-size:.95rem;">Cuando usamos palabras vagas o imprecisas, el lector no entiende bien. ¡Las palabras exactas hacen la comunicación más clara!</p>
+
+    <table>
+      <tr><th>❌ Impreciso (vago)</th><th>✅ Preciso (exacto)</th></tr>
+      <tr><td>La cosa que usas para escribir</td><td>El <strong>lápiz</strong> / la <strong>pluma</strong></td></tr>
+      <tr><td>El animal que ladra</td><td>El <strong>perro</strong></td></tr>
+      <tr><td>Hizo un sonido raro</td><td><strong>Rugió</strong> / <strong>gruñó</strong> / <strong>chilló</strong></td></tr>
+      <tr><td>Dijo algo en voz alta</td><td><strong>Gritó</strong> / <strong>proclamó</strong> / <strong>exclamó</strong></td></tr>
+      <tr><td>Fue al lugar ese</td><td>Fue a la <strong>biblioteca</strong> / al <strong>mercado</strong></td></tr>
+    </table>
+    <div class="tip-box">⭐ <span><strong>Pregúntate siempre:</strong> "¿Existe una palabra más exacta para decir esto?" Si la respuesta es sí, ¡úsala!</span></div>
+  </div>
+
+  <!-- 5. TIPOS DE ORACIONES -->
+  <div class="card rosa">
+    <div class="card-title"><span class="ico">💬</span> 5. Tipos de Oraciones</div>
+    <div class="concept-box rosa">
+      Las oraciones se clasifican según la <em>actitud del hablante</em>, es decir, la <em>intención</em> con que se dice algo.
+    </div>
+
+    <table>
+      <tr><th>Tipo</th><th>¿Para qué sirve?</th><th>Signo</th><th>Ejemplo</th></tr>
+      <tr><td>📣 <strong>Enunciativa</strong></td><td>Afirmar o negar algo</td><td>. </td><td>Hoy hace sol.</td></tr>
+      <tr><td>❓ <strong>Interrogativa</strong></td><td>Hacer una pregunta</td><td>¿?</td><td>¿Qué hora es?</td></tr>
+      <tr><td>❗ <strong>Exclamativa</strong></td><td>Expresar emoción fuerte</td><td>¡!</td><td>¡Qué bonito día!</td></tr>
+      <tr><td>👉 <strong>Imperativa</strong></td><td>Dar una orden o mandato</td><td>. / !</td><td>Cierra la puerta.</td></tr>
+      <tr><td>🤔 <strong>Dubitativa</strong></td><td>Expresar duda</td><td>.</td><td>Quizás llueva hoy.</td></tr>
+      <tr><td>🙏 <strong>Desiderativa</strong></td><td>Expresar deseo</td><td>. / !</td><td>¡Ojalá venga pronto!</td></tr>
+    </table>
+
+    <div class="divider"></div>
+    <p style="font-weight:700;margin-bottom:8px;">Más ejemplos para cada tipo:</p>
+    <div class="ejemplo">📣 <strong>Enunciativa (+):</strong> Los niños juegan en el parque.</div>
+    <div class="ejemplo">📣 <strong>Enunciativa (-):</strong> Los niños <em>no</em> juegan en el parque.</div>
+    <div class="ejemplo">❓ <strong>Interrogativa:</strong> ¿Armando terminó su tarea?</div>
+    <div class="ejemplo">❗ <strong>Exclamativa:</strong> ¡Qué excelente nota sacaste!</div>
+    <div class="ejemplo">👉 <strong>Imperativa:</strong> Estudia todos los días.</div>
+    <div class="ejemplo">🤔 <strong>Dubitativa:</strong> Tal vez mañana no haya clases.</div>
+    <div class="ejemplo">🙏 <strong>Desiderativa:</strong> Ojalá saque 10 en el examen.</div>
+  </div>
+
+  <!-- 6. SUJETO Y PREDICADO -->
+  <div class="card amarillo">
+    <div class="card-title"><span class="ico">⚖️</span> 6. Sujeto y Predicado</div>
+    <div class="concept-box amarillo">
+      Toda oración tiene dos partes: el <strong>sujeto</strong> (de quién se habla) y el <strong>predicado</strong> (qué se dice del sujeto).
+    </div>
+    <div style="text-align:center;background:linear-gradient(135deg,#fef9c3,#fde68a);padding:16px;border-radius:12px;margin:12px 0;font-family:'Fredoka One',cursive;font-size:1.15rem;">
+      ORACIÓN = <span style="color:#2563eb;background:white;padding:4px 10px;border-radius:8px;">SUJETO</span> + <span style="color:#16a34a;background:white;padding:4px 10px;border-radius:8px;">PREDICADO</span>
+    </div>
+
+    <table>
+      <tr><th>Parte</th><th>¿Qué contiene?</th><th>Pregunta clave</th></tr>
+      <tr><td>👤 <strong>Sujeto</strong></td><td>Sustantivo principal + artículo + adjetivos</td><td>¿Quién? / ¿Quiénes?</td></tr>
+      <tr><td>🔄 <strong>Predicado</strong></td><td>Verbo + todo lo demás</td><td>¿Qué hace? / ¿Qué le pasa?</td></tr>
+    </table>
+
+    <div class="divider"></div>
+    <div class="ejemplo">
+      <span class="hl-azul">Los estudiantes de tercero</span> / <span class="hl-verde">presentaron el examen con mucho esfuerzo</span>.<br>
+      → Sujeto: <span class="hl-azul">Los estudiantes de tercero</span> → Predicado: <span class="hl-verde">presentaron el examen con mucho esfuerzo</span>
+    </div>
+    <div class="ejemplo">
+      <span class="hl-azul">Mi mamá</span> / <span class="hl-verde">prepara la cena todas las noches</span>.<br>
+      → Sujeto: <span class="hl-azul">Mi mamá</span> → Predicado: <span class="hl-verde">prepara la cena todas las noches</span>
+    </div>
+    <div class="ejemplo">
+      <span class="hl-azul">El pequeño gatito negro</span> / <span class="hl-verde">duerme en el sofá</span>.<br>
+      → Sujeto: <span class="hl-azul">El pequeño gatito negro</span> → Predicado: <span class="hl-verde">duerme en el sofá</span>
+    </div>
+    <div class="tip-box">⭐ <span><strong>Núcleo del sujeto:</strong> La palabra más importante del sujeto es el <strong>sustantivo</strong>. En "Los niños felices", el núcleo es <em>niños</em>.</span></div>
+  </div>
+
+  <!-- ORTOGRAFÍA -->
+  <div style="font-family:'Fredoka One',cursive;font-size:1.5rem;color:#16a34a;margin:28px 0 16px;display:flex;align-items:center;gap:10px;">
+    ✍️ Ortografía
+  </div>
+
+  <!-- DIPTONGOS E HIATOS -->
+  <div class="card verde">
+    <div class="card-title"><span class="ico">🔡</span> 1. Diptongos e Hiatos</div>
+    <div class="concept-box verde">
+      Un <strong>diptongo</strong> es la unión de dos vocales que se pronuncian en <em>una sola sílaba</em>.<br>
+      Un <strong>hiato</strong> es cuando dos vocales juntas se pronuncian en <em>sílabas separadas</em>.
+    </div>
+
+    <p style="font-weight:700;margin:10px 0 6px;">Las vocales se clasifican en:</p>
+    <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;">
+      <div class="ejemplo" style="margin:0;flex:1;min-width:140px;">💪 <strong>Fuertes:</strong><br>A — E — O</div>
+      <div class="ejemplo" style="margin:0;flex:1;min-width:140px;">🤏 <strong>Débiles:</strong><br>I — U</div>
+    </div>
+
+    <table>
+      <tr><th></th><th>Diptongo</th><th>Hiato</th></tr>
+      <tr><td><strong>Definición</strong></td><td>2 vocales = 1 sílaba</td><td>2 vocales = 2 sílabas</td></tr>
+      <tr><td><strong>¿Cuándo?</strong></td><td>Fuerte + débil sin acento<br>Débil + débil</td><td>Fuerte + fuerte<br>Débil acentuada (í, ú)</td></tr>
+      <tr><td><strong>Ejemplos</strong></td><td>ai-re, rei-na, pei-ne, viu-da, bue-no</td><td>ma-es-tro, le-er, pa-ís, ba-úl</td></tr>
+      <tr><td><strong>Tilde</strong></td><td>Siguen reglas normales</td><td>La vocal débil SIEMPRE lleva tilde: í, ú</td></tr>
+    </table>
+
+    <div class="ejemplo">🔤 <strong>Diptongo:</strong> cau-dal (au = diptongo) | bue-no (ue = diptongo)</div>
+    <div class="ejemplo">🔤 <strong>Hiato:</strong> pa-ís (a-i separadas, la í lleva tilde) | ba-úl (a-u separadas)</div>
+    <div class="tip-box">⭐ <span><strong>Regla de oro:</strong> Si hay dos vocales fuertes juntas (ae, ao, ea, eo, oa, oe) → siempre es <strong>hiato</strong>.</span></div>
+  </div>
+
+  <!-- USO DE RR -->
+  <div class="card azul">
+    <div class="card-title"><span class="ico">🎵</span> 2. Uso de RR</div>
+    <div class="concept-box">
+      Se escribe <strong>RR</strong> cuando el sonido vibrante fuerte aparece <em>entre dos vocales</em> dentro de una palabra.
+    </div>
+
+    <table>
+      <tr><th>✅ Se escribe RR</th><th>❌ Se escribe R (sola)</th></tr>
+      <tr><td>Entre vocales: pe<strong>rr</strong>o, ca<strong>rr</strong>o, a<strong>rr</strong>oz</td><td>Al inicio de palabra: <strong>r</strong>osa, <strong>r</strong>ío</td></tr>
+      <tr><td>ba<strong>rr</strong>io, bo<strong>rr</strong>ador, ca<strong>rr</strong>eta</td><td>Después de consonante: En<strong>r</strong>ique, al<strong>r</strong>ededor</td></tr>
+      <tr><td>te<strong>rr</strong>emoto, pie<strong>rr</strong>a, gue<strong>rr</strong>a</td><td>Una sola r entre vocales sonido suave: pa<strong>r</strong>a, ma<strong>r</strong>e</td></tr>
+    </table>
+
+    <div class="tip-box">⭐ <span><strong>¡Nunca!</strong> La RR jamás va al inicio de una palabra, ni después de consonante (n, l, s, b...) — en esos casos se escribe solo R pero suena fuerte igual.</span></div>
+
+    <div class="ejemplo">🔴 pe<strong>rr</strong>o · ca<strong>rr</strong>o · ti<strong>rr</strong>a · a<strong>rr</strong>oz · co<strong>rr</strong>er · gue<strong>rr</strong>ero</div>
+    <div class="ejemplo">🟡 <strong>R</strong>afael · <strong>r</strong>ueda · Is<strong>r</strong>ael · Hon<strong>r</strong>a (después de n, l)</div>
+  </div>
+
+  <!-- USO DE B Y V -->
+  <div class="card naranja">
+    <div class="card-title"><span class="ico">📝</span> 3. Uso de V y B</div>
+    <div class="concept-box naranja">
+      La <strong>B</strong> y la <strong>V</strong> suenan igual en español, pero se escriben diferente. ¡Hay que aprender cuándo usar cada una!
+    </div>
+
+    <p style="font-weight:700;margin:10px 0 6px;">Se escribe <span class="hl-azul">B</span> cuando:</p>
+    <ul class="lista">
+      <li>Después de <strong>m</strong> y <strong>n</strong> → tam<strong>b</strong>ién, cam<strong>b</strong>io, am<strong>b</strong>os, con<strong>b</strong>… (también: invitar, enviar, un<strong>b</strong>…)</li>
+      <li>Verbos terminados en <strong>-bir</strong> → escri<strong>b</strong>ir, reci<strong>b</strong>ir, su<strong>b</strong>ir</li>
+      <li>Palabras que empiezan con <strong>bu-, bur-, bus-</strong> → <strong>bu</strong>eno, <strong>bu</strong>rro, <strong>bus</strong>car</li>
+      <li>Terminaciones <strong>-aba, -abas, -ábamos</strong> del pasado → cami<strong>b</strong>… (caminaba, jugaba)</li>
+      <li>Prefijos <strong>bi-, bis-, biz-</strong> → <strong>bi</strong>cicleta, <strong>bis</strong>abuelo</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <p style="font-weight:700;margin:10px 0 6px;">Se escribe <span class="hl-verde">V</span> cuando:</p>
+    <ul class="lista">
+      <li>Después de <strong>ad-, ob-, sub-</strong> → ad<strong>v</strong>ertir, ob<strong>v</strong>io, sub<strong>v</strong>ención</li>
+      <li>Adjetivos terminados en <strong>-avo, -ava, -evo, -iva, -ivo</strong> → nue<strong>v</strong>o, acti<strong>v</strong>o, nati<strong>v</strong>a</li>
+      <li>Después de <strong>n</strong> en ciertos casos → en<strong>v</strong>iar, in<strong>v</strong>itar, con<strong>v</strong>ersar</li>
+      <li>Formas del verbo <strong>ir</strong> → <strong>v</strong>oy, <strong>v</strong>as, <strong>v</strong>a, <strong>v</strong>amos</li>
+    </ul>
+
+    <div class="ejemplo">✅ B: tam<strong>b</strong>ién · escri<strong>b</strong>ir · <strong>b</strong>ueno · juga<strong>b</strong>a · <strong>b</strong>icicleta</div>
+    <div class="ejemplo">✅ V: nue<strong>v</strong>o · acti<strong>v</strong>o · en<strong>v</strong>iar · <strong>v</strong>oy · ad<strong>v</strong>ertir</div>
+  </div>
+
+  <!-- USO DE Y y LL -->
+  <div class="card morado">
+    <div class="card-title"><span class="ico">🔀</span> 4. Uso de Y y LL</div>
+    <div class="concept-box morado">
+      La <strong>Y</strong> y la <strong>LL</strong> pueden sonar similar. Hay reglas para saber cuándo usar cada una.
+    </div>
+
+    <p style="font-weight:700;margin:10px 0 6px;">Se escribe <span class="hl-azul">Y</span> cuando:</p>
+    <ul class="lista">
+      <li>Al <strong>final de una palabra</strong> con sonido de vocal → ho<strong>y</strong>, re<strong>y</strong>, le<strong>y</strong>, bue<strong>y</strong></li>
+      <li>En formas del verbo <strong>ser, estar, ir</strong> → vo<strong>y</strong>, so<strong>y</strong>, esto<strong>y</strong>, ha<strong>y</strong></li>
+      <li>Palabras que empiezan con <strong>ye-</strong> → <strong>ye</strong>ma, <strong>ye</strong>so, <strong>ye</strong>rno</li>
+      <li>Conjunción <strong>y</strong> (que une palabras) → pan <strong>y</strong> leche</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <p style="font-weight:700;margin:10px 0 6px;">Se escribe <span class="hl-morado">LL</span> cuando:</p>
+    <ul class="lista">
+      <li>Palabras con terminaciones <strong>-llo, -lla, -lle, -lli</strong> → si<strong>ll</strong>a, po<strong>ll</strong>o, ca<strong>ll</strong>e, ga<strong>ll</strong>ina</li>
+      <li>Verbos terminados en <strong>-llar</strong> → ha<strong>ll</strong>ar, ca<strong>ll</strong>ar, bri<strong>ll</strong>ar</li>
+      <li>Palabras con <strong>ll-</strong> al inicio → <strong>ll</strong>uvia, <strong>ll</strong>ave, <strong>ll</strong>amar, <strong>ll</strong>eno</li>
+    </ul>
+
+    <div class="ejemplo">✅ Y: ho<strong>y</strong> · re<strong>y</strong> · vo<strong>y</strong> · <strong>y</strong>ema · pan <strong>y</strong> agua</div>
+    <div class="ejemplo">✅ LL: si<strong>ll</strong>a · <strong>ll</strong>uvia · ca<strong>ll</strong>e · po<strong>ll</strong>o · ha<strong>ll</strong>ar</div>
+  </div>
+
+  <!-- EXPRESIÓN ESCRITA -->
+  <div style="font-family:'Fredoka One',cursive;font-size:1.5rem;color:#7c3aed;margin:28px 0 16px;display:flex;align-items:center;gap:10px;">
+    🖊️ Expresión Escrita
+  </div>
+
+  <!-- JEROGLÍFICOS Y ADIVINANZAS -->
+  <div class="card morado">
+    <div class="card-title"><span class="ico">🧩</span> 1. Jeroglíficos y Adivinanzas</div>
+    <div class="concept-box morado">
+      Los <strong>jeroglíficos</strong> combinan dibujos, letras y símbolos para formar palabras o mensajes.<br>
+      Las <strong>adivinanzas</strong> describen algo de forma enigmática para que el lector lo adivine.
+    </div>
+
+    <p style="font-weight:700;margin:10px 0 6px;">🔐 Jeroglífico:</p>
+    <div class="ejemplo">Es como un acertijo visual: mezcla imágenes y letras para crear palabras.<br>Ejemplo: 🌊 + R + A = <strong>ONDA + R = HONDAR... ola</strong></div>
+
+    <p style="font-weight:700;margin:12px 0 6px;">🎭 Adivinanza — ¿Cómo se hace?</p>
+    <ul class="lista">
+      <li>Describe el objeto <strong>sin nombrarlo</strong></li>
+      <li>Usa rima o ritmo para hacerla divertida</li>
+      <li>Menciona características: color, forma, uso, materiales</li>
+      <li>Termina con "¿Qué es?" o "¿Qué soy?"</li>
+    </ul>
+
+    <div class="ejemplo">🎯 <em>"Blanca por dentro, verde por fuera; si quieres que te lo diga, espera."</em> → La <strong>pera</strong></div>
+    <div class="ejemplo">🎯 <em>"Tiene dientes y no muerde, tiene hojas y no es árbol."</em> → El <strong>peine y el libro</strong></div>
+    <div class="ejemplo">🎯 <em>"Soy redondo como el sol, me lanzan y voy, me atrapan y estoy."</em> → La <strong>pelota</strong></div>
+  </div>
+
+  <!-- CALIGRAMAS -->
+  <div class="card rosa">
+    <div class="card-title"><span class="ico">🎨</span> 2. Caligramas</div>
+    <div class="concept-box rosa">
+      Un <strong>caligrama</strong> es un texto (poema o frase) cuyas palabras forman visualmente la figura de lo que se está describiendo.
+    </div>
+    <p style="margin-bottom:10px;font-size:.95rem;">La forma visual del texto <strong>refuerza el significado</strong>. El lector ve y lee al mismo tiempo.</p>
+
+    <p style="font-weight:700;margin:10px 0 6px;">¿Cómo se hace un caligrama?</p>
+    <ul class="lista">
+      <li>Decide el <strong>tema</strong> (un árbol, un corazón, una mariposa)</li>
+      <li>Escribe palabras o una frase relacionada con ese tema</li>
+      <li>Distribuye las palabras siguiendo el <strong>contorno o silueta</strong> del objeto</li>
+      <li>El resultado debe poderse "ver" como imagen y "leer" como texto</li>
+    </ul>
+
+    <div class="ejemplo" style="font-family:monospace;line-height:2;text-align:center;">
+      🌟 Ejemplo: Las palabras del poema "La luna" escritas en forma de luna 🌙<br>
+      <span style="font-size:.85rem;color:#475569;">(las letras forman el arco de la luna)</span>
+    </div>
+    <div class="tip-box">⭐ <span><strong>¡Creatividad al máximo!</strong> El caligrama nació con el poeta Guillaume Apollinaire. En él, arte y escritura se unen.</span></div>
+  </div>
+
+  <!-- ANÉCDOTAS -->
+  <div class="card verde">
+    <div class="card-title"><span class="ico">😄</span> 3. Anécdotas</div>
+    <div class="concept-box verde">
+      Una <strong>anécdota</strong> es un relato breve de un hecho <em>real, gracioso, curioso o memorable</em> que le ocurrió a alguien.
+    </div>
+
+    <p style="font-weight:700;margin:10px 0 6px;">Estructura de una anécdota:</p>
+    <table>
+      <tr><th>Parte</th><th>¿Qué incluye?</th><th>Palabras que ayudan</th></tr>
+      <tr><td>🟢 <strong>Inicio</strong></td><td>Dónde, cuándo y quién</td><td>Un día, Hace tiempo, El lunes pasado...</td></tr>
+      <tr><td>🟡 <strong>Desarrollo</strong></td><td>Qué ocurrió exactamente</td><td>De repente, Entonces, En ese momento...</td></tr>
+      <tr><td>🔴 <strong>Desenlace</strong></td><td>Cómo terminó / la gracia final</td><td>Al final, Para sorpresa de todos, Y resulta que...</td></tr>
+    </table>
+
+    <div class="divider"></div>
+    <p style="font-weight:700;margin-bottom:8px;">Características de una anécdota:</p>
+    <ul class="lista">
+      <li>Se narra en <strong>primera persona</strong> (yo) o tercera persona (él/ella)</li>
+      <li>Tono <strong>informal y personal</strong></li>
+      <li>Tiene un <strong>momento gracioso o sorpresivo</strong></li>
+      <li>Es un hecho <strong>real</strong>, no inventado</li>
+      <li>Es <strong>breve</strong> pero completa</li>
+    </ul>
+
+    <div class="ejemplo">📖 <em>"Un día fui a la tienda con mi mamá. Al pagar, me di cuenta de que traía el dinero en el zapato porque no tenía bolsillo. ¡La cajera no podía dejar de reírse!"</em></div>
+  </div>
+
+</div><!-- /conceptos -->
+
+
+<!-- ============================================================ -->
+<!-- ETAPA 2: EJERCICIOS -->
+<!-- ============================================================ -->
+<div class="section" id="ejercicios">
+
+  <br>
+  <div style="font-family:'Fredoka One',cursive;font-size:1.4rem;color:#2563eb;margin-bottom:18px;text-align:center;">
+    ✏️ ¡A practicar, Armando! 💪
+  </div>
+
+  <!-- EJ 1: VERBO -->
+  <div class="exercise-card">
+    <div class="exercise-title ex-azul">🏃 Ejercicio 1 — El Verbo</div>
+    <div class="instruccion">📌 Escribe el verbo que completa cada oración:</div>
+
+    <div class="fill-line">1. Los niños _____ en el recreo. <input type="text" id="e1_1"> <span class="badge badge-azul">juegan/corren</span></div>
+    <div class="fill-line">2. Armando _____ su tarea todas las noches. <input type="text" id="e1_2"> <span class="badge badge-azul">hace</span></div>
+    <div class="fill-line">3. Mi perro _____ cuando tiene hambre. <input type="text" id="e1_3"> <span class="badge badge-azul">ladra</span></div>
+    <div class="fill-line">4. Ayer nosotros _____ una película. <input type="text" id="e1_4"> <span class="badge badge-azul">vimos</span></div>
+    <div class="fill-line">5. Mañana ella _____ a la escuela temprano. <input type="text" id="e1_5"> <span class="badge badge-azul">llegará/irá</span></div>
+
+    <div class="divider"></div>
+    <div class="instruccion">📌 Identifica el verbo en cada oración y escríbelo:</div>
+    <div class="fill-line">6. "La maestra explica la lección." → Verbo: <input type="text" id="e1_6"></div>
+    <div class="fill-line">7. "Los pájaros cantaron al amanecer." → Verbo: <input type="text" id="e1_7"></div>
+    <div class="fill-line">8. "Mi abuela cocinará tamales." → Verbo: <input type="text" id="e1_8"></div>
+
+    <button class="check-btn" onclick="checkE1()">✔ Verificar respuestas</button>
+    <div class="feedback" id="fb_e1"></div>
+  </div>
+
+  <!-- EJ 2: ADVERBIO -->
+  <div class="exercise-card">
+    <div class="exercise-title ex-verde">📍 Ejercicio 2 — El Adverbio</div>
+    <div class="instruccion">📌 Clasifica estos adverbios según su tipo:</div>
+
+    <div class="match-grid">
+      <div class="match-item">🗓️ <strong>ayer</strong><select id="adv1"><option value="">-- elige --</option><option>Lugar</option><option>Tiempo</option><option>Modo</option><option>Cantidad</option></select></div>
+      <div class="match-item">📍 <strong>aquí</strong><select id="adv2"><option value="">-- elige --</option><option>Lugar</option><option>Tiempo</option><option>Modo</option><option>Cantidad</option></select></div>
+      <div class="match-item">⚡ <strong>rápido</strong><select id="adv3"><option value="">-- elige --</option><option>Lugar</option><option>Tiempo</option><option>Modo</option><option>Cantidad</option></select></div>
+      <div class="match-item">🔢 <strong>mucho</strong><select id="adv4"><option value="">-- elige --</option><option>Lugar</option><option>Tiempo</option><option>Modo</option><option>Cantidad</option></select></div>
+      <div class="match-item">🌅 <strong>mañana</strong><select id="adv5"><option value="">-- elige --</option><option>Lugar</option><option>Tiempo</option><option>Modo</option><option>Cantidad</option></select></div>
+      <div class="match-item">🤏 <strong>poco</strong><select id="adv6"><option value="">-- elige --</option><option>Lugar</option><option>Tiempo</option><option>Modo</option><option>Cantidad</option></select></div>
+      <div class="match-item">🏔️ <strong>lejos</strong><select id="adv7"><option value="">-- elige --</option><option>Lugar</option><option>Tiempo</option><option>Modo</option><option>Cantidad</option></select></div>
+      <div class="match-item">🐢 <strong>despacio</strong><select id="adv8"><option value="">-- elige --</option><option>Lugar</option><option>Tiempo</option><option>Modo</option><option>Cantidad</option></select></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="instruccion">📌 Subraya (escribe) el adverbio de cada oración:</div>
+    <div class="fill-line">Juan habla muy <em>claro</em>. ¿Tipo? <input type="text" id="adv_t1" placeholder="Modo/Lugar/..."></div>
+    <div class="fill-line">Ella vive <em>lejos</em> de aquí. ¿Tipo? <input type="text" id="adv_t2" placeholder="Modo/Lugar/..."></div>
+    <div class="fill-line">Siempre llego temprano. ¿Cuál es el adverbio? <input type="text" id="adv_t3" placeholder="adverbio..."></div>
+
+    <button class="check-btn" onclick="checkE2()">✔ Verificar respuestas</button>
+    <div class="feedback" id="fb_e2"></div>
+  </div>
+
+  <!-- EJ 3: TIPOS DE ORACIONES -->
+  <div class="exercise-card">
+    <div class="exercise-title ex-rosa">💬 Ejercicio 3 — Tipos de Oraciones</div>
+    <div class="instruccion">📌 Identifica el tipo de cada oración:</div>
+
+    <div class="fill-line">1. ¿Dónde está mi mochila? → <input type="text" id="or1"></div>
+    <div class="fill-line">2. ¡Qué deliciosa está la comida! → <input type="text" id="or2"></div>
+    <div class="fill-line">3. Haz tu tarea ahora mismo. → <input type="text" id="or3"></div>
+    <div class="fill-line">4. El sol sale cada mañana. → <input type="text" id="or4"></div>
+    <div class="fill-line">5. Ojalá mañana no llueva. → <input type="text" id="or5"></div>
+    <div class="fill-line">6. Quizás venga mi prima. → <input type="text" id="or6"></div>
+
+    <div class="divider"></div>
+    <div class="instruccion">📌 Escribe un ejemplo de cada tipo:</div>
+    <div class="fill-line">Imperativa: <input type="text" id="or7" style="width:280px"></div>
+    <div class="fill-line">Exclamativa: <input type="text" id="or8" style="width:280px"></div>
+
+    <button class="check-btn" onclick="checkE3()">✔ Verificar respuestas</button>
+    <div class="feedback" id="fb_e3"></div>
+  </div>
+
+  <!-- EJ 4: SUJETO Y PREDICADO -->
+  <div class="exercise-card">
+    <div class="exercise-title ex-amarillo">⚖️ Ejercicio 4 — Sujeto y Predicado</div>
+    <div class="instruccion">📌 Escribe el SUJETO de cada oración:</div>
+
+    <div class="fill-line">1. "Los perros del vecino ladran de noche." → Sujeto: <input type="text" id="sp1" style="width:200px"></div>
+    <div class="fill-line">2. "Mi maestra favorita enseña español." → Sujeto: <input type="text" id="sp2" style="width:200px"></div>
+    <div class="fill-line">3. "Armando y sus amigos juegan fútbol." → Sujeto: <input type="text" id="sp3" style="width:220px"></div>
+
+    <div class="divider"></div>
+    <div class="instruccion">📌 Escribe el PREDICADO de cada oración:</div>
+    <div class="fill-line">4. "El gato duerme en el sofá." → Predicado: <input type="text" id="sp4" style="width:220px"></div>
+    <div class="fill-line">5. "Las flores del jardín huelen muy bien." → Predicado: <input type="text" id="sp5" style="width:220px"></div>
+
+    <div class="divider"></div>
+    <div class="instruccion">📌 Separa con "/" el sujeto y predicado:</div>
+    <div class="fill-line" style="flex-direction:column;align-items:flex-start;">
+      <em>"La pequeña niña de vestido rojo cantó en el festival."</em><br>
+      <input type="text" id="sp6" style="width:400px;margin-top:6px" placeholder="Escribe sujeto / predicado aquí...">
+    </div>
+
+    <button class="check-btn" onclick="checkE4()">✔ Verificar respuestas</button>
+    <div class="feedback" id="fb_e4"></div>
+  </div>
+
+  <!-- EJ 5: ORTOGRAFÍA -->
+  <div class="exercise-card">
+    <div class="exercise-title ex-naranja">✍️ Ejercicio 5 — Ortografía: B/V y Y/LL</div>
+    <div class="instruccion">📌 Completa con B o V:</div>
+
+    <div class="fill-line">1. Ayer yo juga___a en el parque. <input type="text" id="bv1" style="width:60px"></div>
+    <div class="fill-line">2. Mi a___uela cocina muy bien. <input type="text" id="bv2" style="width:60px"></div>
+    <div class="fill-line">3. Necesito escri___ir una carta. <input type="text" id="bv3" style="width:60px"></div>
+    <div class="fill-line">4. El libro nue___o es muy interesante. <input type="text" id="bv4" style="width:60px"></div>
+    <div class="fill-line">5. Tam___ién me gusta el fútbol. <input type="text" id="bv5" style="width:60px"></div>
+
+    <div class="divider"></div>
+    <div class="instruccion">📌 Completa con Y o LL:</div>
+    <div class="fill-line">6. La ___uvia cayó toda la noche. <input type="text" id="yl1" style="width:60px"></div>
+    <div class="fill-line">7. El re___ tiene una corona dorada. <input type="text" id="yl2" style="width:60px"></div>
+    <div class="fill-line">8. La si___a está rota. <input type="text" id="yl3" style="width:60px"></div>
+    <div class="fill-line">9. Vo___ a la tienda con mi mamá. <input type="text" id="yl4" style="width:60px"></div>
+    <div class="fill-line">10. La ___ema del huevo es amarilla. <input type="text" id="yl5" style="width:60px"></div>
+
+    <div class="divider"></div>
+    <div class="instruccion">📌 Completa con R o RR:</div>
+    <div class="fill-line">11. El pe___o de mi vecino es grande. <input type="text" id="rr1" style="width:60px"></div>
+    <div class="fill-line">12. El a___oz está muy rico. <input type="text" id="rr2" style="width:60px"></div>
+    <div class="fill-line">13. Hay una ___osa en el jardín. <input type="text" id="rr3" style="width:60px"></div>
+
+    <button class="check-btn" onclick="checkE5()">✔ Verificar respuestas</button>
+    <div class="feedback" id="fb_e5"></div>
+  </div>
+
+  <!-- EJ 6: DIPTONGOS E HIATOS -->
+  <div class="exercise-card">
+    <div class="exercise-title ex-morado">🔡 Ejercicio 6 — Diptongos e Hiatos</div>
+    <div class="instruccion">📌 Clasifica cada palabra: escribe D (diptongo) o H (hiato):</div>
+
+    <div class="match-grid">
+      <div class="match-item">🔤 <strong>aire</strong><select id="dh1"><option value="">--</option><option>D - Diptongo</option><option>H - Hiato</option></select></div>
+      <div class="match-item">🔤 <strong>país</strong><select id="dh2"><option value="">--</option><option>D - Diptongo</option><option>H - Hiato</option></select></div>
+      <div class="match-item">🔤 <strong>bueno</strong><select id="dh3"><option value="">--</option><option>D - Diptongo</option><option>H - Hiato</option></select></div>
+      <div class="match-item">🔤 <strong>maestro</strong><select id="dh4"><option value="">--</option><option>D - Diptongo</option><option>H - Hiato</option></select></div>
+      <div class="match-item">🔤 <strong>reina</strong><select id="dh5"><option value="">--</option><option>D - Diptongo</option><option>H - Hiato</option></select></div>
+      <div class="match-item">🔤 <strong>baúl</strong><select id="dh6"><option value="">--</option><option>D - Diptongo</option><option>H - Hiato</option></select></div>
+    </div>
+
+    <button class="check-btn" onclick="checkE6()">✔ Verificar respuestas</button>
+    <div class="feedback" id="fb_e6"></div>
+  </div>
+
+</div><!-- /ejercicios -->
+
+
+<!-- ============================================================ -->
+<!-- ETAPA 3: EXAMEN -->
+<!-- ============================================================ -->
+<div class="section" id="examen">
+  <br>
+  <div class="exam-header">
+    <div style="font-size:2.5rem;margin-bottom:8px;">📝</div>
+    <h2>Examen Final — Spanish</h2>
+    <p>Armando · 3er Grado Primaria · 30 preguntas · Responde con calma 🌟</p>
+  </div>
+
+  <!-- SECCIÓN: GRAMÁTICA -->
+  <div style="font-family:'Fredoka One',cursive;font-size:1.2rem;color:#2563eb;margin:20px 0 12px;">🔤 Sección 1: El Verbo</div>
+
+  <!-- P1 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 1 de 30</span>
+    <div class="pregunta-texto">¿Cuál de estas palabras es un VERBO?</div>
+    <div class="opcion-exam"><input type="radio" name="p1" value="a"> Mesa</div>
+    <div class="opcion-exam"><input type="radio" name="p1" value="b"> Correr</div>
+    <div class="opcion-exam"><input type="radio" name="p1" value="c"> Azul</div>
+    <div class="opcion-exam"><input type="radio" name="p1" value="d"> Rápido</div>
+  </div>
+
+  <!-- P2 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 2 de 30</span>
+    <div class="pregunta-texto">En la oración "Los niños <u>cantaron</u> en el festival", ¿en qué tiempo está el verbo?</div>
+    <div class="opcion-exam"><input type="radio" name="p2" value="a"> Presente</div>
+    <div class="opcion-exam"><input type="radio" name="p2" value="b"> Futuro</div>
+    <div class="opcion-exam"><input type="radio" name="p2" value="c"> Pasado</div>
+    <div class="opcion-exam"><input type="radio" name="p2" value="d"> No tiene tiempo</div>
+  </div>
+
+  <!-- P3 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 3 de 30</span>
+    <div class="pregunta-texto">¿Cuál es el verbo en: "Mañana <u>estudiaré</u> para el examen"?</div>
+    <div class="opcion-exam"><input type="radio" name="p3" value="a"> Mañana</div>
+    <div class="opcion-exam"><input type="radio" name="p3" value="b"> Examen</div>
+    <div class="opcion-exam"><input type="radio" name="p3" value="c"> Estudiaré</div>
+    <div class="opcion-exam"><input type="radio" name="p3" value="d"> Para</div>
+  </div>
+
+  <!-- P4 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 4 de 30</span>
+    <div class="pregunta-texto">Los infinitivos (forma base del verbo) terminan en:</div>
+    <div class="opcion-exam"><input type="radio" name="p4" value="a"> -ado, -ido, -undo</div>
+    <div class="opcion-exam"><input type="radio" name="p4" value="b"> -ar, -er, -ir</div>
+    <div class="opcion-exam"><input type="radio" name="p4" value="c"> -mente, -ción, -dad</div>
+    <div class="opcion-exam"><input type="radio" name="p4" value="d"> -oso, -esa, -ura</div>
+  </div>
+
+  <!-- P5 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 5 de 30</span>
+    <div class="pregunta-texto">¿Qué pregunta debes hacerte para encontrar el verbo de una oración?</div>
+    <div class="opcion-exam"><input type="radio" name="p5" value="a"> ¿Cómo es?</div>
+    <div class="opcion-exam"><input type="radio" name="p5" value="b"> ¿Qué hace? / ¿Qué pasa?</div>
+    <div class="opcion-exam"><input type="radio" name="p5" value="c"> ¿Cuántos hay?</div>
+    <div class="opcion-exam"><input type="radio" name="p5" value="d"> ¿De quién es?</div>
+  </div>
+
+  <!-- SECCIÓN: ADVERBIO -->
+  <div style="font-family:'Fredoka One',cursive;font-size:1.2rem;color:#16a34a;margin:20px 0 12px;">📍 Sección 2: El Adverbio</div>
+
+  <!-- P6 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 6 de 30</span>
+    <div class="pregunta-texto">En "Juan corre <u>rápido</u>", el adverbio es de tipo:</div>
+    <div class="opcion-exam"><input type="radio" name="p6" value="a"> Lugar</div>
+    <div class="opcion-exam"><input type="radio" name="p6" value="b"> Tiempo</div>
+    <div class="opcion-exam"><input type="radio" name="p6" value="c"> Modo</div>
+    <div class="opcion-exam"><input type="radio" name="p6" value="d"> Cantidad</div>
+  </div>
+
+  <!-- P7 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 7 de 30</span>
+    <div class="pregunta-texto">¿Cuál de estas palabras es un adverbio de TIEMPO?</div>
+    <div class="opcion-exam"><input type="radio" name="p7" value="a"> Lejos</div>
+    <div class="opcion-exam"><input type="radio" name="p7" value="b"> Bien</div>
+    <div class="opcion-exam"><input type="radio" name="p7" value="c"> Mañana</div>
+    <div class="opcion-exam"><input type="radio" name="p7" value="d"> Mucho</div>
+  </div>
+
+  <!-- P8 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 8 de 30</span>
+    <div class="pregunta-texto">En "Ella vive <u>aquí</u>", ¿qué tipo de adverbio es "aquí"?</div>
+    <div class="opcion-exam"><input type="radio" name="p8" value="a"> Tiempo</div>
+    <div class="opcion-exam"><input type="radio" name="p8" value="b"> Modo</div>
+    <div class="opcion-exam"><input type="radio" name="p8" value="c"> Lugar</div>
+    <div class="opcion-exam"><input type="radio" name="p8" value="d"> Cantidad</div>
+  </div>
+
+  <!-- P9 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 9 de 30</span>
+    <div class="pregunta-texto">Muchos adverbios de modo terminan en:</div>
+    <div class="opcion-exam"><input type="radio" name="p9" value="a"> -ción</div>
+    <div class="opcion-exam"><input type="radio" name="p9" value="b"> -mente</div>
+    <div class="opcion-exam"><input type="radio" name="p9" value="c"> -ar</div>
+    <div class="opcion-exam"><input type="radio" name="p9" value="d"> -ado</div>
+  </div>
+
+  <!-- SECCIÓN: TIPOS ORACIONES -->
+  <div style="font-family:'Fredoka One',cursive;font-size:1.2rem;color:#db2777;margin:20px 0 12px;">💬 Sección 3: Tipos de Oraciones</div>
+
+  <!-- P10 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 10 de 30</span>
+    <div class="pregunta-texto">"¡Qué bonita está la tarde!" es una oración:</div>
+    <div class="opcion-exam"><input type="radio" name="p10" value="a"> Interrogativa</div>
+    <div class="opcion-exam"><input type="radio" name="p10" value="b"> Imperativa</div>
+    <div class="opcion-exam"><input type="radio" name="p10" value="c"> Exclamativa</div>
+    <div class="opcion-exam"><input type="radio" name="p10" value="d"> Dubitativa</div>
+  </div>
+
+  <!-- P11 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 11 de 30</span>
+    <div class="pregunta-texto">"Ojalá mañana no llueva." es una oración:</div>
+    <div class="opcion-exam"><input type="radio" name="p11" value="a"> Enunciativa</div>
+    <div class="opcion-exam"><input type="radio" name="p11" value="b"> Desiderativa</div>
+    <div class="opcion-exam"><input type="radio" name="p11" value="c"> Interrogativa</div>
+    <div class="opcion-exam"><input type="radio" name="p11" value="d"> Imperativa</div>
+  </div>
+
+  <!-- P12 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 12 de 30</span>
+    <div class="pregunta-texto">"Lava tus manos antes de comer." ¿Qué tipo de oración es?</div>
+    <div class="opcion-exam"><input type="radio" name="p12" value="a"> Exclamativa</div>
+    <div class="opcion-exam"><input type="radio" name="p12" value="b"> Desiderativa</div>
+    <div class="opcion-exam"><input type="radio" name="p12" value="c"> Imperativa</div>
+    <div class="opcion-exam"><input type="radio" name="p12" value="d"> Enunciativa</div>
+  </div>
+
+  <!-- P13 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 13 de 30</span>
+    <div class="pregunta-texto">"Quizás llegue mi tío este fin de semana." es una oración:</div>
+    <div class="opcion-exam"><input type="radio" name="p13" value="a"> Dubitativa</div>
+    <div class="opcion-exam"><input type="radio" name="p13" value="b"> Imperativa</div>
+    <div class="opcion-exam"><input type="radio" name="p13" value="c"> Interrogativa</div>
+    <div class="opcion-exam"><input type="radio" name="p13" value="d"> Exclamativa</div>
+  </div>
+
+  <!-- SECCIÓN: SUJETO Y PREDICADO -->
+  <div style="font-family:'Fredoka One',cursive;font-size:1.2rem;color:#ca8a04;margin:20px 0 12px;">⚖️ Sección 4: Sujeto y Predicado</div>
+
+  <!-- P14 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 14 de 30</span>
+    <div class="pregunta-texto">En "Los estudiantes de tercero ganaron el concurso", ¿cuál es el sujeto?</div>
+    <div class="opcion-exam"><input type="radio" name="p14" value="a"> ganaron el concurso</div>
+    <div class="opcion-exam"><input type="radio" name="p14" value="b"> Los estudiantes de tercero</div>
+    <div class="opcion-exam"><input type="radio" name="p14" value="c"> el concurso</div>
+    <div class="opcion-exam"><input type="radio" name="p14" value="d"> de tercero</div>
+  </div>
+
+  <!-- P15 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 15 de 30</span>
+    <div class="pregunta-texto">¿Qué pregunta nos ayuda a encontrar el SUJETO de una oración?</div>
+    <div class="opcion-exam"><input type="radio" name="p15" value="a"> ¿Cómo? / ¿De qué manera?</div>
+    <div class="opcion-exam"><input type="radio" name="p15" value="b"> ¿Dónde? / ¿Cuándo?</div>
+    <div class="opcion-exam"><input type="radio" name="p15" value="c"> ¿Quién? / ¿Quiénes?</div>
+    <div class="opcion-exam"><input type="radio" name="p15" value="d"> ¿Cuánto? / ¿Cuántos?</div>
+  </div>
+
+  <!-- P16 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 16 de 30</span>
+    <div class="pregunta-texto">En "Mi mamá cocina delicioso", ¿cuál es el predicado?</div>
+    <div class="opcion-exam"><input type="radio" name="p16" value="a"> Mi mamá</div>
+    <div class="opcion-exam"><input type="radio" name="p16" value="b"> delicioso</div>
+    <div class="opcion-exam"><input type="radio" name="p16" value="c"> cocina delicioso</div>
+    <div class="opcion-exam"><input type="radio" name="p16" value="d"> Mi</div>
+  </div>
+
+  <!-- P17 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 17 de 30</span>
+    <div class="pregunta-texto">¿Qué contiene siempre el predicado?</div>
+    <div class="opcion-exam"><input type="radio" name="p17" value="a"> Un adjetivo</div>
+    <div class="opcion-exam"><input type="radio" name="p17" value="b"> Un verbo</div>
+    <div class="opcion-exam"><input type="radio" name="p17" value="c"> Un adverbio</div>
+    <div class="opcion-exam"><input type="radio" name="p17" value="d"> Un artículo</div>
+  </div>
+
+  <!-- SECCIÓN: ORTOGRAFÍA -->
+  <div style="font-family:'Fredoka One',cursive;font-size:1.2rem;color:#ea580c;margin:20px 0 12px;">✍️ Sección 5: Ortografía</div>
+
+  <!-- P18 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 18 de 30</span>
+    <div class="pregunta-texto">"País" es un ejemplo de:</div>
+    <div class="opcion-exam"><input type="radio" name="p18" value="a"> Diptongo</div>
+    <div class="opcion-exam"><input type="radio" name="p18" value="b"> Hiato</div>
+    <div class="opcion-exam"><input type="radio" name="p18" value="c"> Ninguno de los dos</div>
+    <div class="opcion-exam"><input type="radio" name="p18" value="d"> Las dos opciones</div>
+  </div>
+
+  <!-- P19 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 19 de 30</span>
+    <div class="pregunta-texto">En un diptongo, las dos vocales se pronuncian en:</div>
+    <div class="opcion-exam"><input type="radio" name="p19" value="a"> Dos sílabas separadas</div>
+    <div class="opcion-exam"><input type="radio" name="p19" value="b"> Una sola sílaba</div>
+    <div class="opcion-exam"><input type="radio" name="p19" value="c"> Tres sílabas</div>
+    <div class="opcion-exam"><input type="radio" name="p19" value="d"> Siempre llevan tilde</div>
+  </div>
+
+  <!-- P20 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 20 de 30</span>
+    <div class="pregunta-texto">¿En cuál de estas palabras se debe usar RR?</div>
+    <div class="opcion-exam"><input type="radio" name="p20" value="a"> _osa (inicio de palabra)</div>
+    <div class="opcion-exam"><input type="radio" name="p20" value="b"> pe__o (entre vocales)</div>
+    <div class="opcion-exam"><input type="radio" name="p20" value="c"> En_ique (después de n)</div>
+    <div class="opcion-exam"><input type="radio" name="p20" value="d"> al_ededor (después de l)</div>
+  </div>
+
+  <!-- P21 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 21 de 30</span>
+    <div class="pregunta-texto">¿Cuál palabra se escribe con B?</div>
+    <div class="opcion-exam"><input type="radio" name="p21" value="a"> Nue___o (nuevo)</div>
+    <div class="opcion-exam"><input type="radio" name="p21" value="b"> Escri___ir (escribir)</div>
+    <div class="opcion-exam"><input type="radio" name="p21" value="c"> Acti___o (activo)</div>
+    <div class="opcion-exam"><input type="radio" name="p21" value="d"> Ad___ertir (advertir)</div>
+  </div>
+
+  <!-- P22 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 22 de 30</span>
+    <div class="pregunta-texto">La palabra "rey" termina con Y porque:</div>
+    <div class="opcion-exam"><input type="radio" name="p22" value="a"> Es un verbo</div>
+    <div class="opcion-exam"><input type="radio" name="p22" value="b"> Al final de la palabra suena como vocal</div>
+    <div class="opcion-exam"><input type="radio" name="p22" value="c"> Tiene LL antes</div>
+    <div class="opcion-exam"><input type="radio" name="p22" value="d"> Todas las palabras cortas usan Y</div>
+  </div>
+
+  <!-- P23 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 23 de 30</span>
+    <div class="pregunta-texto">¿Cuál de estas palabras se escribe con LL?</div>
+    <div class="opcion-exam"><input type="radio" name="p23" value="a"> Ho___ (hoy)</div>
+    <div class="opcion-exam"><input type="radio" name="p23" value="b"> _ema (yema)</div>
+    <div class="opcion-exam"><input type="radio" name="p23" value="c"> Si___a (silla)</div>
+    <div class="opcion-exam"><input type="radio" name="p23" value="d"> Vo___ (voy)</div>
+  </div>
+
+  <!-- SECCIÓN: NOTICIA Y LÉXICO -->
+  <div style="font-family:'Fredoka One',cursive;font-size:1.2rem;color:#7c3aed;margin:20px 0 12px;">📰 Sección 6: Textos Informativos y Expresión Escrita</div>
+
+  <!-- P24 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 24 de 30</span>
+    <div class="pregunta-texto">¿Cuántas preguntas básicas debe responder una noticia?</div>
+    <div class="opcion-exam"><input type="radio" name="p24" value="a"> 3</div>
+    <div class="opcion-exam"><input type="radio" name="p24" value="b"> 5</div>
+    <div class="opcion-exam"><input type="radio" name="p24" value="c"> 6</div>
+    <div class="opcion-exam"><input type="radio" name="p24" value="d"> 4</div>
+  </div>
+
+  <!-- P25 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 25 de 30</span>
+    <div class="pregunta-texto">¿Cuál es la parte de la noticia que resume lo más importante?</div>
+    <div class="opcion-exam"><input type="radio" name="p25" value="a"> El cuerpo</div>
+    <div class="opcion-exam"><input type="radio" name="p25" value="b"> La fuente</div>
+    <div class="opcion-exam"><input type="radio" name="p25" value="c"> El titular</div>
+    <div class="opcion-exam"><input type="radio" name="p25" value="d"> La entrada (lead)</div>
+  </div>
+
+  <!-- P26 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 26 de 30</span>
+    <div class="pregunta-texto">La precisión léxica consiste en:</div>
+    <div class="opcion-exam"><input type="radio" name="p26" value="a"> Escribir muchas palabras</div>
+    <div class="opcion-exam"><input type="radio" name="p26" value="b"> Usar la palabra exacta y más apropiada</div>
+    <div class="opcion-exam"><input type="radio" name="p26" value="c"> Repetir las palabras varias veces</div>
+    <div class="opcion-exam"><input type="radio" name="p26" value="d"> Escribir sin errores de ortografía</div>
+  </div>
+
+  <!-- P27 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 27 de 30</span>
+    <div class="pregunta-texto">Un caligrama es:</div>
+    <div class="opcion-exam"><input type="radio" name="p27" value="a"> Una adivinanza en rima</div>
+    <div class="opcion-exam"><input type="radio" name="p27" value="b"> Un texto cuyas palabras forman visualmente una figura</div>
+    <div class="opcion-exam"><input type="radio" name="p27" value="c"> Un tipo de noticia</div>
+    <div class="opcion-exam"><input type="radio" name="p27" value="d"> Un jeroglífico en forma de pregunta</div>
+  </div>
+
+  <!-- P28 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 28 de 30</span>
+    <div class="pregunta-texto">Una anécdota se narra principalmente en:</div>
+    <div class="opcion-exam"><input type="radio" name="p28" value="a"> Segunda persona (tú)</div>
+    <div class="opcion-exam"><input type="radio" name="p28" value="b"> Primera o tercera persona</div>
+    <div class="opcion-exam"><input type="radio" name="p28" value="c"> Forma impersonal</div>
+    <div class="opcion-exam"><input type="radio" name="p28" value="d"> Con preguntas y respuestas</div>
+  </div>
+
+  <!-- P29 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 29 de 30</span>
+    <div class="pregunta-texto">¿Cuál de estas es la mejor sustitución de precisión léxica?</div>
+    <div class="opcion-exam"><input type="radio" name="p29" value="a">"El animal ese" → "El ser vivo"</div>
+    <div class="opcion-exam"><input type="radio" name="p29" value="b">"La cosa que vuela" → "El avión"</div>
+    <div class="opcion-exam"><input type="radio" name="p29" value="c">"El objeto" → "La cosita"</div>
+    <div class="opcion-exam"><input type="radio" name="p29" value="d">"Ese lugar" → "Ese sitio"</div>
+  </div>
+
+  <!-- P30 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 30 de 30</span>
+    <div class="pregunta-texto">Una adivinanza describe algo SIN:</div>
+    <div class="opcion-exam"><input type="radio" name="p30" value="a"> Usar rima</div>
+    <div class="opcion-exam"><input type="radio" name="p30" value="b"> Nombrarlo directamente</div>
+    <div class="opcion-exam"><input type="radio" name="p30" value="c"> Mencionar características</div>
+    <div class="opcion-exam"><input type="radio" name="p30" value="d"> Ser divertida</div>
+  </div>
+
+  <!-- SECCIÓN: PREGUNTAS ABIERTAS -->
+  <div style="font-family:'Fredoka One',cursive;font-size:1.2rem;color:#16a34a;margin:28px 0 12px;">✍️ Sección 7: Completa y escribe tú mismo (10 puntos)</div>
+  <div style="background:#dcfce7;border-radius:12px;padding:12px 16px;margin-bottom:18px;font-size:.93rem;font-weight:700;color:#15803d;">
+    📌 En estas preguntas debes escribir tu propia respuesta. ¡No hay opciones para elegir!
+  </div>
+
+  <!-- PA1 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 31 de 40</span>
+    <div class="pregunta-texto">🏃 Escribe el verbo correcto para completar la oración:<br><em>"Todos los días Armando ________ su cuaderno antes de dormir."</em></div>
+    <div style="margin-top:10px;">
+      <input type="text" id="pa1" class="exam-fill" style="width:240px" placeholder="escribe el verbo...">
+    </div>
+    <div style="margin-top:8px;font-size:.85rem;color:#64748b;">💡 Pista: piensa en una acción que se hace con un cuaderno.</div>
+  </div>
+
+  <!-- PA2 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 32 de 40</span>
+    <div class="pregunta-texto">🏃 Cambia el verbo al tiempo que se pide:<br><em>"Ella <u>come</u> frutas."</em> → Escríbelo en tiempo PASADO:</div>
+    <div style="margin-top:10px;">
+      <input type="text" id="pa2" class="exam-fill" style="width:300px" placeholder="Ella ________ frutas.">
+    </div>
+  </div>
+
+  <!-- PA3 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 33 de 40</span>
+    <div class="pregunta-texto">🏃 Cambia el verbo al tiempo FUTURO:<br><em>"Los niños <u>jugaron</u> fútbol."</em></div>
+    <div style="margin-top:10px;">
+      <input type="text" id="pa3" class="exam-fill" style="width:300px" placeholder="Los niños ________ fútbol.">
+    </div>
+  </div>
+
+  <!-- PA4 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 34 de 40</span>
+    <div class="pregunta-texto">📍 Escribe un adverbio de <strong>LUGAR</strong> para completar:<br><em>"Mi mochila está ________."</em></div>
+    <div style="margin-top:10px;">
+      <input type="text" id="pa4" class="exam-fill" style="width:200px" placeholder="adverbio de lugar...">
+    </div>
+    <div style="margin-top:6px;font-size:.85rem;color:#64748b;">💡 Pistas posibles: aquí, allá, arriba, abajo, cerca, lejos…</div>
+  </div>
+
+  <!-- PA5 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 35 de 40</span>
+    <div class="pregunta-texto">📍 Escribe un adverbio de <strong>MODO</strong> y úsalo en una oración corta completa:</div>
+    <div style="margin-top:10px;">
+      <input type="text" id="pa5" class="exam-fill" style="width:380px" placeholder="Escribe tu oración aquí...">
+    </div>
+    <div style="margin-top:6px;font-size:.85rem;color:#64748b;">💡 Ejemplo de adverbios de modo: bien, mal, rápido, despacio, claramente…</div>
+  </div>
+
+  <!-- PA6 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 36 de 40</span>
+    <div class="pregunta-texto">📍 Lee la oración y escribe el tipo de adverbio subrayado:<br><em>"<u>Siempre</u> llego a tiempo a la escuela."</em><br>El adverbio es: <strong>siempre</strong> → tipo: ________</div>
+    <div style="margin-top:10px;">
+      <input type="text" id="pa6" class="exam-fill" style="width:200px" placeholder="tipo de adverbio...">
+    </div>
+  </div>
+
+  <!-- PA7 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 37 de 40</span>
+    <div class="pregunta-texto">✍️ Escribe una oración usando correctamente la letra <strong>B</strong> y explica por qué se usa B en esa palabra:</div>
+    <div style="margin-top:10px;">
+      <textarea id="pa7" rows="2" style="width:100%;border:2px solid #e2e8f0;border-radius:10px;padding:10px;font-family:'Nunito',sans-serif;font-size:.95rem;resize:none;" placeholder="Mi oración: ...  /  Uso B porque: ..."></textarea>
+    </div>
+  </div>
+
+  <!-- PA8 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 38 de 40</span>
+    <div class="pregunta-texto">✍️ Escribe el sujeto Y el predicado de esta oración:<br><em>"El valiente bombero apagó el incendio rápidamente."</em></div>
+    <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
+      <div>👤 <strong>Sujeto:</strong> <input type="text" id="pa8s" class="exam-fill" style="width:280px" placeholder="¿quién?..."></div>
+      <div>🔄 <strong>Predicado:</strong> <input type="text" id="pa8p" class="exam-fill" style="width:280px" placeholder="¿qué hizo?..."></div>
+    </div>
+  </div>
+
+  <!-- PA9 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 39 de 40</span>
+    <div class="pregunta-texto">✍️ Reemplaza la expresión vaga con una palabra más <strong>precisa</strong> (precisión léxica):<br>
+    <em>"El animal grande hizo un sonido fuerte."</em></div>
+    <div style="margin-top:10px;">
+      <textarea id="pa9" rows="2" style="width:100%;border:2px solid #e2e8f0;border-radius:10px;padding:10px;font-family:'Nunito',sans-serif;font-size:.95rem;resize:none;" placeholder="Reescribe la oración usando palabras exactas..."></textarea>
+    </div>
+    <div style="margin-top:6px;font-size:.85rem;color:#64748b;">💡 Piensa: ¿qué animal? ¿qué sonido específico hace?</div>
+  </div>
+
+  <!-- PA10 -->
+  <div class="pregunta-card">
+    <span class="pregunta-num">Pregunta 40 de 40</span>
+    <div class="pregunta-texto">✍️ Crea UNA oración de cada tipo usando el tema: <em>"La escuela"</em></div>
+    <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
+      <div>❓ <strong>Interrogativa:</strong> <input type="text" id="pa10a" class="exam-fill" style="width:320px" placeholder="¿...?"></div>
+      <div>❗ <strong>Exclamativa:</strong> <input type="text" id="pa10b" class="exam-fill" style="width:320px" placeholder="¡...!"></div>
+      <div>👉 <strong>Imperativa:</strong> <input type="text" id="pa10c" class="exam-fill" style="width:320px" placeholder="Escribe una orden..."></div>
+    </div>
+  </div>
+
+  <!-- PUNTO EXTRA -->
+  <div style="background:linear-gradient(135deg,#fef9c3,#fde68a);border-radius:16px;padding:24px;margin:28px 0;border:3px dashed #ca8a04;text-align:center;">
+    <div style="font-family:'Fredoka One',cursive;font-size:1.5rem;color:#92400e;margin-bottom:8px;">⭐ PUNTO EXTRA — No se califica aquí</div>
+    <div style="font-size:1rem;font-weight:700;color:#78350f;margin-bottom:14px;">
+      Esta actividad la revisará tu maestro/a o papá. ¡No cuenta en la nota de la pantalla!
+    </div>
+    <div style="background:white;border-radius:12px;padding:18px;text-align:left;font-size:.97rem;">
+      <p style="font-weight:800;color:#92400e;margin-bottom:10px;">📝 Actividad:</p>
+      <p style="margin-bottom:10px;">En una <strong>hoja en blanco</strong>, escribe una <strong>anécdota propia</strong>. Puede ser algo gracioso, curioso o especial que te haya pasado a ti o a alguien de tu familia.</p>
+      <p style="font-weight:700;margin-bottom:8px;">Tu anécdota debe tener las 3 partes:</p>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="background:#dcfce7;border-radius:8px;padding:8px 14px;">🟢 <strong>Inicio:</strong> ¿Cuándo y dónde pasó? ¿Quién estaba?</div>
+        <div style="background:#fef9c3;border-radius:8px;padding:8px 14px;">🟡 <strong>Desarrollo:</strong> ¿Qué ocurrió exactamente?</div>
+        <div style="background:#fee2e2;border-radius:8px;padding:8px 14px;">🔴 <strong>Desenlace:</strong> ¿Cómo terminó? ¿Cuál fue la parte graciosa o sorpresiva?</div>
+      </div>
+      <p style="margin-top:12px;font-size:.88rem;color:#64748b;">📌 Mínimo 5 oraciones · Primera persona (yo) · Sin borrones · Letra clara</p>
+    </div>
+  </div>
+
+  <!-- BOTÓN CALIFICAR -->
+  <button class="calificar-btn" onclick="calificar()">🎓 ¡Calificar mi examen!</button>
+
+  <!-- RESULTADO -->
+  <div class="resultado-box" id="resultado">
+    <div class="estrellas" id="estrellas"></div>
+    <div class="nota-grande" id="nota_grande"></div>
+    <div class="nota-label" id="nota_label"></div>
+    <div class="mensaje-final" id="mensaje_final"></div>
+    <div style="margin-top:20px;font-size:.95rem;color:#64748b;" id="detalle_nota"></div>
+    <button class="check-btn" style="margin-top:20px" onclick="verRespuestas()">👀 Ver respuestas correctas</button>
+  </div>
+
+</div><!-- /examen -->
+
+
+<script>
+  /* ============== TABS ============== */
+  function showTab(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  /* ============== EJERCICIOS ============== */
+  function showFeedback(id, ok, msg) {
+    const el = document.getElementById(id);
+    el.className = 'feedback show ' + (ok ? 'ok' : 'err');
+    el.innerHTML = (ok ? '✅ ' : '❌ ') + msg;
+  }
+
+  function checkE1() {
+    const ans6 = document.getElementById('e1_6').value.trim().toLowerCase();
+    const ans7 = document.getElementById('e1_7').value.trim().toLowerCase();
+    const ans8 = document.getElementById('e1_8').value.trim().toLowerCase();
+    let ok = ans6.includes('explic') && ans7.includes('cant') && ans8.includes('cocinar');
+    showFeedback('fb_e1', ok,
+      ok ? '¡Excelente! Identificaste los verbos correctamente.' :
+      'Revisa: 1.juegan/corren 2.hace 3.ladra 4.vimos 5.llegará | 6.explica 7.cantaron 8.cocinará');
+  }
+
+  function checkE2() {
+    const correct = {adv1:'Tiempo',adv2:'Lugar',adv3:'Modo',adv4:'Cantidad',
+                     adv5:'Tiempo',adv6:'Cantidad',adv7:'Lugar',adv8:'Modo'};
+    let wrong=[];
+    for(let k in correct){
+      if(document.getElementById(k).value !== correct[k]) wrong.push(k);
+    }
+    const t1 = document.getElementById('adv_t1').value.trim().toLowerCase();
+    const t2 = document.getElementById('adv_t2').value.trim().toLowerCase();
+    const t3 = document.getElementById('adv_t3').value.trim().toLowerCase();
+    let extra = t1.includes('modo') && t2.includes('lugar') && (t3.includes('siempre') || t3.includes('temprano'));
+    let ok = wrong.length === 0 && extra;
+    showFeedback('fb_e2', ok,
+      ok ? '¡Perfecto! Clasificaste todos los adverbios correctamente.' :
+      'Respuestas: ayer=Tiempo, aquí=Lugar, rápido=Modo, mucho=Cantidad, mañana=Tiempo, poco=Cantidad, lejos=Lugar, despacio=Modo | claro=Modo, lejos=Lugar, siempre/temprano=Tiempo');
+  }
+
+  function checkE3() {
+    const correct = ['interrogativa','exclamativa','imperativa','enunciativa','desiderativa','dubitativa'];
+    const ids = ['or1','or2','or3','or4','or5','or6'];
+    let wrong=[];
+    ids.forEach((id,i)=>{
+      if(!document.getElementById(id).value.trim().toLowerCase().includes(correct[i].substring(0,5))) wrong.push(i+1);
+    });
+    let ok = wrong.length === 0;
+    showFeedback('fb_e3', ok,
+      ok ? '¡Excelente! Identificaste todos los tipos correctamente.' :
+      'Respuestas: 1.Interrogativa 2.Exclamativa 3.Imperativa 4.Enunciativa 5.Desiderativa 6.Dubitativa');
+  }
+
+  function checkE4() {
+    const sp1 = document.getElementById('sp1').value.trim().toLowerCase();
+    const sp2 = document.getElementById('sp2').value.trim().toLowerCase();
+    const sp4 = document.getElementById('sp4').value.trim().toLowerCase();
+    let ok = sp1.includes('perro') && sp2.includes('maestra') && sp4.includes('duerme');
+    showFeedback('fb_e4', ok,
+      ok ? '¡Correcto! Identificaste bien el sujeto y el predicado.' :
+      'Sujetos: 1."Los perros del vecino" 2."Mi maestra favorita" 3."Armando y sus amigos" | Predicados: 4."duerme en el sofá" 5."huelen muy bien"');
+  }
+
+  function checkE5() {
+    const answers = {
+      bv1:'b', bv2:'b', bv3:'b', bv4:'v', bv5:'b',
+      yl1:'ll', yl2:'y', yl3:'ll', yl4:'y', yl5:'y',
+      rr1:'rr', rr2:'rr', rr3:'r'
+    };
+    let wrong=[];
+    for(let k in answers){
+      let val = document.getElementById(k).value.trim().toLowerCase();
+      if(val !== answers[k]) wrong.push(k);
+    }
+    let ok = wrong.length === 0;
+    showFeedback('fb_e5', ok,
+      ok ? '¡Perfecto en ortografía! Excelente trabajo, Armando.' :
+      'Respuestas — B/V: jugab(B)a, ab(B)uela, escrib(B)ir, nuev(V)o, tamb(B)ién | Y/LL: LL-uvia, re-Y, si-LL-a, vo-Y, Ye-ma | R/RR: pe-RR-o, a-RR-oz, R-osa');
+  }
+
+  function checkE6() {
+    const correct = {dh1:'D - Diptongo',dh2:'H - Hiato',dh3:'D - Diptongo',
+                     dh4:'H - Hiato',dh5:'D - Diptongo',dh6:'H - Hiato'};
+    let wrong=[];
+    for(let k in correct){
+      if(document.getElementById(k).value !== correct[k]) wrong.push(k);
+    }
+    let ok = wrong.length === 0;
+    showFeedback('fb_e6', ok,
+      ok ? '¡Excelente! Distingues perfectamente diptongos e hiatos.' :
+      'Respuestas: aire=Diptongo, país=Hiato, bueno=Diptongo, maestro=Hiato, reina=Diptongo, baúl=Hiato');
+  }
+
+  /* ============== EXAMEN ============== */
+  const RESPUESTAS = {
+    p1:'b', p2:'c', p3:'c', p4:'b', p5:'b',
+    p6:'c', p7:'c', p8:'c', p9:'b',
+    p10:'c', p11:'b', p12:'c', p13:'a',
+    p14:'b', p15:'c', p16:'c', p17:'b',
+    p18:'b', p19:'b', p20:'b', p21:'b', p22:'b', p23:'c',
+    p24:'c', p25:'d', p26:'b', p27:'b', p28:'b', p29:'b', p30:'b'
+  };
+
+  function calificar() {
+    let correctas = 0;
+    let total = Object.keys(RESPUESTAS).length; // 30 selección múltiple
+
+    for(let p in RESPUESTAS) {
+      const sel = document.querySelector(`input[name="${p}"]:checked`);
+      if(sel && sel.value === RESPUESTAS[p]) correctas++;
+    }
+
+    // Verificar respuestas abiertas básicas con palabras clave
+    const abiertasCheck = [
+      { id:'pa1', keys:['repas','estudi','lee','escrib','revis','orden'] },
+      { id:'pa2', keys:['comió','comio'] },
+      { id:'pa3', keys:['jugar','jugarán','jugaran','van a jugar'] },
+      { id:'pa4', keys:['aquí','allá','aqui','alla','arriba','abajo','cerca','lejos','adentro','afuera'] },
+      { id:'pa6', keys:['tiempo'] },
+      { id:'pa8s', keys:['bombero'] },
+      { id:'pa8p', keys:['apag'] },
+    ];
+
+    let abiertasOk = 0;
+    abiertasCheck.forEach(item => {
+      const el = document.getElementById(item.id);
+      if(!el) return;
+      const val = el.value.trim().toLowerCase();
+      if(item.keys.some(k => val.includes(k))) abiertasOk++;
+    });
+
+    // pa5, pa7, pa9, pa10 se evalúan si tienen contenido mínimo
+    ['pa5','pa7','pa9','pa10a','pa10b','pa10c'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el && el.value.trim().length > 5) abiertasOk++;
+    });
+
+    const totalAbiertas = 13; // 7 + 6
+    const totalReal = total + totalAbiertas; // 30 + 13 puntos abiertas (referencial)
+
+    const pct = Math.round((correctas/total)*100);
+    let nota10 = ((correctas/total)*10).toFixed(1);
+
+    let estrellas, mensaje, emoji;
+    if(pct >= 90)      { estrellas='⭐⭐⭐⭐⭐'; mensaje='¡SOBRESALIENTE! ¡Armando es una estrella! 🌟🎉'; emoji='🏆'; }
+    else if(pct >= 80) { estrellas='⭐⭐⭐⭐'; mensaje='¡MUY BIEN! ¡Casi perfecto, sigue así! 💪'; emoji='🎯'; }
+    else if(pct >= 70) { estrellas='⭐⭐⭐'; mensaje='¡BIEN! Repasa los temas donde te equivocaste. 📚'; emoji='😊'; }
+    else if(pct >= 60) { estrellas='⭐⭐'; mensaje='Puedes mejorar. Estudia más y vuelve a intentarlo. 📖'; emoji='💡'; }
+    else               { estrellas='⭐'; mensaje='Regresa a la Etapa 1 y repasa los conceptos. ¡Tú puedes! 🌱'; emoji='💪'; }
+
+    document.getElementById('estrellas').innerHTML = estrellas;
+    document.getElementById('nota_grande').textContent = nota10;
+    document.getElementById('nota_label').textContent = `${correctas} de ${total} correctas en selección múltiple (${pct}%)`;
+    document.getElementById('mensaje_final').innerHTML = emoji + ' ' + mensaje;
+    document.getElementById('detalle_nota').innerHTML =
+      `<strong>Selección múltiple:</strong> ${correctas} de 30 correctas.<br>
+       <strong>Preguntas abiertas (Sección 7):</strong> respondiste ${abiertasOk} de 10 con contenido. Tu maestro/a o papá las revisará para darte la nota completa.<br>
+       <strong>Punto extra (anécdota):</strong> tu maestro/a lo calificará por separado. ⭐`;
+
+    const box = document.getElementById('resultado');
+    box.classList.add('show');
+    box.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  function verRespuestas() {
+    for(let p in RESPUESTAS) {
+      const correctaVal = RESPUESTAS[p];
+      document.querySelectorAll(`input[name="${p}"]`).forEach(radio => {
+        const parent = radio.closest('.opcion-exam');
+        if(radio.value === correctaVal) {
+          parent.classList.add('correcta');
+          parent.innerHTML = '✅ ' + parent.innerHTML;
+        } else if(radio.checked && radio.value !== correctaVal) {
+          parent.classList.add('incorrecta');
+        }
+      });
+    }
+    document.querySelector('.calificar-btn').style.display = 'none';
+    document.querySelector('[onclick="verRespuestas()"]').textContent = '✅ Respuestas marcadas arriba';
+    document.querySelector('[onclick="verRespuestas()"]').disabled = true;
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+</script>
+
+</body>
+</html>

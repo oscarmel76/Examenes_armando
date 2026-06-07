@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Period 4 Final — Study Guide & Practice Exam</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #1a73e8;
+    --blue-light: #e8f0fe;
+    --green: #1e8c45;
+    --green-light: #e6f4ea;
+    --orange: #e67c00;
+    --orange-light: #fef3e2;
+    --purple: #7b2d8b;
+    --purple-light: #f3e8f8;
+    --red: #c0392b;
+    --red-light: #fdecea;
+    --gray: #5f6368;
+    --bg: #f8f9fa;
+    --shadow: 0 2px 12px rgba(0,0,0,0.10);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nunito', sans-serif; background: var(--bg); color: #202124; padding-bottom: 60px; }
+
+  /* ── MAIN HEADER ── */
+  .main-header {
+    background: linear-gradient(135deg, #1a73e8 0%, #4a1060 100%);
+    color: white;
+    text-align: center;
+    padding: 44px 24px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .main-header::before {
+    content:''; position:absolute; top:-40px; left:-40px;
+    width:200px; height:200px; background:rgba(255,255,255,0.06); border-radius:50%;
+  }
+  .main-header::after {
+    content:''; position:absolute; bottom:-60px; right:-30px;
+    width:250px; height:250px; background:rgba(255,255,255,0.04); border-radius:50%;
+  }
+  .main-header h1 { font-family:'Fredoka One',cursive; font-size:2.3rem; margin-bottom:6px; }
+  .main-header p { font-size:1rem; opacity:.88; font-weight:600; }
+  .badge-row { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:16px; }
+  .badge { background:rgba(255,255,255,0.16); border:1.5px solid rgba(255,255,255,0.32); border-radius:20px; padding:5px 14px; font-size:.82rem; font-weight:700; }
+
+  /* ── MAIN TABS (Study Guide / Exam) ── */
+  .main-tab-bar {
+    display:flex;
+    background:white;
+    border-bottom:3px solid #e0e0e0;
+    position:sticky; top:0; z-index:200;
+    box-shadow:0 2px 8px rgba(0,0,0,0.07);
+  }
+  .main-tab-btn {
+    flex:1; padding:16px 10px;
+    border:none; background:none;
+    font-family:'Fredoka One',cursive;
+    font-size:1.1rem; cursor:pointer;
+    color:var(--gray); transition:all .2s;
+    border-bottom:4px solid transparent;
+    margin-bottom:-3px;
+  }
+  .main-tab-btn:hover { background:var(--blue-light); color:var(--blue); }
+  .main-tab-btn.active { color:var(--blue); border-bottom:4px solid var(--blue); background:var(--blue-light); }
+  .main-tab-btn.exam-active { color:var(--purple); border-bottom:4px solid var(--purple); background:var(--purple-light); }
+
+  /* ── MAIN PAGES ── */
+  .main-page { display:none; }
+  .main-page.active { display:block; }
+
+  /* ══════════════════════════════
+     STUDY GUIDE STYLES
+  ══════════════════════════════ */
+  .sub-tab-bar {
+    display:flex; justify-content:center; gap:6px; flex-wrap:wrap;
+    padding:18px 16px 0; background:white;
+    border-bottom:2px solid #e8e8e8;
+  }
+  .sub-tab-btn {
+    padding:9px 18px; border:none; background:none;
+    border-radius:8px 8px 0 0;
+    font-family:'Nunito',sans-serif; font-weight:800; font-size:.85rem;
+    cursor:pointer; color:var(--gray); transition:all .2s;
+    border-bottom:3px solid transparent; margin-bottom:-2px;
+  }
+  .sub-tab-btn:hover { background:var(--blue-light); color:var(--blue); }
+  .sub-tab-btn.active { color:var(--blue); border-bottom:3px solid var(--blue); background:var(--blue-light); }
+
+  .guide-content { max-width:860px; margin:0 auto; padding:28px 16px; }
+  .guide-section { display:none; }
+  .guide-section.active { display:block; }
+
+  .section-header {
+    border-radius:16px; padding:22px 26px; margin-bottom:24px;
+    display:flex; align-items:center; gap:14px;
+  }
+  .section-icon { font-size:2.3rem; line-height:1; }
+  .section-header h2 { font-family:'Fredoka One',cursive; font-size:1.6rem; line-height:1.2; }
+  .section-header .meta { font-size:.83rem; font-weight:700; opacity:.72; margin-top:3px; }
+  .s1-head { background:var(--blue-light); color:var(--blue); }
+  .s2-head { background:var(--green-light); color:var(--green); }
+  .s3-head { background:var(--orange-light); color:var(--orange); }
+  .s4-head { background:var(--purple-light); color:var(--purple); }
+
+  .card { background:white; border-radius:16px; padding:22px 26px; margin-bottom:18px; box-shadow:var(--shadow); }
+  .card h3 { font-family:'Fredoka One',cursive; font-size:1.2rem; margin-bottom:12px; }
+
+  .summary-text { font-size:.98rem; line-height:1.75; color:#333; }
+  .summary-text strong { color:#1a1a1a; }
+  .key-idea {
+    display:flex; align-items:flex-start; gap:10px;
+    border-left:4px solid; border-radius:0 10px 10px 0;
+    padding:11px 14px; margin-top:14px;
+    font-weight:700; font-size:.92rem;
+  }
+  .ki-blue { background:var(--blue-light); border-color:var(--blue); color:var(--blue); }
+  .ki-green { background:var(--green-light); border-color:var(--green); color:var(--green); }
+  .ki-orange { background:var(--orange-light); border-color:var(--orange); color:var(--orange); }
+  .ki-purple { background:var(--purple-light); border-color:var(--purple); color:var(--purple); }
+
+  .vocab-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; }
+  .vocab-card { border-radius:14px; padding:16px; border:2px solid; }
+  .vocab-word { font-family:'Fredoka One',cursive; font-size:1.25rem; margin-bottom:5px; }
+  .vocab-def { font-size:.86rem; line-height:1.5; margin-bottom:9px; color:#444; }
+  .vocab-example { font-size:.82rem; font-style:italic; padding:7px 10px; border-radius:8px; line-height:1.5; }
+  .vocab-label { font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:1px; margin-bottom:3px; opacity:.6; }
+
+  .vc-blue { border-color:#a8c7fa; background:#f0f6ff; }
+  .vc-blue .vocab-word { color:var(--blue); }
+  .vc-blue .vocab-example { background:var(--blue-light); color:#1557b0; }
+  .vc-green { border-color:#a8d5b5; background:#f0faf3; }
+  .vc-green .vocab-word { color:var(--green); }
+  .vc-green .vocab-example { background:var(--green-light); color:#145c2e; }
+  .vc-orange { border-color:#f9c784; background:#fff8ee; }
+  .vc-orange .vocab-word { color:var(--orange); }
+  .vc-orange .vocab-example { background:var(--orange-light); color:#8a4b00; }
+  .vc-purple { border-color:#d0a8e0; background:#faf0ff; }
+  .vc-purple .vocab-word { color:var(--purple); }
+  .vc-purple .vocab-example { background:var(--purple-light); color:#4a1060; }
+
+  .char-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:12px; margin-bottom:6px; }
+  .char-card { background:var(--purple-light); border-radius:14px; padding:15px; border:2px solid #d0a8e0; }
+  .char-name { font-family:'Fredoka One',cursive; font-size:1rem; color:var(--purple); margin-bottom:5px; }
+  .char-desc { font-size:.86rem; line-height:1.5; color:#444; }
+
+  .chapter-card { background:white; border-radius:14px; padding:18px 22px; margin-bottom:14px; box-shadow:var(--shadow); border-left:5px solid var(--purple); }
+  .chapter-title { font-family:'Fredoka One',cursive; font-size:1.1rem; color:var(--purple); margin-bottom:7px; }
+  .chapter-text { font-size:.93rem; line-height:1.7; color:#333; }
+
+  /* ══════════════════════════════
+     EXAM STYLES
+  ══════════════════════════════ */
+  .exam-header {
+    background: linear-gradient(135deg,#7b2d8b,#4a1060);
+    color:white; text-align:center; padding:28px 24px 22px;
+  }
+  .exam-header h2 { font-family:'Fredoka One',cursive; font-size:1.8rem; margin-bottom:6px; }
+  .exam-header p { font-size:.9rem; opacity:.88; font-weight:600; }
+  .score-pill {
+    display:inline-block; background:rgba(255,255,255,0.15);
+    border:2px solid rgba(255,255,255,0.28); border-radius:16px;
+    padding:8px 24px; margin-top:14px;
+    font-family:'Fredoka One',cursive; font-size:1.35rem;
+  }
+  .progress-bar-wrap { background:rgba(255,255,255,0.18); border-radius:20px; height:7px; margin:12px auto 0; max-width:280px; overflow:hidden; }
+  .progress-bar-fill { height:100%; background:white; border-radius:20px; transition:width .5s ease; width:0%; }
+
+  .exam-content { max-width:860px; margin:0 auto; padding:28px 16px; }
+
+  .section-title {
+    font-family:'Fredoka One',cursive; font-size:1.3rem;
+    padding:12px 18px; border-radius:12px; margin:28px 0 14px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .st-blue { background:var(--blue-light); color:var(--blue); }
+  .st-green { background:var(--green-light); color:var(--green); }
+  .st-orange { background:var(--orange-light); color:var(--orange); }
+  .st-purple { background:var(--purple-light); color:var(--purple); }
+
+  .q-card { background:white; border-radius:14px; padding:20px 22px; margin-bottom:14px; box-shadow:var(--shadow); }
+  .q-number { font-size:.73rem; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:var(--gray); margin-bottom:7px; }
+  .q-text { font-size:.98rem; font-weight:700; line-height:1.5; margin-bottom:12px; color:#1a1a1a; }
+
+  .options { display:flex; flex-direction:column; gap:7px; }
+  .option {
+    display:flex; align-items:center; gap:11px;
+    padding:10px 14px; border:2px solid #e0e0e0; border-radius:10px;
+    cursor:pointer; font-size:.93rem; font-weight:600;
+    transition:all .18s; background:white; text-align:left; width:100%;
+  }
+  .option:hover { border-color:#a8c7fa; background:var(--blue-light); }
+  .option-letter {
+    min-width:26px; height:26px; border-radius:50%; background:#f1f3f4;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:.82rem; color:var(--gray); transition:all .18s;
+  }
+  .option.correct { border-color:var(--green); background:#e6f4ea; }
+  .option.correct .option-letter { background:var(--green); color:white; }
+  .option.wrong { border-color:var(--red); background:var(--red-light); }
+  .option.wrong .option-letter { background:var(--red); color:white; }
+  .option.disabled { pointer-events:none; }
+  .option.reveal-correct { border-color:var(--green); background:#e6f4ea; opacity:.75; }
+  .option.reveal-correct .option-letter { background:var(--green); color:white; }
+
+  .feedback { margin-top:10px; padding:9px 13px; border-radius:10px; font-size:.88rem; font-weight:700; display:none; }
+  .feedback.show { display:block; }
+  .feedback.correct-fb { background:var(--green-light); color:var(--green); border-left:4px solid var(--green); }
+  .feedback.wrong-fb { background:var(--red-light); color:var(--red); border-left:4px solid var(--red); }
+
+  .fill-blank {
+    width:100%; padding:9px 13px; border:2px solid #e0e0e0; border-radius:10px;
+    font-family:'Nunito',sans-serif; font-size:.93rem; font-weight:600;
+    outline:none; transition:border-color .2s; margin-bottom:9px;
+  }
+  .fill-blank:focus { border-color:var(--blue); }
+  .fill-blank.correct-input { border-color:var(--green); background:#e6f4ea; }
+  .fill-blank.wrong-input { border-color:var(--red); background:var(--red-light); }
+
+  .check-btn {
+    padding:8px 20px; background:var(--blue); color:white; border:none;
+    border-radius:10px; font-family:'Nunito',sans-serif; font-weight:800;
+    font-size:.88rem; cursor:pointer; transition:background .2s;
+  }
+  .check-btn:hover { background:#1557b0; }
+  .check-btn:disabled { background:#ccc; cursor:default; }
+
+  .tf-options { display:flex; gap:9px; }
+  .tf-btn {
+    flex:1; padding:10px; border:2px solid #e0e0e0; border-radius:10px;
+    background:white; font-family:'Nunito',sans-serif; font-weight:800;
+    font-size:.93rem; cursor:pointer; transition:all .18s;
+  }
+  .tf-btn:hover { border-color:#a8c7fa; background:var(--blue-light); }
+  .tf-btn.correct { border-color:var(--green); background:var(--green-light); color:var(--green); }
+  .tf-btn.wrong { border-color:var(--red); background:var(--red-light); color:var(--red); }
+  .tf-btn.disabled { pointer-events:none; }
+
+  .submit-row { text-align:center; margin-top:32px; }
+  .submit-btn {
+    padding:14px 44px; background:linear-gradient(135deg,#7b2d8b,#4a1060);
+    color:white; border:none; border-radius:16px;
+    font-family:'Fredoka One',cursive; font-size:1.25rem;
+    cursor:pointer; box-shadow:0 4px 16px rgba(123,45,139,.35);
+    transition:transform .15s, box-shadow .15s;
+  }
+  .submit-btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(123,45,139,.45); }
+
+  .results-card {
+    background:white; border-radius:20px; padding:32px;
+    text-align:center; box-shadow:0 4px 24px rgba(0,0,0,.12);
+    margin-top:36px; display:none;
+  }
+  .results-card.show { display:block; }
+  .results-emoji { font-size:3rem; margin-bottom:10px; }
+  .results-score { font-family:'Fredoka One',cursive; font-size:3.8rem; line-height:1; margin:12px 0 6px; }
+  .results-label { font-size:1rem; font-weight:700; color:var(--gray); margin-bottom:20px; }
+  .results-msg { font-size:.97rem; font-weight:700; color:#333; margin-bottom:22px; line-height:1.6; }
+  .retry-btn {
+    padding:12px 32px; background:var(--purple); color:white; border:none;
+    border-radius:14px; font-family:'Fredoka One',cursive; font-size:1.05rem;
+    cursor:pointer; transition:background .2s;
+  }
+  .retry-btn:hover { background:#4a1060; }
+
+  .guide-footer { text-align:center; margin-top:36px; padding:16px; font-size:.83rem; color:var(--gray); font-weight:600; }
+
+  @media(max-width:600px){
+    .main-header h1 { font-size:1.6rem; }
+    .main-tab-btn { font-size:.95rem; }
+    .sub-tab-btn { font-size:.78rem; padding:7px 11px; }
+    .vocab-grid { grid-template-columns:1fr; }
+    .char-grid { grid-template-columns:1fr; }
+    .tf-options { flex-direction:column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MAIN HEADER -->
+<div class="main-header">
+  <h1>📚 Period 4 Final Exam</h1>
+  <p>3rd Grade English · HMH Into Reading + The Twenty-One Balloons</p>
+  <div class="badge-row">
+    <span class="badge">⚡ Edison</span>
+    <span class="badge">🥗 Lunchbag</span>
+    <span class="badge">🌱 Garden</span>
+    <span class="badge">🎈 21 Balloons</span>
+  </div>
+</div>
+
+<!-- MAIN TABS -->
+<div class="main-tab-bar">
+  <button class="main-tab-btn active" id="mainTab-guide" onclick="switchMain('guide')">📖 Study Guide</button>
+  <button class="main-tab-btn" id="mainTab-exam" onclick="switchMain('exam')">✏️ Practice Exam</button>
+</div>
+
+<!-- ════════════════════════════════
+     PAGE 1 — STUDY GUIDE
+════════════════════════════════ -->
+<div class="main-page active" id="page-guide">
+
+  <div class="sub-tab-bar">
+    <button class="sub-tab-btn active" onclick="showGuide('g1',this)">⚡ Edison</button>
+    <button class="sub-tab-btn" onclick="showGuide('g2',this)">🥗 Lunchbag</button>
+    <button class="sub-tab-btn" onclick="showGuide('g3',this)">🌱 Garden</button>
+    <button class="sub-tab-btn" onclick="showGuide('g4',this)">🎈 21 Balloons</button>
+  </div>
+
+  <div class="guide-content">
+
+    <!-- G1: EDISON -->
+    <div class="guide-section active" id="g1">
+      <div class="section-header s1-head">
+        <div class="section-icon">⚡</div>
+        <div>
+          <h2>Edison's Best Invention</h2>
+          <div class="meta">Module 8 · Pages 250–262</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--blue)">📖 Story Summary</h3>
+        <p class="summary-text">
+          This text is about <strong>Thomas Edison</strong>, one of the greatest inventors in history. Edison was known for creating many useful things, but his <strong>best invention was the phonograph</strong> — a machine that could <strong>record and play back sound</strong> for the very first time.<br><br>
+          Edison worked hard in his laboratory with his team. He believed that with enough effort, any problem could be solved. The text shows how Edison thought differently from others and <strong>never gave up</strong>, even when things were difficult.<br><br>
+          The story teaches us that <strong>great ideas come from curiosity, hard work, and creativity.</strong>
+        </p>
+        <div class="key-idea ki-blue">💡 Big Idea: Edison's visionary thinking and hard work changed the world forever.</div>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--blue)">📝 Vocabulary Words</h3>
+        <div class="vocab-grid">
+          <div class="vocab-card vc-blue">
+            <div class="vocab-word">Visionary</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">A person who has big, creative ideas about the future.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"Thomas Edison was a visionary because he imagined inventions nobody had ever seen before."</div>
+          </div>
+          <div class="vocab-card vc-blue">
+            <div class="vocab-word">Compact</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">Small in size but complete and well organized.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"The new music player was compact, so it fit easily in a backpack."</div>
+          </div>
+          <div class="vocab-card vc-blue">
+            <div class="vocab-word">Singles</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">Individual items or songs, one at a time.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"You could buy singles of your favorite songs instead of the whole album."</div>
+          </div>
+          <div class="vocab-card vc-blue">
+            <div class="vocab-word">Memorable</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">Something so special that you remember it for a long time.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"Hearing recorded music for the first time was a memorable moment in history."</div>
+          </div>
+          <div class="vocab-card vc-blue">
+            <div class="vocab-word">System</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">A group of parts that work together to do something.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"Edison created a system that could capture sound and play it back."</div>
+          </div>
+          <div class="vocab-card vc-blue">
+            <div class="vocab-word">Innovative</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">New, creative, and different from what existed before.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"The phonograph was innovative because no one had ever built anything like it."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- G2: LUNCHBAG -->
+    <div class="guide-section" id="g2">
+      <div class="section-header s2-head">
+        <div class="section-icon">🥗</div>
+        <div>
+          <h2>How Did That Get Into My Lunchbag?</h2>
+          <div class="meta">Module 9 · Pages 276–292</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--green)">📖 Story Summary</h3>
+        <p class="summary-text">
+          This text explains <strong>where our food comes from</strong> before it arrives in our lunchbox. Many kids don't think about how food is made — they just eat it!<br><br>
+          The story traces different foods back to their <strong>origins on farms, in fields, and in factories.</strong> For example, cheese comes from milk, milk comes from cows, and cows eat grass on a farm.<br><br>
+          The text teaches us that <strong>food goes through a long journey</strong> — from nature, to workers, to trucks, to stores, and finally to our lunch bags.
+        </p>
+        <div class="key-idea ki-green">🌿 Big Idea: Every food in your lunchbag has a long and amazing journey before reaching you.</div>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--green)">📝 Vocabulary Words</h3>
+        <div class="vocab-grid">
+          <div class="vocab-card vc-green">
+            <div class="vocab-word">Stalk</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">The tall, thick stem of a plant.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"The corn grew on a long green stalk in the field."</div>
+          </div>
+          <div class="vocab-card vc-green">
+            <div class="vocab-word">Dairy</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">Products made from milk, like cheese, butter, and yogurt.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"Milk and cheese are dairy products that come from cows."</div>
+          </div>
+          <div class="vocab-card vc-green">
+            <div class="vocab-word">Curds</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">The thick, solid parts that form when milk is being made into cheese.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"The farmer separated the curds from the liquid to make fresh cheese."</div>
+          </div>
+          <div class="vocab-card vc-green">
+            <div class="vocab-word">Tingly</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">A feeling of slight excitement or a light stinging sensation.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"The sour candy made her tongue feel tingly."</div>
+          </div>
+          <div class="vocab-card vc-green">
+            <div class="vocab-word">Scarlet</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">A bright, deep shade of red.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"The tomatoes were scarlet red and ready to be picked."</div>
+          </div>
+          <div class="vocab-card vc-green">
+            <div class="vocab-word">Grove</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">A small group of trees growing together.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"The orange grove was full of ripe fruit ready for harvest."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- G3: GARDEN -->
+    <div class="guide-section" id="g3">
+      <div class="section-header s3-head">
+        <div class="section-icon">🌱</div>
+        <div>
+          <h2>It's Our Garden</h2>
+          <div class="meta">Module 9 · Pages 314–332 · From Seeds to Harvest</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--orange)">📖 Story Summary</h3>
+        <p class="summary-text">
+          This text is about a <strong>school garden project</strong> where students learn to grow their own food from start to finish. The students work together to plan, plant, care for, and harvest vegetables and plants.<br><br>
+          The story shows each step — from choosing where to plant, to preparing the soil, to watching seeds grow into full plants. The students learn about <strong>teamwork, responsibility, and patience</strong>.<br><br>
+          The text teaches us that <strong>growing food takes planning and care</strong>, and that working together makes it more fun and successful.
+        </p>
+        <div class="key-idea ki-orange">🌻 Big Idea: A school garden teaches students to work together and care for living things.</div>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--orange)">📝 Vocabulary Words</h3>
+        <div class="vocab-grid">
+          <div class="vocab-card vc-orange">
+            <div class="vocab-word">Layout</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">The way things are arranged or organized in a space.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"The students planned the layout of the garden so each plant had enough room."</div>
+          </div>
+          <div class="vocab-card vc-orange">
+            <div class="vocab-word">Arbor</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">A shaded area in a garden formed by plants or wood overhead.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"The students sat under the arbor to eat lunch in the shade."</div>
+          </div>
+          <div class="vocab-card vc-orange">
+            <div class="vocab-word">Transplanted</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">Moved a plant from one place and replanted it in another.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"They transplanted the small tomato plants from pots into the garden soil."</div>
+          </div>
+          <div class="vocab-card vc-orange">
+            <div class="vocab-word">Mulch</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">A layer of leaves or wood chips placed on soil to protect plants.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"The students spread mulch around the plants to keep the soil from drying out."</div>
+          </div>
+          <div class="vocab-card vc-orange">
+            <div class="vocab-word">Blooming</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">When flowers or plants are opening and growing beautifully.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"By spring, the garden was blooming with colorful flowers and green vegetables."</div>
+          </div>
+          <div class="vocab-card vc-orange">
+            <div class="vocab-word">Kernels</div>
+            <div class="vocab-label">Definition</div>
+            <div class="vocab-def">The small, individual seeds or grains of a plant, like corn.</div>
+            <div class="vocab-label">Example</div>
+            <div class="vocab-example">"Each kernel of corn on the cob could grow into a new corn plant."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- G4: 21 BALLOONS -->
+    <div class="guide-section" id="g4">
+      <div class="section-header s4-head">
+        <div class="section-icon">🎈</div>
+        <div>
+          <h2>The Twenty-One Balloons</h2>
+          <div class="meta">Chapters 1–5 · William Pène du Bois</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--purple)">👤 Main Characters</h3>
+        <div class="char-grid">
+          <div class="char-card">
+            <div class="char-name">Prof. William W. Sherman</div>
+            <div class="char-desc">The main character. A retired math teacher who loves peace and quiet. He travels alone in a hot air balloon.</div>
+          </div>
+          <div class="char-card">
+            <div class="char-name">The Krakatoan Families</div>
+            <div class="char-desc">A secret community of 20 families living on Krakatoa. They are rich, creative, and well organized.</div>
+          </div>
+          <div class="char-card">
+            <div class="char-name">Mr. F (Mr. Felix)</div>
+            <div class="char-desc">One of the leaders of the community. He is the first to welcome Professor Sherman to the island.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--purple)">🗺️ Important Settings</h3>
+        <div class="char-grid">
+          <div class="char-card"><div class="char-name">🌉 San Francisco</div><div class="char-desc">Where Professor Sherman begins his balloon journey across the Pacific Ocean.</div></div>
+          <div class="char-card"><div class="char-name">🌊 The Pacific Ocean</div><div class="char-desc">Where the Professor travels and has his accident with the seagull.</div></div>
+          <div class="char-card"><div class="char-name">🌋 Krakatoa Island</div><div class="char-desc">The secret island where he lands and discovers an amazing hidden civilization full of diamonds.</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--purple)">📖 Chapter Summaries</h3>
+        <div class="chapter-card">
+          <div class="chapter-title">Chapter 1 — The Professor's Plan</div>
+          <div class="chapter-text">Professor Sherman is tired of teaching and wants adventure and solitude. He buys a large hot air balloon and plans to float across the Pacific Ocean for one year. He says goodbye to San Francisco and takes off alone.</div>
+          <div class="key-idea ki-purple">💡 Key Idea: The Professor wants peace, freedom, and adventure.</div>
+        </div>
+        <div class="chapter-card">
+          <div class="chapter-title">Chapter 2 — Trouble Over the Ocean</div>
+          <div class="chapter-text">While flying over the Pacific Ocean, a seagull crashes into the balloon and damages it. Professor Sherman is forced to make an emergency landing on an island — which turns out to be Krakatoa.</div>
+          <div class="key-idea ki-purple">💡 Key Idea: An accident completely changes the Professor's plans.</div>
+        </div>
+        <div class="chapter-card">
+          <div class="chapter-title">Chapter 3 — The Secret Island</div>
+          <div class="chapter-text">Professor Sherman discovers that Krakatoa is not empty. A secret community of 20 families lives there, hidden from the world. The island is beautiful and advanced. The families are very wealthy because Krakatoa is full of diamonds.</div>
+          <div class="key-idea ki-purple">💡 Key Idea: Krakatoa hides an extraordinary secret civilization.</div>
+        </div>
+        <div class="chapter-card">
+          <div class="chapter-title">Chapter 4 — The Rules of Krakatoa</div>
+          <div class="chapter-text">The Professor learns the rules of the island. Each family runs a restaurant with food from a different country, and residents eat at a different one each day. The community is creative and happy. The Professor is welcomed but told he cannot leave easily.</div>
+          <div class="key-idea ki-purple">💡 Key Idea: The island has a unique and creative way of living together.</div>
+        </div>
+        <div class="chapter-card">
+          <div class="chapter-title">Chapter 5 — Life on the Island</div>
+          <div class="chapter-text">Professor Sherman experiences daily life on Krakatoa. He enjoys the food, culture, and people. He is amazed by how the families built such an organized life in secret. However, he starts to feel tension — the volcano beneath the island is active and dangerous.</div>
+          <div class="key-idea ki-purple">💡 Key Idea: Life on the island is wonderful, but a dangerous secret hides underneath.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="guide-footer">✏️ Study Guide — Period 4 Final Exam · 3rd Grade English · Good luck! 🌟</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     PAGE 2 — PRACTICE EXAM
+════════════════════════════════ -->
+<div class="main-page" id="page-exam">
+
+  <div class="exam-header">
+    <h2>✏️ Practice Exam — Period 4</h2>
+    <p>Answer all questions · Instant feedback on every answer</p>
+    <div class="score-pill" id="liveScore">Score: 0 / 0</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressBar"></div></div>
+  </div>
+
+  <div class="exam-content">
+
+    <!-- SECTION 1 -->
+    <div class="section-title st-blue">⚡ Section 1: Edison's Best Invention</div>
+
+    <div class="q-card" id="q1">
+      <div class="q-number">Question 1 · Multiple Choice</div>
+      <div class="q-text">What was Thomas Edison's best invention according to the text?</div>
+      <div class="options">
+        <button class="option" onclick="checkMC(this,'q1',false)"><span class="option-letter">A</span>The light bulb</button>
+        <button class="option" onclick="checkMC(this,'q1',true)"><span class="option-letter">B</span>The phonograph</button>
+        <button class="option" onclick="checkMC(this,'q1',false)"><span class="option-letter">C</span>The telephone</button>
+        <button class="option" onclick="checkMC(this,'q1',false)"><span class="option-letter">D</span>The radio</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <div class="q-card" id="q2">
+      <div class="q-number">Question 2 · Multiple Choice</div>
+      <div class="q-text">What does the word VISIONARY mean?</div>
+      <div class="options">
+        <button class="option" onclick="checkMC(this,'q2',false)"><span class="option-letter">A</span>Someone who is very good at sports</button>
+        <button class="option" onclick="checkMC(this,'q2',false)"><span class="option-letter">B</span>Someone who fixes machines</button>
+        <button class="option" onclick="checkMC(this,'q2',true)"><span class="option-letter">C</span>A person who has big, creative ideas about the future</button>
+        <button class="option" onclick="checkMC(this,'q2',false)"><span class="option-letter">D</span>A person who works in a library</button>
+      </div>
+      <div class="feedback" id="q2-fb"></div>
+    </div>
+
+    <div class="q-card" id="q3">
+      <div class="q-number">Question 3 · Fill in the Blank</div>
+      <div class="q-text">The phonograph was _____________ because no one had ever built anything like it. <small style="color:var(--gray);font-weight:600">(vocabulary word)</small></div>
+      <input class="fill-blank" id="q3-input" placeholder="Type your answer...">
+      <br><button class="check-btn" onclick="checkFill('q3',['innovative'])">Check Answer</button>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <div class="q-card" id="q4">
+      <div class="q-number">Question 4 · True or False</div>
+      <div class="q-text">Thomas Edison gave up easily when things were difficult.</div>
+      <div class="tf-options">
+        <button class="tf-btn" onclick="checkTF(this,'q4',false)">✅ True</button>
+        <button class="tf-btn" onclick="checkTF(this,'q4',true)">❌ False</button>
+      </div>
+      <div class="feedback" id="q4-fb"></div>
+    </div>
+
+    <div class="q-card" id="q5">
+      <div class="q-number">Question 5 · Multiple Choice</div>
+      <div class="q-text">Which word means "small in size but complete and well organized"?</div>
+      <div class="options">
+        <button class="option" onclick="checkMC(this,'q5',false)"><span class="option-letter">A</span>Memorable</button>
+        <button class="option" onclick="checkMC(this,'q5',false)"><span class="option-letter">B</span>System</button>
+        <button class="option" onclick="checkMC(this,'q5',true)"><span class="option-letter">C</span>Compact</button>
+        <button class="option" onclick="checkMC(this,'q5',false)"><span class="option-letter">D</span>Singles</button>
+      </div>
+      <div class="feedback" id="q5-fb"></div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section-title st-green">🥗 Section 2: How Did That Get Into My Lunchbag?</div>
+
+    <div class="q-card" id="q6">
+      <div class="q-number">Question 6 · Multiple Choice</div>
+      <div class="q-text">What is the main idea of "How Did That Get Into My Lunchbag?"</div>
+      <div class="options">
+        <button class="option" onclick="checkMC(this,'q6',false)"><span class="option-letter">A</span>How to cook a healthy meal at school</button>
+        <button class="option" onclick="checkMC(this,'q6',true)"><span class="option-letter">B</span>Where our food comes from before it arrives in our lunchbox</button>
+        <button class="option" onclick="checkMC(this,'q6',false)"><span class="option-letter">C</span>How farmers make money selling food</button>
+        <button class="option" onclick="checkMC(this,'q6',false)"><span class="option-letter">D</span>Why we should eat more vegetables</button>
+      </div>
+      <div class="feedback" id="q6-fb"></div>
+    </div>
+
+    <div class="q-card" id="q7">
+      <div class="q-number">Question 7 · Multiple Choice</div>
+      <div class="q-text">What does the word DAIRY mean?</div>
+      <div class="options">
+        <button class="option" onclick="checkMC(this,'q7',false)"><span class="option-letter">A</span>A type of vegetable grown on a farm</button>
+        <button class="option" onclick="checkMC(this,'q7',true)"><span class="option-letter">B</span>Products made from milk, like cheese and butter</button>
+        <button class="option" onclick="checkMC(this,'q7',false)"><span class="option-letter">C</span>A place where food is cooked and sold</button>
+        <button class="option" onclick="checkMC(this,'q7',false)"><span class="option-letter">D</span>The thick stem of a plant</button>
+      </div>
+      <div class="feedback" id="q7-fb"></div>
+    </div>
+
+    <div class="q-card" id="q8">
+      <div class="q-number">Question 8 · True or False</div>
+      <div class="q-text">Scarlet is a bright, deep shade of red.</div>
+      <div class="tf-options">
+        <button class="tf-btn" onclick="checkTF(this,'q8',true)">✅ True</button>
+        <button class="tf-btn" onclick="checkTF(this,'q8',false)">❌ False</button>
+      </div>
+      <div class="feedback" id="q8-fb"></div>
+    </div>
+
+    <div class="q-card" id="q9">
+      <div class="q-number">Question 9 · Fill in the Blank</div>
+      <div class="q-text">A small group of trees growing together is called a _____________.</div>
+      <input class="fill-blank" id="q9-input" placeholder="Type your answer...">
+      <br><button class="check-btn" onclick="checkFill('q9',['grove'])">Check Answer</button>
+      <div class="feedback" id="q9-fb"></div>
+    </div>
+
+    <div class="q-card" id="q10">
+      <div class="q-number">Question 10 · Multiple Choice</div>
+      <div class="q-text">What are CURDS?</div>
+      <div class="options">
+        <button class="option" onclick="checkMC(this,'q10',false)"><span class="option-letter">A</span>Small seeds found inside vegetables</button>
+        <button class="option" onclick="checkMC(this,'q10',false)"><span class="option-letter">B</span>A type of fruit that grows in groves</button>
+        <button class="option" onclick="checkMC(this,'q10',true)"><span class="option-letter">C</span>The thick, solid parts that form when milk is made into cheese</button>
+        <button class="option" onclick="checkMC(this,'q10',false)"><span class="option-letter">D</span>The stem of a corn plant</button>
+      </div>
+      <div class="feedback" id="q10-fb"></div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section-title st-orange">🌱 Section 3: It's Our Garden</div>
+
+    <div class="q-card" id="q11">
+      <div class="q-number">Question 11 · Multiple Choice</div>
+      <div class="q-text">What is the school garden text mainly about?</div>
+      <div class="options">
+        <button class="option" onclick="checkMC(this,'q11',false)"><span class="option-letter">A</span>How to buy plants at a flower shop</button>
+        <button class="option" onclick="checkMC(this,'q11',true)"><span class="option-letter">B</span>Students who grow food together from seeds to harvest</button>
+        <button class="option" onclick="checkMC(this,'q11',false)"><span class="option-letter">C</span>A farmer who teaches children about soil</button>
+        <button class="option" onclick="checkMC(this,'q11',false)"><span class="option-letter">D</span>How rain helps plants grow in the forest</button>
+      </div>
+      <div class="feedback" id="q11-fb"></div>
+    </div>
+
+    <div class="q-card" id="q12">
+      <div class="q-number">Question 12 · True or False</div>
+      <div class="q-text">Mulch is placed on soil to protect plants and keep moisture in.</div>
+      <div class="tf-options">
+        <button class="tf-btn" onclick="checkTF(this,'q12',true)">✅ True</button>
+        <button class="tf-btn" onclick="checkTF(this,'q12',false)">❌ False</button>
+      </div>
+      <div class="feedback" id="q12-fb"></div>
+    </div>
+
+    <div class="q-card" id="q13">
+      <div class="q-number">Question 13 · Fill in the Blank</div>
+      <div class="q-text">The students _____________ the small plants from pots into the garden soil. <small style="color:var(--gray);font-weight:600">(vocabulary word)</small></div>
+      <input class="fill-blank" id="q13-input" placeholder="Type your answer...">
+      <br><button class="check-btn" onclick="checkFill('q13',['transplanted'])">Check Answer</button>
+      <div class="feedback" id="q13-fb"></div>
+    </div>
+
+    <div class="q-card" id="q14">
+      <div class="q-number">Question 14 · Multiple Choice</div>
+      <div class="q-text">What does BLOOMING mean?</div>
+      <div class="options">
+        <button class="option" onclick="checkMC(this,'q14',false)"><span class="option-letter">A</span>When a plant is dying and losing its leaves</button>
+        <button class="option" onclick="checkMC(this,'q14',true)"><span class="option-letter">B</span>When flowers or plants are opening and growing beautifully</button>
+        <button class="option" onclick="checkMC(this,'q14',false)"><span class="option-letter">C</span>When seeds are being planted in the ground</button>
+        <button class="option" onclick="checkMC(this,'q14',false)"><span class="option-letter">D</span>When fruits are picked from the tree</button>
+      </div>
+      <div class="feedback" id="q14-fb"></div>
+    </div>
+
+    <div class="q-card" id="q15">
+      <div class="q-number">Question 15 · Multiple Choice</div>
+      <div class="q-text">What is an ARBOR?</div>
+      <div class="options">
+        <button class="option" onclick="checkMC(this,'q15',false)"><span class="option-letter">A</span>A type of seed used to grow vegetables</button>
+        <button class="option" onclick="checkMC(this,'q15',false)"><span class="option-letter">B</span>A machine used to water plants</button>
+        <button class="option" onclick="checkMC(this,'q15',true)"><span class="option-letter">C</span>A shaded area in a garden formed by plants or wood overhead</button>
+        <button class="option" onclick="checkMC(this,'q15',false)"><span class="option-letter">D</span>The arrangement of plants in a garden</button>
+      </div>
+      <div class="feedback" id="q15-fb"></div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="section-title st-purple">🎈 Section 4: The Twenty-One Balloons (Chapters 1–5)</div>
+
+    <div class="q-card" id="q16">
+      <div class="q-number">Question 16 · Multiple Choice</div>
+      <div class="q-text">Who is the main character in The Twenty-One Balloons?</div>
+      <div class="options">
+        <button class="option" onclick="checkMC(this,'q16',false)"><span class="option-letter">A</span>Mr. Felix</button>
+        <button class="option" onclick="checkMC(this,'q16',true)"><span class="option-letter">B</span>Professor William Waterman Sherman</button>
+        <button class="option" onclick="checkMC(this,'q16',false)"><span class="option-letter">C</span>Captain Henry of San Francisco</button>
+        <button class="option" onclick="checkMC(this,'q16',false)"><span class="option-letter">D</span>William Pène du Bois</button>
+      </div>
+      <div class="feedback" id="q16-fb"></div>
+    </div>
+
+    <div class="q-card" id="q17">
+      <div class="q-number">Question 17 · Multiple Choice</div>
+      <div class="q-text">Why did Professor Sherman's balloon have to make an emergency landing?</div>
+      <div class="options">
+        <button class="option" onclick="checkMC(this,'q17',false)"><span class="option-letter">A</span>He ran out of food and water</button>
+        <button class="option" onclick="checkMC(this,'q17',false)"><span class="option-letter">B</span>A storm destroyed the balloon completely</button>
+        <button class="option" onclick="checkMC(this,'q17',true)"><span class="option-letter">C</span>A seagull crashed into the balloon and damaged it</button>
+        <button class="option" onclick="checkMC(this,'q17',false)"><span class="option-letter">D</span>He decided to visit the island on purpose</button>
+      </div>
+      <div class="feedback" id="q17-fb"></div>
+    </div>
+
+    <div class="q-card" id="q18">
+      <div class="q-number">Question 18 · True or False</div>
+      <div class="q-text">The island of Krakatoa was completely empty when Professor Sherman arrived.</div>
+      <div class="tf-options">
+        <button class="tf-btn" onclick="checkTF(this,'q18',false)">✅ True</button>
+        <button class="tf-btn" onclick="checkTF(this,'q18',true)">❌ False</button>
+      </div>
+      <div class="feedback" id="q18-fb"></div>
+    </div>
+
+    <div class="q-card" id="q19">
+      <div class="q-number">Question 19 · Multiple Choice</div>
+      <div class="q-text">Why were the families on Krakatoa so wealthy?</div>
+      <div class="options">
+        <button class="option" onclick="checkMC(this,'q19',false)"><span class="option-letter">A</span>They sold their food to countries around the world</button>
+        <button class="option" onclick="checkMC(this,'q19',true)"><span class="option-letter">B</span>The island was full of diamonds</button>
+        <button class="option" onclick="checkMC(this,'q19',false)"><span class="option-letter">C</span>They charged money to tourists who visited</button>
+        <button class="option" onclick="checkMC(this,'q19',false)"><span class="option-letter">D</span>They found gold under the ocean</button>
+      </div>
+      <div class="feedback" id="q19-fb"></div>
+    </div>
+
+    <div class="q-card" id="q20">
+      <div class="q-number">Question 20 · Multiple Choice</div>
+      <div class="q-text">What made the community on Krakatoa unique and creative?</div>
+      <div class="options">
+        <button class="option" onclick="checkMC(this,'q20',false)"><span class="option-letter">A</span>Every family had their own hot air balloon</button>
+        <button class="option" onclick="checkMC(this,'q20',true)"><span class="option-letter">B</span>Each family ran a restaurant with food from a different country</button>
+        <button class="option" onclick="checkMC(this,'q20',false)"><span class="option-letter">C</span>The families had a school with 100 students</button>
+        <button class="option" onclick="checkMC(this,'q20',false)"><span class="option-letter">D</span>They built their houses underground</button>
+      </div>
+      <div class="feedback" id="q20-fb"></div>
+    </div>
+
+    <div class="q-card" id="q21">
+      <div class="q-number">Question 21 · True or False</div>
+      <div class="q-text">Professor Sherman started his journey from New York City.</div>
+      <div class="tf-options">
+        <button class="tf-btn" onclick="checkTF(this,'q21',false)">✅ True</button>
+        <button class="tf-btn" onclick="checkTF(this,'q21',true)">❌ False</button>
+      </div>
+      <div class="feedback" id="q21-fb"></div>
+    </div>
+
+    <div class="q-card" id="q22">
+      <div class="q-number">Question 22 · Fill in the Blank</div>
+      <div class="q-text">Below the beautiful island of Krakatoa there was an active and dangerous _____________.</div>
+      <input class="fill-blank" id="q22-input" placeholder="Type your answer...">
+      <br><button class="check-btn" onclick="checkFill('q22',['volcano'])">Check Answer</button>
+      <div class="feedback" id="q22-fb"></div>
+    </div>
+
+    <div class="q-card" id="q23">
+      <div class="q-number">Question 23 · Multiple Choice</div>
+      <div class="q-text">What was Professor Sherman's job before his balloon adventure?</div>
+      <div class="options">
+        <button class="option" onclick="checkMC(this,'q23',false)"><span class="option-letter">A</span>A doctor</button>
+        <button class="option" onclick="checkMC(this,'q23',false)"><span class="option-letter">B</span>A pilot</button>
+        <button class="option" onclick="checkMC(this,'q23',true)"><span class="option-letter">C</span>A retired math teacher</button>
+        <button class="option" onclick="checkMC(this,'q23',false)"><span class="option-letter">D</span>A sailor</button>
+      </div>
+      <div class="feedback" id="q23-fb"></div>
+    </div>
+
+    <div class="q-card" id="q24">
+      <div class="q-number">Question 24 · Multiple Choice</div>
+      <div class="q-text">How many families lived on the secret island of Krakatoa?</div>
+      <div class="options">
+        <button class="option" onclick="checkMC(this,'q24',false)"><span class="option-letter">A</span>10 families</button>
+        <button class="option" onclick="checkMC(this,'q24',false)"><span class="option-letter">B</span>15 families</button>
+        <button class="option" onclick="checkMC(this,'q24',true)"><span class="option-letter">C</span>20 families</button>
+        <button class="option" onclick="checkMC(this,'q24',false)"><span class="option-letter">D</span>21 families</button>
+      </div>
+      <div class="feedback" id="q24-fb"></div>
+    </div>
+
+    <div class="q-card" id="q25">
+      <div class="q-number">Question 25 · True or False</div>
+      <div class="q-text">Mr. F was one of the first people to welcome Professor Sherman to Krakatoa.</div>
+      <div class="tf-options">
+        <button class="tf-btn" onclick="checkTF(this,'q25',true)">✅ True</button>
+        <button class="tf-btn" onclick="checkTF(this,'q25',false)">❌ False</button>
+      </div>
+      <div class="feedback" id="q25-fb"></div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-row">
+      <button class="submit-btn" onclick="showResults()">🎯 See My Final Score</button>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results-card" id="resultsCard">
+      <div class="results-emoji" id="resultsEmoji">🌟</div>
+      <div style="font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--gray)">Your Score</div>
+      <div class="results-score" id="resultsScore">0/25</div>
+      <div class="results-label" id="resultsPercent">0%</div>
+      <div class="results-msg" id="resultsMsg"></div>
+      <button class="retry-btn" onclick="retryExam()">🔄 Try Again</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // ── MAIN TAB SWITCH ──
+  function switchMain(tab) {
+    document.querySelectorAll('.main-page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.main-tab-btn').forEach(b => { b.classList.remove('active','exam-active'); });
+    document.getElementById('page-' + tab).classList.add('active');
+    const btn = document.getElementById('mainTab-' + tab);
+    btn.classList.add(tab === 'exam' ? 'exam-active' : 'active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── GUIDE SUB-TAB SWITCH ──
+  function showGuide(id, btn) {
+    document.querySelectorAll('.guide-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── EXAM LOGIC ──
+  const totalQ = 25;
+  let answered = {}, scores = {};
+
+  function updateScore() {
+    const correct = Object.values(scores).filter(v => v).length;
+    const total = Object.keys(answered).length;
+    document.getElementById('liveScore').textContent = `Score: ${correct} / ${total}`;
+    document.getElementById('progressBar').style.width = ((total / totalQ) * 100) + '%';
+  }
+
+  function checkMC(btn, qid, isCorrect) {
+    if (answered[qid]) return;
+    answered[qid] = true; scores[qid] = isCorrect;
+    const opts = btn.closest('.options').querySelectorAll('.option');
+    opts.forEach(o => o.classList.add('disabled'));
+    const fb = document.getElementById(qid + '-fb');
+    if (isCorrect) {
+      btn.classList.add('correct');
+      fb.textContent = '✅ Correct! Great job!';
+      fb.className = 'feedback show correct-fb';
+    } else {
+      btn.classList.add('wrong');
+      opts.forEach(o => { if (o.getAttribute('onclick').includes('true')) o.classList.add('reveal-correct'); });
+      fb.textContent = '❌ Not quite. The highlighted answer is correct.';
+      fb.className = 'feedback show wrong-fb';
+    }
+    updateScore();
+  }
+
+  function checkTF(btn, qid, isCorrect) {
+    if (answered[qid]) return;
+    answered[qid] = true; scores[qid] = isCorrect;
+    btn.parentElement.querySelectorAll('.tf-btn').forEach(b => b.classList.add('disabled'));
+    const fb = document.getElementById(qid + '-fb');
+    btn.classList.add(isCorrect ? 'correct' : 'wrong');
+    fb.textContent = isCorrect ? '✅ Correct! Great job!' : '❌ Not quite. Try to remember this one!';
+    fb.className = 'feedback show ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+    updateScore();
+  }
+
+  function checkFill(qid, accepted) {
+    if (answered[qid]) return;
+    const input = document.getElementById(qid + '-input');
+    const val = input.value.trim().toLowerCase();
+    const fb = document.getElementById(qid + '-fb');
+    if (!val) { fb.textContent = '⚠️ Please type an answer first.'; fb.className = 'feedback show wrong-fb'; return; }
+    answered[qid] = true;
+    const correct = accepted.some(a => val === a.toLowerCase());
+    scores[qid] = correct;
+    document.querySelector('#' + qid + ' .check-btn').disabled = true;
+    input.disabled = true;
+    input.classList.add(correct ? 'correct-input' : 'wrong-input');
+    fb.textContent = correct ? '✅ Correct! Well done!' : `❌ Not quite. The correct answer is: "${accepted[0]}"`;
+    fb.className = 'feedback show ' + (correct ? 'correct-fb' : 'wrong-fb');
+    updateScore();
+  }
+
+  function showResults() {
+    const correct = Object.values(scores).filter(v => v).length;
+    const pct = Math.round((correct / totalQ) * 100);
+    document.getElementById('resultsScore').textContent = correct + ' / ' + totalQ;
+    document.getElementById('resultsPercent').textContent = pct + '%';
+    let emoji, msg, color;
+    if (pct >= 90) { emoji='🌟'; msg='Outstanding! You are ready for the real exam!'; color='var(--green)'; }
+    else if (pct >= 75) { emoji='😊'; msg='Great job! Review the questions you missed and you will be ready!'; color='var(--blue)'; }
+    else if (pct >= 60) { emoji='📖'; msg='Good effort! Study the vocabulary words and chapter summaries again.'; color='var(--orange)'; }
+    else { emoji='💪'; msg='Keep studying! Review the Study Guide and try again. You can do it!'; color='var(--red)'; }
+    document.getElementById('resultsEmoji').textContent = emoji;
+    document.getElementById('resultsMsg').textContent = msg;
+    document.getElementById('resultsScore').style.color = color;
+    document.getElementById('resultsCard').classList.add('show');
+    document.getElementById('resultsCard').scrollIntoView({ behavior:'smooth' });
+  }
+
+  function retryExam() {
+    answered = {}; scores = {};
+    document.querySelectorAll('.option').forEach(o => o.classList.remove('correct','wrong','reveal-correct','disabled'));
+    document.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('correct','wrong','disabled'));
+    document.querySelectorAll('.fill-blank').forEach(i => { i.value=''; i.disabled=false; i.classList.remove('correct-input','wrong-input'); });
+    document.querySelectorAll('.check-btn').forEach(b => b.disabled=false);
+    document.querySelectorAll('.feedback').forEach(f => f.className='feedback');
+    document.getElementById('resultsCard').classList.remove('show');
+    document.getElementById('resultsScore').style.color = '';
+    updateScore();
+    window.scrollTo({ top:0, behavior:'smooth' });
+  }
+
+  updateScore();
+</script>
+</body>
+</html>
